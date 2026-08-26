@@ -1,0 +1,84 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - link "Verity" [ref=f3e4] [cursor=pointer]:
+        - /url: "#"
+      - checkbox "Open menu"
+      - generic [ref=f3e5]:
+        - link "Book a demo" [ref=f3e6] [cursor=pointer]:
+          - /url: "#demo"
+        - generic [ref=f3e7] [cursor=pointer]: Open menu
+  - generic [ref=f3e13]:
+    - generic [ref=f3e15]:
+      - generic [ref=f3e16]:
+        - paragraph [ref=f3e17]: Business operating system for MSMEs
+        - heading "The order was always real — the connection never was." [level=1] [ref=f3e18]:
+          - generic [ref=f3e19]: The
+          - generic [ref=f3e20]: order
+          - generic [ref=f3e21]: was
+          - generic [ref=f3e22]: always
+          - generic [ref=f3e23]: real
+          - generic [ref=f3e24]: —
+          - emphasis [ref=f3e25]:
+            - generic [ref=f3e26]: the
+            - generic [ref=f3e27]: connection
+            - generic [ref=f3e28]: never
+            - generic [ref=f3e29]: was.
+        - paragraph [ref=f3e30]: Right now, that order lives across WhatsApp, a spreadsheet, Tally and a notebook by the machine. Verity keeps it as one record — from the first enquiry to the last rupee collected.
+        - generic [ref=f3e31]:
+          - link "Book a demo" [ref=f3e32] [cursor=pointer]:
+            - /url: "#demo"
+          - link "Explore Verity" [ref=f3e33] [cursor=pointer]:
+            - /url: "#explore"
+        - paragraph [ref=f3e34]: Modular by design — start with Orders or Inventory, add the rest as you grow.
+      - generic [ref=f3e35]:
+        - generic:
+          - paragraph: Low stock
+          - paragraph: "12"
+          - paragraph: SO-1042 pulled the last MS sheet, 2mm
+    - generic:
+      - generic:
+        - generic:
+          - complementary:
+            - paragraph: Home
+            - paragraph: CRM
+            - paragraph: Sales
+            - paragraph: Orders
+            - paragraph: Inventory
+            - paragraph: Projects
+            - paragraph: Operations
+            - paragraph: Workforce
+            - paragraph: Finance
+            - paragraph: Reports
+          - generic:
+            - generic:
+              - generic:
+                - paragraph: SO-1042
+              - generic: Work in progress
+            - list:
+              - listitem: Customer
+              - listitem: Order
+              - listitem: Work
+              - listitem: Inventory
+              - listitem: Delivery
+              - listitem: Invoice
+              - listitem: Payment
+            - table:
+              - rowgroup:
+                - row:
+                  - columnheader: Item
+                  - columnheader: Qty
+              - rowgroup:
+                - row:
+                  - cell: MS sheet, 2mm
+                  - cell: "40"
+                - row:
+                  - cell: Hex bolt, M8
+                  - cell: "240"
+                - row:
+                  - cell: Gasket, 40mm
+                  - cell: "80"
+            - generic:
+              - generic: Invoice INV-0871
+              - generic: ₹1,84,200
+              - generic: Due in 4 days

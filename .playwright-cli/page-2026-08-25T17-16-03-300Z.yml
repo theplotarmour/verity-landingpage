@@ -1,0 +1,102 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Verity" [ref=e4] [cursor=pointer]:
+        - /url: "#"
+      - navigation "Primary" [ref=e5]:
+        - link "Platform" [ref=e6] [cursor=pointer]:
+          - /url: "#platform"
+        - link "Modules" [ref=e7] [cursor=pointer]:
+          - /url: "#modules"
+        - link "Industries" [ref=e8] [cursor=pointer]:
+          - /url: "#industries"
+        - link "Pricing" [ref=e9] [cursor=pointer]:
+          - /url: "#pricing"
+      - generic [ref=e10]:
+        - link "Book a demo" [ref=e11] [cursor=pointer]:
+          - /url: "#demo"
+        - link "Get started" [ref=e12] [cursor=pointer]:
+          - /url: "#start"
+  - generic [ref=e14]:
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - paragraph [ref=e18]: Business operating system for MSMEs
+        - heading "Run your entire business from one place ." [level=1] [ref=e19]:
+          - generic [ref=e20]: Run
+          - generic [ref=e21]: your
+          - generic [ref=e22]: entire
+          - generic [ref=e23]: business
+          - emphasis [ref=e24]:
+            - generic [ref=e25]: from
+            - generic [ref=e26]: one
+            - generic [ref=e27]: place
+          - generic [ref=e28]: .
+        - paragraph [ref=e29]: Verity connects customers, orders, inventory, projects, people and operations into one modular business platform built for growing MSMEs.
+        - generic [ref=e30]:
+          - link "Book a demo" [ref=e31] [cursor=pointer]:
+            - /url: "#demo"
+          - link "Explore Verity" [ref=e32] [cursor=pointer]:
+            - /url: "#explore"
+      - generic:
+        - paragraph: Orders
+        - list:
+          - listitem:
+            - generic: New
+            - generic: "24"
+          - listitem:
+            - generic: In production
+            - generic: "18"
+          - listitem:
+            - generic: Ready
+            - generic: "9"
+          - listitem:
+            - generic: Delayed
+            - generic: "6"
+      - generic:
+        - paragraph: Revenue
+        - paragraph: ₹24.8L
+      - generic:
+        - paragraph: Inventory alerts
+        - paragraph: "12"
+        - paragraph: low-stock items
+      - generic: Which orders are delayed and why?
+    - generic [ref=e39]:
+      - complementary [ref=e40]:
+        - paragraph [ref=e41]: Home
+        - paragraph [ref=e42]: CRM
+        - paragraph [ref=e43]: Sales
+        - paragraph [ref=e44]: Orders
+        - paragraph [ref=e45]: Inventory
+        - paragraph [ref=e46]: Projects
+        - paragraph [ref=e47]: Operations
+        - paragraph [ref=e48]: Workforce
+        - paragraph [ref=e49]: Finance
+        - paragraph [ref=e50]: Reports
+      - generic [ref=e51]:
+        - paragraph [ref=e52]: Good morning, Arjun
+        - generic [ref=e53]:
+          - generic [ref=e54]:
+            - generic [ref=e55]: Revenue
+            - generic [ref=e56]: ₹24.8L
+          - generic [ref=e57]:
+            - generic [ref=e58]: Active orders
+            - generic [ref=e59]: "142"
+          - generic [ref=e60]:
+            - generic [ref=e61]: Pending work
+            - generic [ref=e62]: "38"
+          - generic [ref=e63]:
+            - generic [ref=e64]: Inventory alerts
+            - generic [ref=e65]: "12"
+          - generic [ref=e66]:
+            - generic [ref=e67]: Receivables
+            - generic [ref=e68]: ₹8.4L
+        - generic [ref=e69]:
+          - generic [ref=e70]:
+            - paragraph [ref=e71]: Orders in production
+            - paragraph [ref=e72]: 18 orders across 3 lines · 2 due today
+          - generic [ref=e73]:
+            - paragraph [ref=e74]: Today's deliveries
+            - paragraph [ref=e75]: 7 dispatches scheduled · 1 delayed
+          - generic [ref=e76]:
+            - paragraph [ref=e77]: Low stock
+            - paragraph [ref=e78]: 12 items below reorder point

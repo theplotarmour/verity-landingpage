@@ -1,0 +1,65 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e2]:
+    - generic [ref=f2e3]:
+      - link "Verity" [ref=f2e4] [cursor=pointer]:
+        - /url: "#"
+      - link "Get started" [ref=f2e6] [cursor=pointer]:
+        - /url: "#start"
+  - generic [ref=f2e8]:
+    - generic [ref=f2e10]:
+      - generic [ref=f2e11]:
+        - paragraph [ref=f2e12]: Business operating system for MSMEs
+        - heading "Run your entire business from one place ." [level=1] [ref=f2e13]:
+          - generic [ref=f2e14]: Run
+          - generic [ref=f2e15]: your
+          - generic [ref=f2e16]: entire
+          - generic [ref=f2e17]: business
+          - emphasis [ref=f2e18]:
+            - generic [ref=f2e19]: from
+            - generic [ref=f2e20]: one
+            - generic [ref=f2e21]: place
+          - generic [ref=f2e22]: .
+        - paragraph [ref=f2e23]: Verity connects customers, orders, inventory, projects, people and operations into one modular business platform built for growing MSMEs.
+        - generic [ref=f2e24]:
+          - link "Book a demo" [ref=f2e25] [cursor=pointer]:
+            - /url: "#demo"
+          - link "Explore Verity" [ref=f2e26] [cursor=pointer]:
+            - /url: "#explore"
+      - generic:
+        - paragraph: Orders
+        - list:
+          - listitem:
+            - generic: New
+            - generic: "24"
+          - listitem:
+            - generic: In production
+            - generic: "18"
+          - listitem:
+            - generic: Ready
+            - generic: "9"
+          - listitem:
+            - generic: Delayed
+            - generic: "6"
+      - generic:
+        - paragraph: Revenue
+        - paragraph: ₹24.8L
+      - generic: Which orders are delayed and why?
+    - generic [ref=f2e34]:
+      - paragraph [ref=f2e35]: Good morning, Arjun
+      - generic [ref=f2e36]:
+        - generic [ref=f2e37]:
+          - generic [ref=f2e38]: Revenue
+          - generic [ref=f2e39]: ₹24.8L
+        - generic [ref=f2e40]:
+          - generic [ref=f2e41]: Active orders
+          - generic [ref=f2e42]: "142"
+        - generic [ref=f2e43]:
+          - generic [ref=f2e44]: Pending work
+          - generic [ref=f2e45]: "38"
+      - generic [ref=f2e46]:
+        - generic [ref=f2e47]:
+          - paragraph [ref=f2e48]: Orders in production
+          - paragraph [ref=f2e49]: 18 orders across 3 lines · 2 due today
+        - generic [ref=f2e50]:
+          - paragraph [ref=f2e51]: Today's deliveries
+          - paragraph [ref=f2e52]: 7 dispatches scheduled · 1 delayed

@@ -1,0 +1,671 @@
+/* ================= Piece A: page shell + hero ================= */
+/* Tokens come from variables.css (already loaded via base.css). */
+
+.hero-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* ---------------------------------------------------------------
+   Nav — no background, no border, no shadow, no separator, ever.
+--------------------------------------------------------------- */
+.hero-nav {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: transparent;
+}
+
+/* Transparent at rest; an opaque paper backdrop once the page scrolls, so
+   section eyebrows never print through the wordmark. The reference masks
+   scrolled content the same way (see bar.md, piece-B ruling). No separator
+   rule, no shadow — the mask is the whole effect. */
+@supports (animation-timeline: scroll(root)) {
+  .hero-nav::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--color-paper-white);
+    opacity: 0;
+    animation: hero-nav-solidify linear both;
+    animation-timeline: scroll(root);
+    animation-range: 40px 140px;
+  }
+}
+@keyframes hero-nav-solidify { to { opacity: 1; } }
+
+/* Without scroll-timeline support the nav stays masked rather than colliding. */
+@supports not (animation-timeline: scroll(root)) {
+  .hero-nav { background: var(--color-paper-white); }
+}
+
+.hero-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  gap: var(--spacing-24);
+  position: relative;
+}
+
+.hero-logo {
+  font-family: var(--font-ui);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+  color: var(--color-ink-black);
+  flex: 0 0 auto;
+}
+
+.hero-nav-toggle-input { position: absolute; opacity: 0; pointer-events: none; }
+
+.hero-nav-links {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-32);
+  flex: 1 1 auto;
+  justify-content: center;
+}
+
+.hero-nav-links a {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--color-ink-black);
+  padding: 2px 0;
+  transition: color 420ms cubic-bezier(.22,.61,.36,1);
+}
+.hero-nav-links a:hover { color: var(--color-slate-gray); }
+
+.hero-nav-cta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16);
+  flex: 0 0 auto;
+}
+
+/* Hamburger toggle — hidden above 860px, CSS-only (this piece owns no JS) */
+.hero-nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: var(--radius-inputs);
+}
+.hero-nav-toggle span:not(.hero-sr-only) {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  margin-inline: auto;
+  background: var(--color-ink-black);
+}
+.hero-nav-toggle-input:focus-visible ~ .hero-nav-cta .hero-nav-toggle {
+  outline: 2px solid var(--color-ink-black);
+  outline-offset: 2px;
+}
+
+/* ---------------------------------------------------------------
+   Scrub section: hero copy recedes, workspace panel takes the frame
+--------------------------------------------------------------- */
+.hero-scrub {
+  position: relative;
+  height: 220vh;
+}
+
+.hero-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--color-paper-white);
+}
+
+/* Warm wash — flat at rest, blooms only mid-scrub, recedes as the panel arrives.
+   Peach/rose warmth only — no violet, no second chromatic family. */
+.hero-wash {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  /* The destination is a TINTED field, not a white panel: the wash builds
+     with the scrub instead of peaking mid-way and fading back to paper.
+     Peak alpha is tuned to the reference's own warm zone (chroma ~26 at the
+     hot spots, falling to neutral at the edges). */
+  background:
+    radial-gradient(64% 60% at 18% 14%, rgba(0, 209, 178, 0.20) 0%, rgba(0, 209, 178, 0) 78%),
+    radial-gradient(62% 56% at 80% 24%, rgba(0, 209, 178, 0.14) 0%, rgba(0, 209, 178, 0) 80%),
+    radial-gradient(78% 66% at 52% 94%, rgba(0, 209, 178, 0.10) 0%, rgba(0, 209, 178, 0) 82%),
+    linear-gradient(180deg, rgba(0, 209, 178, 0.05) 0%, rgba(0, 209, 178, 0.03) 100%),
+    var(--color-paper-white);
+  opacity: calc(0.35 + var(--p, 0) * 0.65);
+}
+
+/* ---------------- Hero copy + floating artifacts ---------------- */
+.hero-copy {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  /* Recedes but does not vanish: settles into a legible ghost (18% opacity)
+     by the scrub's midpoint and holds there while the incoming panel
+     (z-index 3, on top) arrives over it — a real hand-off, not a cut. */
+  opacity: max(0.18, calc(1 - var(--p, 0) * 1.6));
+  transform: translateY(calc(var(--p, 0) * 64px)) scale(calc(1 - var(--p, 0) * 0.1));
+  will-change: opacity, transform;
+}
+
+.hero-copy-inner {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--spacing-24);
+  padding-top: 72px;
+}
+
+.hero-eyebrow { justify-content: center; }
+
+.hero-headline {
+  max-width: 640px;
+  color: var(--color-ink-black);
+}
+
+.hero-sub {
+  max-width: 620px;
+}
+
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16);
+  margin-top: var(--spacing-8);
+}
+
+.hero-modular-note { margin-top: var(--spacing-4); }
+
+/* "Explore Verity" — text-link-with-arrow, distinct from the filled pill and
+   from bare ink text. Mirrors the eyebrow's chevron language. */
+.hero-explore-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 44px;
+  padding-inline: 4px;
+  font-size: var(--text-body);
+  font-weight: var(--font-weight-w450);
+  color: var(--color-ink-black);
+  transition: color 420ms cubic-bezier(.22,.61,.36,1), gap 420ms cubic-bezier(.22,.61,.36,1);
+}
+.hero-explore-link::after {
+  content: "";
+  width: 6px; height: 6px; margin-top: -2px;
+  border-right: 1.25px solid currentColor;
+  border-top: 1.25px solid currentColor;
+  transform: rotate(45deg);
+}
+.hero-explore-link:hover { color: var(--color-slate-gray); gap: 10px; }
+
+/* ---------------- Floating artifacts ---------------- */
+.hero-artifact {
+  position: absolute;
+  z-index: 1;
+  padding: 16px 18px 14px;
+  pointer-events: none;
+}
+
+.hero-artifact-title {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--color-ash-gray);
+  margin: 0 0 10px;
+}
+
+.hero-artifact-value {
+  font-family: var(--font-ui);
+  font-size: var(--text-body-lg);
+  font-weight: 500;
+  color: var(--color-ink-black);
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.hero-artifact-caption {
+  font-size: 14px;
+  color: var(--color-slate-gray);
+  margin: 2px 0 0;
+}
+
+/* Shared record thread: Orders queue -> low-stock alert, same job number */
+.hero-thread-group {
+  position: absolute;
+  top: 15%;
+  left: calc(50% - 660px);
+  width: 216px;
+  display: flex;
+  flex-direction: column;
+}
+.hero-thread-group .hero-artifact { position: static; width: 100%; }
+
+.hero-thread {
+  position: relative;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-thread::before {
+  content: "";
+  position: absolute;
+  left: 50%; top: 0; bottom: 0; width: 1px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(to bottom, var(--color-smoke-gray) 0 4px, transparent 4px 9px);
+}
+.hero-thread span {
+  position: relative; z-index: 1;
+  background: var(--color-paper-white);
+  border: 1px solid var(--color-mist-gray);
+  color: var(--color-slate-gray);
+  font-size: 14px;
+  padding: 2px 10px;
+  border-radius: var(--radius-buttons);
+}
+
+/* Cross-canvas connector: Low stock -> Invoice, drawn (not just text-matched),
+   mirroring the Orders -> Low-stock thread. Desktop only — hidden once the
+   flank artifacts reflow at 1080px and below. */
+.hero-thread-cross {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.hero-thread-cross path {
+  fill: none;
+  stroke: var(--color-smoke-gray);
+  stroke-width: 1.25px;
+  stroke-dasharray: 1 8;
+  stroke-linecap: round;
+}
+.hero-thread-cross marker path { fill: var(--color-smoke-gray); stroke: none; }
+
+.hero-thread--cross {
+  position: absolute;
+  left: 51.4%;
+  top: 15.6%;
+  transform: translate(-50%, -50%);
+}
+
+/* Orders queue */
+.hero-orders-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.hero-orders-list li { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 14px; }
+.hero-orders-list li span { color: var(--color-slate-gray); font-variant-numeric: tabular-nums; }
+.hero-orders-list li b { font-weight: 400; color: var(--color-ink-black); }
+.hero-orders-flagged b { font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
+.hero-orders-flagged b::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--color-ink-black); flex: 0 0 auto;
+}
+
+/* Low stock — the one peach surface in this viewport. Text is sienna, solid, no alpha. */
+.hero-artifact--inventory { width: 100%; }
+.hero-artifact--inventory .hero-artifact-title { color: var(--color-sienna-brown); }
+.hero-artifact--inventory .hero-artifact-value { color: var(--color-sienna-brown); }
+.hero-artifact--inventory .hero-artifact-caption { color: var(--color-sienna-brown); }
+
+/* Invoice record */
+.hero-artifact--invoice {
+  top: 12%;
+  left: calc(50% + 470px);
+  width: 200px;
+}
+.hero-artifact-line { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin: 0 0 4px; }
+.hero-artifact-line b { font-size: var(--text-body-lg); font-weight: 500; color: var(--color-ink-black); letter-spacing: -0.2px; }
+.hero-artifact-line span { font-size: 14px; color: var(--color-slate-gray); }
+
+/* ---------------------------------------------------------------
+   Workspace panel — bare surface, no window chrome, bleeds past
+   the column and is cropped by the viewport edge as it arrives.
+--------------------------------------------------------------- */
+.hero-workspace {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Panel grows from a small card near the invoice artifact into a full
+   workspace that bleeds off the right edge — cropped by the viewport,
+   deliberately, not accidentally lopsided. Radius is a fixed 20px the whole
+   time (no scale transform on the chrome, so it never reads as zoomed). */
+.hero-window {
+  position: absolute;
+  top: calc(32% - var(--p, 0) * 22%);
+  bottom: calc(32% - var(--p, 0) * 22%);
+  left: calc(48% - var(--p, 0) * 14%);
+  width: calc(24% + var(--p, 0) * 42%);
+  /* Translucent like the reference panel, so the tinted field reads THROUGH
+     the destination instead of being blanked out by an opaque white slab. */
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius-elevatedcards);
+  box-shadow: var(--shadow-subtle-3);
+  overflow: hidden;
+  display: flex;
+  /* Scale and opacity are correlated 1:1 with the same --p driving the
+     geometry above: invisible at rest, visible in step with its growth,
+     fully resolved exactly when the geometry settles at p=1 — no early
+     plateau, no dead scroll after. */
+  opacity: var(--p, 0);
+  will-change: opacity, top, bottom, left, width;
+}
+
+.hero-window-body {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+  width: 100%;
+}
+
+.hero-window-nav {
+  flex: 0 0 168px;
+  background: var(--color-fog-white);
+  padding: 20px 14px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-window-navitem {
+  font-size: 14px;
+  color: var(--color-slate-gray);
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: var(--radius-inputs);
+}
+.hero-window-navitem.is-active {
+  background: var(--color-mist-gray);
+  color: var(--color-ink-black);
+  font-weight: 500;
+}
+
+.hero-window-main {
+  flex: 1 1 auto;
+  min-width: 0;
+  /* Symmetric padding — content runs to the panel's true edges, no dead
+     column. The bottom edge is left uncropped by padding on purpose: the
+     note at the foot is clipped by the panel's overflow, implying more
+     record below. */
+  padding: 24px 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+}
+
+/* Workspace furniture above the record — makes this a screen, not a card */
+.hero-window-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.hero-window-crumb { font-size: 14px; color: var(--color-ash-gray); margin: 0; }
+.hero-window-crumb span { padding: 0 6px; }
+.hero-window-toolbar-icons { display: flex; gap: 6px; }
+.hero-window-toolbar-icons span { width: 6px; height: 6px; border-radius: 50%; background: var(--color-mist-gray); }
+
+/* Order record head */
+.hero-record-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.hero-record-id { font-family: var(--font-ui); font-size: var(--text-body-lg); font-weight: 500; color: var(--color-ink-black); margin: 0 0 4px; letter-spacing: -0.2px; }
+.hero-record-customer { font-size: 14px; color: var(--color-slate-gray); margin: 0; }
+.hero-record-status {
+  flex: 0 0 auto;
+  background: var(--color-mist-gray);
+  color: var(--color-ink-black);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: var(--radius-buttons);
+  white-space: nowrap;
+}
+
+/* Meta row: PO, date, priority — functional colour lives here (sienna flag) */
+.hero-record-meta { display: flex; align-items: center; gap: 20px; font-size: 14px; color: var(--color-slate-gray); flex-wrap: wrap; }
+.hero-record-meta b { font-weight: 500; color: var(--color-ink-black); margin-right: 4px; }
+.hero-record-meta-flag b { color: var(--color-sienna-brown); }
+
+/* Sequence tracker: Customer -> Order -> Work -> Inventory -> Delivery -> Invoice -> Payment */
+.hero-record-stages { list-style: none; display: flex; margin: 0; padding: 0; }
+.hero-record-stages li {
+  flex: 1 1 0;
+  position: relative;
+  padding-top: 18px;
+  font-size: 14px;
+  color: var(--color-ash-gray);
+  text-align: center;
+}
+.hero-record-stages li::before {
+  content: "";
+  position: absolute; top: 5px; left: 50%;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--color-mist-gray);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.hero-record-stages li::after {
+  content: "";
+  position: absolute; top: 8px; left: calc(-50% + 8px); right: calc(50% + 8px);
+  height: 1px;
+  background: var(--color-mist-gray);
+}
+.hero-record-stages li:first-child::after { display: none; }
+.hero-record-stages li.is-done::before,
+.hero-record-stages li.is-current::before { background: var(--color-ink-black); }
+.hero-record-stages li.is-done::after { background: var(--color-ink-black); }
+.hero-record-stages li.is-done,
+.hero-record-stages li.is-current { color: var(--color-ink-black); font-weight: 500; }
+
+/* Body: line items + a production chart share the row that used to be a
+   dead right-hand margin. Functional colour (peach/sienna) lives here —
+   this is a depicted product screen, not page chrome. */
+.hero-record-body { display: flex; gap: 24px; flex: 1 1 auto; min-height: 0; }
+
+.hero-record-table { width: 100%; border-collapse: collapse; font-size: 14px; flex: 1 1 auto; }
+.hero-record-table th {
+  text-align: left; font-weight: 400; font-size: 14px; color: var(--color-ash-gray);
+  padding: 0 0 8px; border-bottom: 1px solid var(--color-mist-gray);
+}
+.hero-record-table td { padding: 10px 12px 10px 0; color: var(--color-ink-black); border-bottom: 1px solid var(--color-mist-gray); }
+.hero-record-table td:last-child { padding-right: 0; }
+.hero-record-table tr:last-child td { border-bottom: 0; }
+
+.hero-stock {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 14px; font-weight: 500;
+  padding: 3px 10px;
+  border-radius: var(--radius-buttons);
+}
+.hero-stock--low { background: var(--color-blush-peach); color: var(--color-sienna-brown); }
+.hero-stock--ok  { background: var(--color-mist-gray); color: var(--color-ink-black); }
+
+/* Production chart — the reference's "30-point chart with legend and axes",
+   built at the scale this record actually needs. A peach surface with
+   sienna data: functional colour inside a depicted product screen, not
+   page chrome, so it is not rationed the way the hero wash is. */
+.hero-record-chart {
+  flex: 0 0 208px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--color-blush-peach);
+  border-radius: 12px;
+  padding: 16px;
+}
+.hero-record-chart-title { font-size: 14px; color: var(--color-sienna-brown); margin: 0; }
+.hero-record-chart-bars {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  min-height: 72px;
+  border-bottom: 1px solid rgba(93, 42, 26, 0.25);
+  padding-bottom: 2px;
+}
+.hero-record-chart-bars span {
+  flex: 1 1 0;
+  height: var(--v, 40%);
+  background: rgba(93, 42, 26, 0.32);
+  border-radius: 3px 3px 0 0;
+}
+.hero-record-chart-bars span.is-current { background: var(--color-sienna-brown); }
+.hero-record-chart-axis { display: flex; gap: 10px; }
+.hero-record-chart-axis span { flex: 1 1 0; font-size: 14px; color: var(--color-sienna-brown); opacity: 0.75; text-align: center; }
+.hero-record-chart-legend {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 14px; color: var(--color-sienna-brown); margin: 0;
+}
+.hero-record-chart-legend i { width: 7px; height: 7px; border-radius: 50%; background: rgba(93, 42, 26, 0.32); }
+.hero-record-chart-legend i:first-child { background: var(--color-sienna-brown); margin-right: 2px; }
+.hero-record-chart-legend i:last-child { margin-left: 10px; margin-right: 2px; }
+
+.hero-record-foot {
+  display: flex; align-items: center; gap: 20px;
+  padding-top: 16px; border-top: 1px solid var(--color-mist-gray);
+  font-size: 14px; color: var(--color-slate-gray);
+}
+.hero-record-foot b { color: var(--color-ink-black); font-weight: 500; }
+.hero-record-due {
+  margin-left: auto; font-weight: 500;
+  background: var(--color-blush-peach); color: var(--color-sienna-brown);
+  padding: 4px 12px; border-radius: var(--radius-buttons);
+}
+
+/* Trailing note — deliberately cropped by the panel's overflow, implying
+   there is more record below the frame. */
+.hero-record-note {
+  font-size: 14px; color: var(--color-slate-gray); margin: 4px 0 0;
+  padding-top: 16px; border-top: 1px solid var(--color-mist-gray);
+}
+.hero-record-note b { color: var(--color-ink-black); font-weight: 500; }
+.hero-record-note--muted { border-top: 0; padding-top: 0; color: var(--color-ash-gray); }
+
+/* ---------------------------------------------------------------
+   Responsive
+--------------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .hero-thread-group { left: 3%; width: 196px; }
+  .hero-artifact--invoice { left: auto; right: 3%; width: 176px; }
+  /* The cross-canvas connector is tuned to the centred desktop layout —
+     the flank artifacts reflow to fixed edges below 1080px, so the drawn
+     path would no longer land on either card. */
+  .hero-thread-cross, .hero-thread--cross { display: none; }
+}
+
+@media (max-width: 860px) {
+  .hero-nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--color-paper-white);
+    box-shadow: var(--shadow-subtle);
+    border-radius: var(--radius-inputs);
+    padding: 8px;
+  }
+  .hero-nav-links a { padding: 12px 14px; border-radius: var(--radius-inputs); }
+  .hero-nav-links a:hover { background: var(--color-fog-white); }
+  .hero-nav-toggle { display: flex; }
+  .hero-nav-toggle-input:checked ~ .hero-nav-links { display: flex; }
+
+  /* The module list IS the operating-system argument — it becomes a
+     horizontal strip on narrow widths rather than being deleted. */
+  .hero-window-body { flex-direction: column; }
+  .hero-window-nav {
+    flex: 0 0 auto;
+    flex-direction: row;
+    align-items: center;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 10px 12px;
+    scrollbar-width: none;
+  }
+  .hero-window-nav::-webkit-scrollbar { display: none; }
+  .hero-window-nav li { white-space: nowrap; }
+}
+
+@media (max-width: 720px) {
+  .hero-scrub { height: 200vh; }
+
+  /* Desktop settles the panel at left:34%/width:66% — a right-hand strip.
+     At 390px that leaves a dead ghosted column down the left. Mobile gets
+     its own travel: a small card that grows to full width and crops on the
+     right, so the record fills the phone frame. */
+  .hero-window {
+    top: calc(30% - var(--p, 0) * 22%);
+    bottom: calc(26% - var(--p, 0) * 8%);
+    left: calc(28% - var(--p, 0) * 24%);
+    width: calc(44% + var(--p, 0) * 54%);
+  }
+  /* Outgoing copy clears out further on mobile — the panel covers the frame,
+     so a 18% ghost reads as collision rather than as a receding layer. */
+  .hero-copy { opacity: max(0.05, calc(1 - var(--p, 0) * 2)); }
+  /* Clears the floating peach card's bottom edge — the eyebrow must never
+     collide with the one artifact mobile keeps. */
+  .hero-copy-inner { padding-top: 168px; gap: var(--spacing-16); }
+  /* Headline is set as a device, not a shrunk desktop block: same inline
+     dash, same 1.10 leading, measure fit to the viewport instead of a
+     hand-tuned pixel width that forces single-word orphan lines. */
+  .hero-headline { max-width: 92vw; line-height: 1.10; }
+  .hero-ctas { flex-direction: column; width: 100%; max-width: 280px; }
+  .hero-ctas .btn { width: 100%; }
+
+  /* Room is scarce below 720px: keep only the one peach accent moment,
+     clear of the headline column, instead of forcing three cards to fit —
+     but keep its SO-1042 attribution so it still connects to the order
+     thread instead of arguing fragmentation. */
+  .hero-thread-group { top: 64px; left: 16px; width: 148px; }
+  .hero-thread-group .hero-artifact--orders,
+  .hero-thread-group .hero-thread { display: none; }
+  .hero-artifact { padding: 12px 14px; }
+  .hero-artifact--invoice { display: none; }
+
+  .hero-window-main { padding: 16px 20px 0; gap: 14px; }
+  .hero-window-toolbar,
+  .hero-record-meta,
+  .hero-record-chart,
+  .hero-record-note--muted { display: none; }
+  /* The panel crops on the right by design, but the table's columns are the
+     substance of the destination, so the table fits the frame instead of
+     riding past it: Stage drops, Item/Qty/Stock stay whole. */
+  .hero-record-table { flex: 1 1 auto; align-self: stretch; width: 100%; table-layout: fixed; }
+  .hero-record-table th:nth-child(4),
+  .hero-record-table td:nth-child(4) { display: none; }
+  .hero-record-table th:nth-child(2),
+  .hero-record-table td:nth-child(2) { width: 62px; }
+  .hero-record-table th:nth-child(3),
+  .hero-record-table td:nth-child(3) { width: 104px; }
+  /* Fills the void the chart left behind, and it is the line that explains
+     the flagged row. */
+  .hero-record-note { display: block; margin-top: 4px; }
+  .hero-record-body { align-items: flex-start; }
+  .hero-record-table td, .hero-record-table th { padding-block: 10px; }
+  .hero-record-head { flex-wrap: wrap; }
+  .hero-record-id { white-space: nowrap; }
+  .hero-record-customer { display: none; }
+  /* The seven-stage chain is the product argument. It wraps to two rows
+     with its labels intact rather than collapsing to anonymous dots. */
+  .hero-record-stages { flex-wrap: wrap; row-gap: 12px; }
+  .hero-record-stages li { font-size: 14px; padding-top: 14px; flex: 1 0 25%; }
+  /* Stock stays — the flagged "Low stock" chip is the whole point of the
+     record. Only Stage drops (already hidden above). */
+  .hero-record-table tr:nth-child(n+6) { display: none; }
+  .hero-record-foot { flex-wrap: wrap; row-gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-copy, .hero-workspace, .hero-wash, .hero-window, .hero-window-body { transition: none; }
+}

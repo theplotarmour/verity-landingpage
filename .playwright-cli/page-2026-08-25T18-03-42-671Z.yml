@@ -1,0 +1,73 @@
+- generic [active] [ref=f5e1]:
+  - banner [ref=f5e2]:
+    - generic [ref=f5e3]:
+      - link "Verity" [ref=f5e4] [cursor=pointer]:
+        - /url: "#"
+      - checkbox "Open menu"
+      - generic [ref=f5e5]:
+        - link "Book a demo" [ref=f5e6] [cursor=pointer]:
+          - /url: "#demo"
+        - generic [ref=f5e7] [cursor=pointer]: Open menu
+  - generic [ref=f5e13]:
+    - generic [ref=f5e15]:
+      - generic [ref=f5e16]:
+        - paragraph [ref=f5e17]: Business operating system for MSMEs
+        - heading "The order was always real — the connection never was." [level=1] [ref=f5e18]:
+          - generic [ref=f5e19]: The
+          - generic [ref=f5e20]: order
+          - generic [ref=f5e21]: was
+          - generic [ref=f5e22]: always
+          - generic [ref=f5e23]: real
+          - generic [ref=f5e24]: —
+          - emphasis [ref=f5e25]:
+            - generic [ref=f5e26]: the
+            - generic [ref=f5e27]: connection
+            - generic [ref=f5e28]: never
+            - generic [ref=f5e29]: was.
+        - paragraph [ref=f5e30]: Right now, that order lives across WhatsApp, a spreadsheet, Tally and a notebook by the machine. Verity keeps it as one record — from the first enquiry to the last rupee collected.
+        - generic [ref=f5e31]:
+          - link "Book a demo" [ref=f5e32] [cursor=pointer]:
+            - /url: "#demo"
+          - link "Explore Verity" [ref=f5e33] [cursor=pointer]:
+            - /url: "#explore"
+        - paragraph [ref=f5e34]: Modular by design — start with Orders or Inventory, add the rest as you grow.
+      - generic [ref=f5e35]:
+        - generic:
+          - paragraph: Low stock
+          - paragraph: "12"
+          - paragraph: SO-1042 pulled the last MS sheet, 2mm
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - paragraph: SO-1042
+              - generic: Work in progress
+            - list:
+              - listitem: Customer
+              - listitem: Order
+              - listitem: Work
+              - listitem: Inventory
+              - listitem: Delivery
+              - listitem: Invoice
+              - listitem: Payment
+            - table:
+              - rowgroup:
+                - row:
+                  - columnheader: Item
+                  - columnheader: Qty
+              - rowgroup:
+                - row:
+                  - cell: MS sheet, 2mm
+                  - cell: "40"
+                - row:
+                  - cell: Hex bolt, M8
+                  - cell: "240"
+                - row:
+                  - cell: Powder coat, RAL 9005
+                  - cell: 1 lot
+            - generic:
+              - generic: Invoice INV-0871
+              - generic: ₹1,84,200
+              - generic: Due in 4 days

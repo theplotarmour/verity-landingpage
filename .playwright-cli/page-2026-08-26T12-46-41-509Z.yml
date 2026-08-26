@@ -1,0 +1,426 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Verity" [ref=e4] [cursor=pointer]:
+        - /url: "#"
+      - checkbox "Open menu"
+      - navigation "Primary" [ref=e5]:
+        - link "Platform" [ref=e6] [cursor=pointer]:
+          - /url: "#platform"
+        - link "Modules" [ref=e7] [cursor=pointer]:
+          - /url: "#modules"
+        - link "Industries" [ref=e8] [cursor=pointer]:
+          - /url: "#industries"
+        - link "Pricing" [ref=e9] [cursor=pointer]:
+          - /url: "#pricing"
+      - link "Book a demo" [ref=e11] [cursor=pointer]:
+        - /url: "#demo"
+  - generic [ref=e13]:
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - paragraph [ref=e17]: Business operating system for MSMEs
+        - heading "The order was always real — the connection never was." [level=1] [ref=e18]:
+          - generic [ref=e19]: The
+          - generic [ref=e20]: order
+          - generic [ref=e21]: was
+          - generic [ref=e22]: always
+          - generic [ref=e23]: real
+          - generic [ref=e24]: —
+          - emphasis [ref=e25]:
+            - generic [ref=e26]: the
+            - generic [ref=e27]: connection
+            - generic [ref=e28]: never
+            - generic [ref=e29]: was.
+        - paragraph [ref=e30]: Right now, that order lives across WhatsApp, a spreadsheet, Tally and a notebook by the machine. Verity keeps it as one record — from the first enquiry to the last rupee collected.
+        - generic [ref=e31]:
+          - link "Book a demo" [ref=e32] [cursor=pointer]:
+            - /url: "#demo"
+          - link "Explore Verity" [ref=e33] [cursor=pointer]:
+            - /url: "#explore"
+        - paragraph [ref=e34]: Modular by design — start with Orders or Inventory, add the rest as you grow.
+      - generic [ref=e35]:
+        - generic:
+          - paragraph: Orders
+          - list:
+            - listitem:
+              - generic: SO-1038
+              - generic: Ready
+            - listitem:
+              - generic: SO-1041
+              - generic: In production
+            - listitem:
+              - generic: SO-1042
+              - generic: Delayed
+        - generic [ref=e36]: SO-1042
+        - generic:
+          - paragraph: Low stock
+          - paragraph: "12"
+          - paragraph: SO-1042 pulled the last MS sheet, 2mm
+      - generic [ref=e40]: SO-1042
+      - generic:
+        - paragraph: Invoice
+        - paragraph:
+          - generic: INV-0871
+          - generic: SO-1042
+        - paragraph: ₹1,84,200 · due in 4 days
+    - generic:
+      - generic:
+        - generic:
+          - complementary:
+            - paragraph: Home
+            - paragraph: CRM
+            - paragraph: Sales
+            - paragraph: Orders
+            - paragraph: Inventory
+            - paragraph: Projects
+            - paragraph: Operations
+            - paragraph: Workforce
+            - paragraph: Finance
+            - paragraph: Reports
+          - generic:
+            - generic:
+              - paragraph: Orders/SO-1042
+            - generic:
+              - generic:
+                - paragraph: SO-1042
+                - paragraph: Precision Fabricators Pvt Ltd · Pune
+              - generic: Work in progress
+            - generic:
+              - generic: PO-4471Purchase order
+              - generic: 12 AugOrder date
+              - generic: HighPriority
+            - list:
+              - listitem: Customer
+              - listitem: Order
+              - listitem: Work
+              - listitem: Inventory
+              - listitem: Delivery
+              - listitem: Invoice
+              - listitem: Payment
+            - table:
+              - rowgroup:
+                - row:
+                  - columnheader: Item
+                  - columnheader: Qty
+                  - columnheader: Stock
+                  - columnheader: Stage
+              - rowgroup:
+                - row:
+                  - cell: MS sheet, 2mm
+                  - cell: "40"
+                  - cell:
+                    - generic: Low stock
+                  - cell: Cutting
+                - row:
+                  - cell: Hex bolt, M8
+                  - cell: "240"
+                  - cell:
+                    - generic: In stock
+                  - cell: Assembly
+                - row:
+                  - cell: Gasket, 40mm
+                  - cell: "80"
+                  - cell:
+                    - generic: In stock
+                  - cell: Cutting
+                - row:
+                  - cell: Weld rod, E6013
+                  - cell: 6 kg
+                  - cell:
+                    - generic: Low stock
+                  - cell: Assembly
+                - row:
+                  - cell: Powder coat, RAL 9005
+                  - cell: 1 lot
+                  - cell:
+                    - generic: In stock
+                  - cell: Queued
+            - generic:
+              - paragraph: Production load
+              - generic:
+                - generic: Cut
+                - generic: Weld
+                - generic: Fab
+                - generic: Coat
+                - generic: Pack
+              - paragraph: At riskOn track
+            - generic:
+              - generic: Invoice INV-0871
+              - generic: ₹1,84,200
+              - generic: Due in 4 days
+            - paragraph: Note — vendor confirmed MS sheet dispatch by Thursday; hold the cutting queue until stock lands.
+            - paragraph: Priya · Operations · updated 2 hours ago
+  - generic [ref=e43]:
+    - generic [ref=e44]:
+      - paragraph [ref=e45]: The Tuesday problem
+      - heading "Disconnected." [level=2] [ref=e46]
+      - paragraph [ref=e48]: WhatsApp holds the chat. Excel holds the stock count. Tally holds the books. None of them talk to each other.
+      - paragraph [ref=e49]:
+        - text: SO-1042 needed 40 sheets of MS 2mm. Excel said 40 were in stock. The floor had 12.
+        - emphasis [ref=e50]: Raj knew — he just hadn't opened Excel.
+    - generic [ref=e51]:
+      - generic [ref=e52]:
+        - generic [ref=e53]: WhatsApp
+        - generic [ref=e54]: Customer chat
+      - generic [ref=e55]:
+        - generic [ref=e56]: Excel
+        - generic [ref=e57]: Inventory count
+      - generic [ref=e58]:
+        - generic [ref=e59]: Tally
+        - generic [ref=e60]: Accounts
+      - generic [ref=e61]:
+        - generic [ref=e62]: Notebook
+        - generic [ref=e63]: Shop floor
+      - generic [ref=e64]:
+        - generic [ref=e65]: CRM
+        - generic [ref=e66]: Old leads
+      - generic [ref=e67]:
+        - generic [ref=e68]: Billing tool
+        - generic [ref=e69]: Invoices
+  - generic [ref=e71]:
+    - generic [ref=e72]:
+      - paragraph [ref=e73]: The connected chain
+      - heading "One thread." [level=2] [ref=e74]:
+        - generic [ref=e75]: One
+        - generic [ref=e76]: thread.
+      - paragraph [ref=e77]: One business, one operational truth — the same order, seen nine ways, from first enquiry to the last rupee collected.
+    - generic [ref=e78]:
+      - generic: 01→09
+      - generic [ref=e79]:
+        - paragraph [ref=e80]: The record
+        - paragraph [ref=e81]: SO-1042
+        - paragraph [ref=e82]: Precision Fabricators Pvt Ltd · Pune
+        - generic [ref=e83]:
+          - generic [ref=e84]:
+            - term [ref=e85]: Promised
+            - definition [ref=e86]: 14 Aug
+          - generic [ref=e87]:
+            - term [ref=e88]: Shipped
+            - definition [ref=e89]: 22 Aug
+          - generic [ref=e90]:
+            - term [ref=e91]: Invoice
+            - definition [ref=e92]: INV-0871
+          - generic [ref=e93]:
+            - term [ref=e94]: Amount
+            - definition [ref=e95]: ₹1,84,200
+        - paragraph [ref=e96]: Every stop below reads this same record. Nobody re-keys it.
+      - list [ref=e99]:
+        - listitem [ref=e100]:
+          - generic [ref=e101]: "01"
+          - generic [ref=e102]:
+            - paragraph [ref=e103]: Customer
+            - paragraph [ref=e104]: Precision Fabricators Pvt Ltd, Pune — on the books since March 2023.
+        - listitem [ref=e105]:
+          - generic [ref=e106]: "02"
+          - generic [ref=e107]:
+            - paragraph [ref=e108]: Opportunity
+            - paragraph [ref=e109]: PO-4471, quoted at ₹1,84,200.
+        - listitem [ref=e110]:
+          - generic [ref=e111]: "03"
+          - generic [ref=e112]:
+            - paragraph [ref=e113]:
+              - text: Order
+              - generic [ref=e114]: SO-1042
+            - paragraph [ref=e115]: Confirmed 12 Aug. Promised the 14th.
+        - listitem [ref=e116]:
+          - generic [ref=e117]: "04"
+          - generic [ref=e118]:
+            - paragraph [ref=e119]:
+              - text: Work
+              - generic [ref=e120]: SO-1042
+            - paragraph [ref=e121]: Cutting queue held — 12 sheets of MS 2mm on the floor, 40 needed.
+        - listitem [ref=e122]:
+          - generic [ref=e123]: "05"
+          - generic [ref=e124]:
+            - paragraph [ref=e125]:
+              - text: Inventory
+              - generic [ref=e126]: SO-1042
+            - paragraph [ref=e127]: Excel said 40 sheets in stock. There were 12.
+        - listitem [ref=e128]:
+          - generic [ref=e129]: "06"
+          - generic [ref=e130]:
+            - paragraph [ref=e131]:
+              - text: Delivery
+              - generic [ref=e132]: SO-1042
+            - paragraph [ref=e133]: Shipped the 22nd. The customer heard first, not last.
+        - listitem [ref=e134]:
+          - generic [ref=e135]: "07"
+          - generic [ref=e136]:
+            - paragraph [ref=e137]:
+              - text: Invoice
+              - generic [ref=e138]: INV-0871
+            - paragraph [ref=e139]: Raised the day it shipped, not a week after.
+        - listitem [ref=e140]:
+          - generic [ref=e141]: "08"
+          - generic [ref=e142]:
+            - paragraph [ref=e143]:
+              - text: Payment
+              - generic [ref=e144]: ₹1,84,200
+            - paragraph [ref=e145]: Due in 4 days. Reminder sent automatically, not chased.
+        - listitem [ref=e146]:
+          - generic [ref=e147]: "09"
+          - generic [ref=e148]:
+            - paragraph [ref=e149]: Intelligence
+            - paragraph [ref=e150]: Six orders held by the same MS-2mm shortage this month — caught after the first one.
+  - generic [ref=e152]:
+    - paragraph [ref=e153]: Why it holds together
+    - heading "By design." [level=2] [ref=e154]:
+      - generic [ref=e155]: By
+      - generic [ref=e156]: design.
+    - paragraph [ref=e157]: Connected software usually breaks in three places — memory, entry and adoption. Here's how Verity holds at each.
+    - generic [ref=e158]:
+      - generic [ref=e159]:
+        - paragraph [ref=e160]: No more ask-Raj.
+        - paragraph [ref=e161]: Every order carries who confirmed it, who flagged the shortfall, and when. The answer doesn't live in one person's head anymore.
+      - generic [ref=e162]:
+        - paragraph [ref=e163]: Modular
+        - paragraph [ref=e164]: Start with Orders or Inventory. Add Projects, Workforce or Finance when the business is ready for them — not before.
+      - generic [ref=e165]:
+        - paragraph [ref=e166]: No double entry.
+        - paragraph [ref=e167]: Log it once — from the shop floor, a phone, or the office. It shows up already linked in Orders, Inventory and Finance.
+  - generic [ref=e169]:
+    - paragraph [ref=e170]: Choose what you need
+    - heading "The modules." [level=2] [ref=e171]:
+      - generic [ref=e172]: The
+      - generic [ref=e173]: modules.
+    - paragraph [ref=e174]: Eight desks, one record. CRM opens at Customer, Orders carries Order through Delivery, Finance closes it at Invoice and Payment.
+    - group "Choose a module to preview" [ref=e175]:
+      - generic [ref=e177]:
+        - generic [ref=e178]:
+          - generic [ref=e179] [cursor=pointer]:
+            - radio "CRM Every account and conversation, in one place." [ref=e180]
+            - generic [ref=e181]: CRM
+            - generic [ref=e182]: Every account and conversation, in one place.
+          - generic [ref=e183] [cursor=pointer]:
+            - radio "Sales Quotes and follow-ups that don't fall through WhatsApp." [ref=e184]
+            - generic [ref=e185]: Sales
+            - generic [ref=e186]: Quotes and follow-ups that don't fall through WhatsApp.
+          - generic [ref=e187] [cursor=pointer]:
+            - radio "Orders From PO to delivery, tracked as one record." [checked] [ref=e188]
+            - generic [ref=e189]: Orders
+            - generic [ref=e190]: From PO to delivery, tracked as one record.
+          - generic [ref=e191] [cursor=pointer]:
+            - radio "Inventory Stock levels the shop floor and the office agree on." [ref=e192]
+            - generic [ref=e193]: Inventory
+            - generic [ref=e194]: Stock levels the shop floor and the office agree on.
+          - generic [ref=e195] [cursor=pointer]:
+            - radio "Projects Milestones, drawings and site progress together." [ref=e196]
+            - generic [ref=e197]: Projects
+            - generic [ref=e198]: Milestones, drawings and site progress together.
+          - generic [ref=e199] [cursor=pointer]:
+            - radio "Operations What's queued, what's running, what's stuck." [ref=e200]
+            - generic [ref=e201]: Operations
+            - generic [ref=e202]: What's queued, what's running, what's stuck.
+          - generic [ref=e203] [cursor=pointer]:
+            - radio "Workforce Attendance, shifts and who's on which job." [ref=e204]
+            - generic [ref=e205]: Workforce
+            - generic [ref=e206]: Attendance, shifts and who's on which job.
+          - generic [ref=e207] [cursor=pointer]:
+            - radio "Finance Invoices, payments and the ledger, reconciled." [ref=e208]
+            - generic [ref=e209]: Finance
+            - generic [ref=e210]: Invoices, payments and the ledger, reconciled.
+        - generic [ref=e211]:
+          - generic [ref=e213]:
+            - paragraph [ref=e214]: Verity / Orders
+            - generic [ref=e215]:
+              - generic [ref=e216]:
+                - generic [ref=e217]: SO-1038
+                - generic [ref=e218]: Anand Metal Works
+              - generic [ref=e219]: Ready
+            - generic [ref=e220]:
+              - generic [ref=e221]:
+                - generic [ref=e222]: SO-1041
+                - generic [ref=e223]: Kalyani Structurals
+              - generic [ref=e224]: In production
+            - generic [ref=e225]:
+              - generic [ref=e226]:
+                - generic [ref=e227]: SO-1042
+                - generic [ref=e228]: Precision Fabricators · promised 14 Aug, now 22 Aug
+              - generic [ref=e229]: Delayed
+          - paragraph [ref=e230]: SO-1042 is the same record in every module above — nothing re-entered, nothing re-typed.
+  - generic [ref=e232]:
+    - generic [ref=e233]:
+      - paragraph [ref=e234]: Three desks
+      - heading "Any desk." [level=2] [ref=e235]:
+        - generic [ref=e236]: Any
+        - generic [ref=e237]: desk.
+      - paragraph [ref=e238]: The owner opens Verity for cash and overdue. Raj opens it for today's queue and shortages. Same Tuesday, same order — a different view from each desk.
+    - group "Choose a desk to preview Verity" [ref=e239]:
+      - generic [ref=e241]:
+        - generic [ref=e242] [cursor=pointer]:
+          - radio "Owner" [checked] [ref=e243]
+          - generic [ref=e244]: Owner
+        - generic [ref=e245] [cursor=pointer]:
+          - radio "Floor" [ref=e246]
+          - generic [ref=e247]: Floor
+        - generic [ref=e248] [cursor=pointer]:
+          - radio "Accounts" [ref=e249]
+          - generic [ref=e250]: Accounts
+      - generic [ref=e251]:
+        - paragraph [ref=e253]: Verity / Orders / SO-1042
+        - generic [ref=e259]:
+          - paragraph [ref=e260]:
+            - text: Owner
+            - generic [ref=e261]: · cash and commitments
+          - generic [ref=e262]:
+            - generic [ref=e263]:
+              - generic [ref=e264]: ₹1,84,200
+              - generic [ref=e265]: INV-0871 · Precision Fabricators Pvt Ltd · due in 4 days
+            - generic [ref=e266]: Collect
+          - generic [ref=e267]:
+            - generic [ref=e268]:
+              - generic [ref=e269]: ₹40,000
+              - generic [ref=e270]: PAY-2291 · Shree Engineering Works · received today
+            - generic [ref=e271]: Banked
+          - generic [ref=e272]:
+            - generic [ref=e273]:
+              - generic [ref=e274]: 1 of 9
+              - generic [ref=e275]: Shipments late this month · SO-1042, promised 14 Aug, shipped 22 Aug
+            - generic [ref=e276]: Closed
+      - paragraph [ref=e277]: SO-1042 sits under all three views. Nobody re-keys it, and nobody is chasing a different version of it.
+  - generic [ref=e279]:
+    - generic [ref=e280]:
+      - paragraph [ref=e281]: Verity AI
+      - heading "It knows." [level=2] [ref=e282]:
+        - generic [ref=e283]: It
+        - generic [ref=e284]: knows.
+      - paragraph [ref=e285]: Ask in plain words. Answers come back from your own entries — with the note, the date and the record they came from attached.
+    - paragraph [ref=e286]: Preview of a Verity AI exchange. Asked why sales order SO-1042 shipped late, Verity answers from the order, a floor note dated 20 Aug and the delivery record.
+    - generic [ref=e287]:
+      - generic [ref=e288]:
+        - paragraph [ref=e289]: You
+        - paragraph [ref=e290]: Why did SO-1042 ship late?
+      - generic [ref=e291]:
+        - paragraph [ref=e292]: Verity
+        - generic [ref=e293]:
+          - paragraph [ref=e294]: Promised for 14 Aug. Shipped the 22nd — eight days late.
+          - paragraph [ref=e295]: "\"Shipped the 22nd because the cutting queue held — 12 sheets on the floor, 40 needed.\" Raj logged that note against the work stage on 20 Aug."
+          - paragraph [ref=e296]: The vendor's sheet lot reached Pune on 21 Aug. Cutting cleared in a day, and Precision Fabricators heard the same morning it moved.
+        - generic [ref=e297]:
+          - generic [ref=e298]: Order · SO-1042
+          - generic [ref=e299]: Work · note, 20 Aug
+          - generic [ref=e300]: Delivery · 22 Aug
+      - generic [ref=e301]:
+        - generic [ref=e302]: "@"
+        - paragraph [ref=e306]: What needs me before Friday?
+  - generic [ref=e313]:
+    - generic [ref=e314]:
+      - paragraph [ref=e315]: Whatever you ask
+      - heading "One source." [level=2] [ref=e316]:
+        - generic [ref=e317]: One
+        - generic [ref=e318]: source.
+      - paragraph [ref=e319]: Roles decide what you see. Questions decide what you ask. Neither changes the record underneath.
+    - paragraph [ref=e320]: Preview of a second Verity AI exchange. Asked what needs attention before Friday, Verity points to invoice INV-0871 for 1,84,200 rupees due in four days and to the low stock of 2mm MS sheet.
+    - generic [ref=e321]:
+      - generic [ref=e322]:
+        - paragraph [ref=e323]: You
+        - paragraph [ref=e324]: What needs me before Friday?
+      - generic [ref=e325]:
+        - paragraph [ref=e326]: Verity
+        - generic [ref=e327]:
+          - paragraph [ref=e328]: Two things. Collect ₹1,84,200 — INV-0871, Precision Fabricators, due in 4 days. The reminder went out this morning.
+          - paragraph [ref=e329]: And reorder MS sheet, 2mm. Twelve left on the floor after SO-1042 — six orders stalled behind that shortage this month.
+        - generic [ref=e330]:
+          - generic [ref=e331]: Finance · INV-0871
+          - generic [ref=e332]: Inventory · MS sheet 2mm
+          - generic [ref=e333]: Orders · this month

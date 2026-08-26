@@ -1,0 +1,57 @@
+/* =============================================================================
+   Overview theme — the palette, radii and elevation of verity-overview.html
+   applied over the landing page's existing token names, so every piece
+   re-themes without touching its own CSS.
+   Source palette: #0F1115 #1C1F24 #2A2E33 #E6E8EB #F7F8FA #00D1B2
+   ========================================================================== */
+:root {
+  /* Ink + neutrals */
+  --color-ink-black:  #0f1115;
+  --color-paper-white:#ffffff;
+  --color-mist-gray:  #f2f3f5;   /* surface-2  */
+  --color-fog-white:  #f7f8fa;   /* canvas     */
+  --color-slate-gray: #6f757e;   /* text-muted */
+  --color-ash-gray:   #9aa0a8;   /* text-faint */
+  --color-smoke-gray: #8b929b;
+
+  /* The one chromatic surface is now the product accent, not peach.
+     Tint carries accent-ink text, exactly as the peach carried sienna. */
+  --color-blush-peach:  #ddf6f2;
+  --color-sienna-brown: #04231f;
+
+  /* Product accent */
+  --accent: #00d1b2;
+  --accent-strong: #0bb69c;
+  --accent-ink: #04231f;
+  --warn: #e0a02a;
+  --danger: #e5484d;
+  --border: #e6e8eb;
+  --border-strong: #d8dbdf;
+  --thumb-bg: #eceef1;
+  --map-land: #e9ecef;
+
+  /* Radii — overview uses 16 card / 12 control / pill */
+  --radius-cards: 16px;
+  --radius-elevatedcards: 16px;
+  --radius-smallcards: 12px;
+  --radius-inputs: 12px;
+  --radius-images: 12px;
+  --radius-buttons: 999px;
+
+  /* Elevation */
+  --shadow-subtle:   0 1px 2px rgba(15,17,21,.04), 0 8px 24px -12px rgba(15,17,21,.10);
+  --shadow-subtle-2: 0 1px 2px rgba(15,17,21,.05), 0 12px 32px -16px rgba(15,17,21,.16);
+  --shadow-subtle-3: 0 1px 2px rgba(15,17,21,.05), 0 12px 32px -16px rgba(15,17,21,.28);
+}
+
+/* The primary call to action is the product's accent button. */
+.btn--fill { background: var(--accent); color: var(--accent-ink); font-weight: 500; }
+.btn--fill:hover { background: var(--accent-strong); }
+.btn--fill:active { transform: translateY(1px); }
+.btn--onDark.btn--fill { background: var(--accent); color: var(--accent-ink); }
+
+/* Cards in the overview carry a hairline border as well as their shadow. */
+.artifact { border: 1px solid var(--border); }
+
+/* Accent surfaces read as a tint of the product accent. */
+.accent { background: var(--color-blush-peach); color: var(--color-sienna-brown); }

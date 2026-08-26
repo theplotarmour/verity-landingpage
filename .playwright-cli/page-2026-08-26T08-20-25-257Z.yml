@@ -1,0 +1,295 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - link "Verity" [ref=e4] [cursor=pointer]:
+        - /url: "#"
+      - checkbox "Open menu"
+      - navigation "Primary" [ref=e5]:
+        - link "Platform" [ref=e6] [cursor=pointer]:
+          - /url: "#platform"
+        - link "Modules" [ref=e7] [cursor=pointer]:
+          - /url: "#modules"
+        - link "Industries" [ref=e8] [cursor=pointer]:
+          - /url: "#industries"
+        - link "Pricing" [ref=e9] [cursor=pointer]:
+          - /url: "#pricing"
+      - link "Book a demo" [ref=e11] [cursor=pointer]:
+        - /url: "#demo"
+  - generic [ref=e13]:
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - paragraph [ref=e17]: Business operating system for MSMEs
+        - heading "The order was always real — the connection never was." [level=1] [ref=e18]:
+          - generic [ref=e19]: The
+          - generic [ref=e20]: order
+          - generic [ref=e21]: was
+          - generic [ref=e22]: always
+          - generic [ref=e23]: real
+          - generic [ref=e24]: —
+          - emphasis [ref=e25]:
+            - generic [ref=e26]: the
+            - generic [ref=e27]: connection
+            - generic [ref=e28]: never
+            - generic [ref=e29]: was.
+        - paragraph [ref=e30]: Right now, that order lives across WhatsApp, a spreadsheet, Tally and a notebook by the machine. Verity keeps it as one record — from the first enquiry to the last rupee collected.
+        - generic [ref=e31]:
+          - link "Book a demo" [ref=e32] [cursor=pointer]:
+            - /url: "#demo"
+          - link "Explore Verity" [ref=e33] [cursor=pointer]:
+            - /url: "#explore"
+        - paragraph [ref=e34]: Modular by design — start with Orders or Inventory, add the rest as you grow.
+      - generic [ref=e35]:
+        - generic:
+          - paragraph: Orders
+          - list:
+            - listitem:
+              - generic: SO-1038
+              - generic: Ready
+            - listitem:
+              - generic: SO-1041
+              - generic: In production
+            - listitem:
+              - generic: SO-1042
+              - generic: Delayed
+        - generic [ref=e36]: SO-1042
+        - generic:
+          - paragraph: Low stock
+          - paragraph: "12"
+          - paragraph: SO-1042 pulled the last MS sheet, 2mm
+      - generic [ref=e40]: SO-1042
+      - generic:
+        - paragraph: Invoice
+        - paragraph:
+          - generic: INV-0871
+          - generic: SO-1042
+        - paragraph: ₹1,84,200 · due in 4 days
+    - generic:
+      - generic:
+        - generic:
+          - complementary:
+            - paragraph: Home
+            - paragraph: CRM
+            - paragraph: Sales
+            - paragraph: Orders
+            - paragraph: Inventory
+            - paragraph: Projects
+            - paragraph: Operations
+            - paragraph: Workforce
+            - paragraph: Finance
+            - paragraph: Reports
+          - generic:
+            - generic:
+              - paragraph: Orders/SO-1042
+            - generic:
+              - generic:
+                - paragraph: SO-1042
+                - paragraph: Precision Fabricators Pvt Ltd · Pune
+              - generic: Work in progress
+            - generic:
+              - generic: PO-4471Purchase order
+              - generic: 12 AugOrder date
+              - generic: HighPriority
+            - list:
+              - listitem: Customer
+              - listitem: Order
+              - listitem: Work
+              - listitem: Inventory
+              - listitem: Delivery
+              - listitem: Invoice
+              - listitem: Payment
+            - table:
+              - rowgroup:
+                - row:
+                  - columnheader: Item
+                  - columnheader: Qty
+                  - columnheader: Stock
+                  - columnheader: Stage
+              - rowgroup:
+                - row:
+                  - cell: MS sheet, 2mm
+                  - cell: "40"
+                  - cell:
+                    - generic: Low stock
+                  - cell: Cutting
+                - row:
+                  - cell: Hex bolt, M8
+                  - cell: "240"
+                  - cell:
+                    - generic: In stock
+                  - cell: Assembly
+                - row:
+                  - cell: Gasket, 40mm
+                  - cell: "80"
+                  - cell:
+                    - generic: In stock
+                  - cell: Cutting
+                - row:
+                  - cell: Weld rod, E6013
+                  - cell: 6 kg
+                  - cell:
+                    - generic: Low stock
+                  - cell: Assembly
+                - row:
+                  - cell: Powder coat, RAL 9005
+                  - cell: 1 lot
+                  - cell:
+                    - generic: In stock
+                  - cell: Queued
+            - generic:
+              - paragraph: Production load
+              - generic:
+                - generic: Cut
+                - generic: Weld
+                - generic: Fab
+                - generic: Coat
+                - generic: Pack
+              - paragraph: At riskOn track
+            - generic:
+              - generic: Invoice INV-0871
+              - generic: ₹1,84,200
+              - generic: Due in 4 days
+            - paragraph: Note — vendor confirmed MS sheet dispatch by Thursday; hold the cutting queue until stock lands.
+            - paragraph: Priya · Operations · updated 2 hours ago
+  - generic [ref=e43]:
+    - generic [ref=e44]:
+      - paragraph [ref=e45]: The Tuesday problem
+      - heading "Disconnected." [level=2] [ref=e46]
+      - paragraph [ref=e48]: Your business isn't a collection of departments. Why is your software?
+      - paragraph [ref=e49]: WhatsApp holds the customer chat. Excel holds the stock count. Tally holds the books. A notebook by the machine holds the shop floor. A separate CRM holds leads nobody followed up on. None of them talk to each other.
+      - paragraph [ref=e50]:
+        - text: Ask what happened to an order on a Tuesday afternoon, and the answer is always the same —
+        - emphasis [ref=e51]: ask Raj, he knows.
+    - generic [ref=e52]:
+      - generic [ref=e53]:
+        - generic [ref=e54]: WhatsApp
+        - generic [ref=e55]: Customer chat
+      - generic [ref=e56]:
+        - generic [ref=e57]: Excel
+        - generic [ref=e58]: Inventory count
+      - generic [ref=e59]:
+        - generic [ref=e60]: Tally
+        - generic [ref=e61]: Accounts
+      - generic [ref=e62]:
+        - generic [ref=e63]: Notebook
+        - generic [ref=e64]: Shop floor
+      - generic [ref=e65]:
+        - generic [ref=e66]: CRM
+        - generic [ref=e67]: Old leads
+      - generic [ref=e68]:
+        - generic [ref=e69]: Billing tool
+        - generic [ref=e70]: Invoices
+  - generic [ref=e72]:
+    - generic [ref=e73]:
+      - paragraph [ref=e74]: The connected chain
+      - heading "Connected." [level=2] [ref=e75]
+      - paragraph [ref=e77]: One business, one operational truth. Verity keeps a single thread from the first enquiry to the last rupee collected — and what it all adds up to.
+    - list [ref=e78]:
+      - listitem [ref=e79]:
+        - generic [ref=e80]: "01"
+        - paragraph [ref=e81]: Customer
+        - paragraph [ref=e82]: Every account and every conversation.
+      - listitem [ref=e83]:
+        - generic [ref=e84]: "02"
+        - paragraph [ref=e85]: Opportunity
+        - paragraph [ref=e86]: What they want, and what it's worth.
+      - listitem [ref=e87]:
+        - generic [ref=e88]: "03"
+        - paragraph [ref=e89]: Order
+        - paragraph [ref=e90]: What was promised, and when.
+      - listitem [ref=e91]:
+        - generic [ref=e92]: "04"
+        - paragraph [ref=e93]: Work
+        - paragraph [ref=e94]: What's on the floor right now.
+      - listitem [ref=e95]:
+        - generic [ref=e96]: "05"
+        - paragraph [ref=e97]: Inventory
+        - paragraph [ref=e98]: What's in stock, and what isn't.
+      - listitem [ref=e99]:
+        - generic [ref=e100]: "06"
+        - paragraph [ref=e101]: Delivery
+        - paragraph [ref=e102]: What shipped, and to whom.
+      - listitem [ref=e103]:
+        - generic [ref=e104]: "07"
+        - paragraph [ref=e105]: Invoice
+        - paragraph [ref=e106]: What's billed, and for how much.
+      - listitem [ref=e107]:
+        - generic [ref=e108]: "08"
+        - paragraph [ref=e109]: Payment
+        - paragraph [ref=e110]: What's collected, what's outstanding.
+      - listitem [ref=e111]:
+        - generic [ref=e112]: "09"
+        - paragraph [ref=e113]: Intelligence
+        - paragraph [ref=e114]: What it all means, in one view.
+  - generic [ref=e116]:
+    - paragraph [ref=e117]: Why it holds together
+    - heading "No silos." [level=2] [ref=e118]:
+      - generic [ref=e119]: "No"
+      - generic [ref=e120]: silos.
+    - generic [ref=e121]:
+      - generic [ref=e122]:
+        - paragraph [ref=e123]: One source of truth
+        - paragraph [ref=e124]: Sales, the shop floor and accounts all read the same order, the same stock count, the same balance — not three versions of it.
+      - generic [ref=e125]:
+        - paragraph [ref=e126]: Modular
+        - paragraph [ref=e127]: Start with Orders or Inventory. Add Projects, Workforce or Finance when the business is ready for them — not before.
+      - generic [ref=e128]:
+        - paragraph [ref=e129]: Connected
+        - paragraph [ref=e130]: Customers, orders, work and money stop being separate systems. They become one record, seen from different desks.
+  - generic [ref=e132]:
+    - paragraph [ref=e133]: What you can turn on
+    - heading "The modules." [level=2] [ref=e134]:
+      - generic [ref=e135]: The
+      - generic [ref=e136]: modules.
+    - paragraph [ref=e137]: Eight modules, the same record underneath. Start with what the business needs today.
+    - group "Choose a module to preview" [ref=e138]:
+      - generic [ref=e140]:
+        - generic [ref=e141]:
+          - generic [ref=e142] [cursor=pointer]:
+            - radio "CRM Every account and conversation, in one place." [ref=e143]
+            - generic [ref=e144]: CRM
+            - generic [ref=e145]: Every account and conversation, in one place.
+          - generic [ref=e146] [cursor=pointer]:
+            - radio "Sales Quotes and follow-ups that don't fall through WhatsApp." [ref=e147]
+            - generic [ref=e148]: Sales
+            - generic [ref=e149]: Quotes and follow-ups that don't fall through WhatsApp.
+          - generic [ref=e150] [cursor=pointer]:
+            - radio "Orders From PO to delivery, tracked as one record." [checked] [ref=e151]
+            - generic [ref=e152]: Orders
+            - generic [ref=e153]: From PO to delivery, tracked as one record.
+          - generic [ref=e154] [cursor=pointer]:
+            - radio "Inventory Stock levels the shop floor and the office agree on." [ref=e155]
+            - generic [ref=e156]: Inventory
+            - generic [ref=e157]: Stock levels the shop floor and the office agree on.
+          - generic [ref=e158] [cursor=pointer]:
+            - radio "Projects Milestones, drawings and site progress together." [ref=e159]
+            - generic [ref=e160]: Projects
+            - generic [ref=e161]: Milestones, drawings and site progress together.
+          - generic [ref=e162] [cursor=pointer]:
+            - radio "Operations What's queued, what's running, what's stuck." [ref=e163]
+            - generic [ref=e164]: Operations
+            - generic [ref=e165]: What's queued, what's running, what's stuck.
+          - generic [ref=e166] [cursor=pointer]:
+            - radio "Workforce Attendance, shifts and who's on which job." [ref=e167]
+            - generic [ref=e168]: Workforce
+            - generic [ref=e169]: Attendance, shifts and who's on which job.
+          - generic [ref=e170] [cursor=pointer]:
+            - radio "Finance Invoices, payments and the ledger, reconciled." [ref=e171]
+            - generic [ref=e172]: Finance
+            - generic [ref=e173]: Invoices, payments and the ledger, reconciled.
+        - generic [ref=e176]:
+          - paragraph [ref=e177]: Verity / Orders
+          - generic [ref=e178]:
+            - generic [ref=e179]:
+              - generic [ref=e180]: SO-1038
+              - generic [ref=e181]: Anand Metal Works
+            - generic [ref=e182]: Ready
+          - generic [ref=e183]:
+            - generic [ref=e184]:
+              - generic [ref=e185]: SO-1041
+              - generic [ref=e186]: Kalyani Structurals
+            - generic [ref=e187]: In production
+          - generic [ref=e188]:
+            - generic [ref=e189]:
+              - generic [ref=e190]: SO-1042
+              - generic [ref=e191]: Precision Fabricators
+            - generic [ref=e192]: Delayed

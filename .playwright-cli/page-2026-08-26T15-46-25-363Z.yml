@@ -1,0 +1,157 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - complementary [ref=e3]:
+      - generic [ref=e4]: verity
+      - navigation "Main" [ref=e9]:
+        - button "Overview" [ref=e10] [cursor=pointer]
+        - button "Inventory" [ref=e15] [cursor=pointer]
+        - button "Orders" [ref=e20] [cursor=pointer]
+        - button "Logistics" [ref=e27] [cursor=pointer]
+        - button "Suppliers" [ref=e31] [cursor=pointer]
+        - button "Reports" [ref=e37] [cursor=pointer]
+        - button "Analytics" [ref=e42] [cursor=pointer]
+        - button "Workflows" [ref=e46] [cursor=pointer]
+        - button "Settings" [ref=e52] [cursor=pointer]
+      - button "John Carter Operations Admin" [ref=e57] [cursor=pointer]:
+        - generic [ref=e60]:
+          - generic [ref=e61]: John Carter
+          - text: Operations Admin
+    - generic [ref=e64]:
+      - banner [ref=e65]:
+        - searchbox [ref=e70]
+        - button "All Warehouses" [ref=e71] [cursor=pointer]
+        - button "Switch layout" [ref=e77] [cursor=pointer]
+        - button "Notifications" [ref=e83] [cursor=pointer]
+        - generic [ref=e87]: JC
+      - main [ref=e90]:
+        - heading "Overview" [level=1] [ref=e91]
+        - generic [ref=e92]:
+          - article [ref=e93]:
+            - generic [ref=e94]:
+              - heading "Orders" [level=2] [ref=e95]
+              - generic [ref=e96]: This month
+            - generic [ref=e99]:
+              - generic [ref=e100]:
+                - generic [ref=e101]: "1"
+                - generic [ref=e102]: Pending
+              - generic [ref=e103]:
+                - generic [ref=e104]: "3"
+                - generic [ref=e105]: Processing
+              - generic [ref=e106]:
+                - generic [ref=e107]: "14"
+                - generic [ref=e108]: Shipped
+              - generic [ref=e109]:
+                - generic [ref=e110]: "94"
+                - generic [ref=e111]: Delivered
+          - article [ref=e117]:
+            - generic [ref=e118]:
+              - heading "Stock overview" [level=2] [ref=e119]
+              - generic [ref=e120]: This month
+            - generic [ref=e123]:
+              - generic [ref=e124]:
+                - generic [ref=e125]: In stock
+                - generic [ref=e127]: Low stock
+                - generic [ref=e129]: Out of stock
+                - generic [ref=e131]: Over stock
+              - img "134 total items" [ref=e133]:
+                - generic [ref=e135]:
+                  - generic [ref=e136]: "134"
+                  - generic [ref=e137]: Total items
+          - article [ref=e140]:
+            - generic [ref=e141]:
+              - heading "Reorders" [level=2] [ref=e142]
+              - link "View all" [ref=e143] [cursor=pointer]:
+                - /url: "#"
+            - generic [ref=e144]:
+              - generic [ref=e145]: High priority
+              - generic [ref=e148]:
+                - generic [ref=e149]: Jount 360 Camera
+                - generic [ref=e150]: Minimum threshold · 5 units left
+              - button "Reorder Jount 360 Camera" [ref=e151] [cursor=pointer]
+          - generic [ref=e155]:
+            - button "Dismiss" [ref=e156] [cursor=pointer]
+            - generic [ref=e176]:
+              - heading "Logistics" [level=2] [ref=e177]
+              - paragraph [ref=e178]: Delivery is delayed
+              - generic [ref=e179]: "+14"
+            - generic [ref=e187]: Delays
+        - generic [ref=e191]:
+          - searchbox [ref=e196]
+          - button "Category" [ref=e197] [cursor=pointer]
+          - button "Supplier" [ref=e200] [cursor=pointer]
+          - button "Design" [ref=e203] [cursor=pointer]
+          - button "More filters" [ref=e206] [cursor=pointer]
+          - button "Add item" [ref=e211] [cursor=pointer]
+        - generic [ref=e214]:
+          - table [ref=e216]:
+            - rowgroup [ref=e217]:
+              - row [ref=e218]:
+                - columnheader [ref=e219]:
+                  - checkbox "Select all" [ref=e220]
+                - columnheader "Item" [ref=e221]
+                - columnheader "Category" [ref=e222]
+                - columnheader "Supplier" [ref=e223]
+                - columnheader "Design" [ref=e224]
+                - columnheader "On hand" [ref=e225]
+                - columnheader "Status" [ref=e226]
+                - columnheader "Actions" [ref=e227]
+            - rowgroup [ref=e228]:
+              - row [ref=e229]:
+                - cell [ref=e230]:
+                  - checkbox "Select Aeen 360 Camera" [ref=e231]
+                - cell [ref=e232]:
+                  - generic [ref=e233]: Aeen 360 Camera#AE-360-CAM
+                - cell "Security" [ref=e237]
+                - cell "Aeen" [ref=e238]
+                - cell "Orbit Black" [ref=e239]
+                - cell "134" [ref=e240]
+                - cell "In stock" [ref=e241]
+                - cell [ref=e244]:
+                  - button "Row actions" [ref=e245] [cursor=pointer]
+              - row [ref=e250]:
+                - cell [ref=e251]:
+                  - checkbox "Select ThriveX One Up 100" [ref=e252]
+                - cell [ref=e253]:
+                  - generic [ref=e254]: ThriveX One Up 100#TX1-100
+                - cell "Electronics" [ref=e258]
+                - cell "ThriveX" [ref=e259]
+                - cell "Midnight" [ref=e260]
+                - cell "87" [ref=e261]
+                - cell "Low stock" [ref=e262]
+                - cell [ref=e265]:
+                  - button "Row actions" [ref=e266] [cursor=pointer]
+              - row [ref=e271]:
+                - cell [ref=e272]:
+                  - checkbox "Select Humidifier Pro" [ref=e273]
+                - cell [ref=e274]:
+                  - generic [ref=e275]: Humidifier Pro#HM-PRO-500
+                - cell "Appliance" [ref=e279]
+                - cell "SnowMist" [ref=e280]
+                - cell "Cloud White" [ref=e281]
+                - cell "42" [ref=e282]
+                - cell "In stock" [ref=e283]
+                - cell [ref=e286]:
+                  - button "Row actions" [ref=e287] [cursor=pointer]
+              - row [ref=e292]:
+                - cell [ref=e293]:
+                  - checkbox "Select EchoDesk Speaker" [ref=e294]
+                - cell [ref=e295]:
+                  - generic [ref=e296]: EchoDesk Speaker#ED-SPK-200
+                - cell "Audio" [ref=e300]
+                - cell "EchoWave" [ref=e301]
+                - cell "Graphite" [ref=e302]
+                - cell "0" [ref=e303]
+                - cell "Out of stock" [ref=e304]
+                - cell [ref=e307]:
+                  - button "Row actions" [ref=e308] [cursor=pointer]
+          - generic [ref=e313]:
+            - generic [ref=e314]: Showing 1 to 4 of 128 items
+            - generic [ref=e315]:
+              - button "Previous page" [ref=e316] [cursor=pointer]
+              - button "1" [ref=e319] [cursor=pointer]
+              - button "2" [ref=e320] [cursor=pointer]
+              - button "3" [ref=e321] [cursor=pointer]
+              - button [ref=e322] [cursor=pointer]: …
+              - button "32" [ref=e323] [cursor=pointer]
+              - button "Next page" [ref=e324] [cursor=pointer]
+  - button "Dark" [ref=e327] [cursor=pointer]

@@ -1,0 +1,373 @@
+/* ================= Piece C: three desks, ask the record, the answer lands ================= */
+/* Tokens come from variables.css (already loaded via base.css). Classes prefixed in-. */
+
+.in-sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* Shared deck rule — same measure as piece B's .cn-deck */
+.in-deck { max-width: 600px; margin-top: var(--spacing-16); }
+
+.in-head { max-width: 640px; margin-bottom: var(--spacing-64); }
+
+/* C2 head sits beside the one warm card in this viewport */
+.in-ask-top {
+  display: grid;
+  grid-template-columns: minmax(320px, 640px) minmax(300px, 400px);
+  gap: var(--spacing-96);
+  align-items: end;
+  margin-bottom: var(--spacing-64);
+}
+.in-head--ask { margin-bottom: 0; }
+
+.in-rule { padding: var(--spacing-28); }
+.in-rule-line {
+  margin: 0;
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-body-lg);
+  font-weight: var(--font-weight-w450);
+  color: var(--color-sienna-brown);
+}
+.in-rule-note {
+  margin: var(--spacing-12) 0 0;
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  color: var(--color-sienna-brown);
+  opacity: 0.78;
+}
+.in-heading { color: var(--color-ink-black); }
+
+/* ---------------------------------------------------------------
+   C1 — Three desks, one record
+   A segmented role control above ONE product frame; switching desks
+   transforms the frame's contents. Not a card per role.
+--------------------------------------------------------------- */
+.in-desk-shell { border: 0; margin: 0; padding: 0; min-width: 0; }
+
+.in-desk-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: var(--spacing-24);
+  background: var(--color-paper-white);
+  border-radius: var(--radius-buttons);
+  box-shadow: var(--shadow-subtle);
+}
+
+.in-desk-radio {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.in-desk-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 18px;
+  border-radius: var(--radius-buttons);
+  font-size: 15px;
+  font-weight: var(--font-weight-w450);
+  color: var(--color-slate-gray);
+  cursor: pointer;
+  transition: background-color 420ms cubic-bezier(.22,.61,.36,1), color 420ms cubic-bezier(.22,.61,.36,1);
+}
+.in-desk-tab:hover { color: var(--color-ink-black); }
+.in-desk-tab:focus-within { outline: 2px solid var(--color-ink-black); outline-offset: 2px; }
+.in-desk-tab:has(:checked) { background: var(--color-ink-black); color: var(--color-paper-white); }
+
+/* The one frame — bleeds past the content column and crops at the viewport edge */
+.in-desk-frame {
+  position: relative;
+  min-height: 380px;
+  margin-right: calc((min(100vw, var(--shell)) - 100vw) / 2 - var(--gutter) - 56px);
+}
+
+.in-desk-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  padding: var(--spacing-16) var(--spacing-28);
+  /* frame bleeds 56px past the viewport; keep the window chrome inside it */
+  padding-right: calc(var(--spacing-28) + 56px);
+  border-bottom: 1px solid var(--color-mist-gray);
+}
+.in-desk-crumb { font-size: 14px; color: var(--color-ash-gray); margin: 0; }
+.in-desk-crumb i { padding: 0 6px; font-style: normal; }
+.in-desk-bar-icons { display: inline-flex; gap: 6px; }
+.in-desk-bar-icons span { width: 6px; height: 6px; border-radius: 50%; background: var(--color-mist-gray); }
+
+.in-desk-stage {
+  position: relative;
+  padding: var(--spacing-28);
+  min-height: 320px;
+  /* keep readable data clear of the cropped bleed zone */
+  max-width: 1024px;
+}
+
+.in-desk-panel { display: none; flex-direction: column; }
+.in-desk-shell:has(input[value="owner"]:checked)    .in-desk-panel[data-desk="owner"],
+.in-desk-shell:has(input[value="floor"]:checked)    .in-desk-panel[data-desk="floor"],
+.in-desk-shell:has(input[value="accounts"]:checked) .in-desk-panel[data-desk="accounts"] {
+  display: flex;
+  animation: in-panel-in 480ms cubic-bezier(.22,.61,.36,1) both;
+}
+@keyframes in-panel-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.in-desk-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-family: var(--font-ui);
+  font-size: var(--text-body-lg);
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  color: var(--color-ink-black);
+  margin: 0 0 var(--spacing-20);
+}
+.in-desk-title span { font-size: 14px; font-weight: var(--font-weight-regular); color: var(--color-ash-gray); }
+
+/* Rows: label + figure left, state right */
+.in-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  padding: var(--spacing-16) 0;
+  border-bottom: 1px solid var(--color-mist-gray);
+}
+.in-row:last-child { border-bottom: 0; }
+.in-row-main { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.in-row-main b { font-size: var(--text-body); font-weight: 500; color: var(--color-ink-black); }
+.in-row-main span { font-size: 14px; line-height: var(--leading-caption); color: var(--color-slate-gray); }
+
+/* The one warm surface per viewport: an entire flagged row carrying sienna text */
+.in-row--warm {
+  background: var(--color-blush-peach);
+  border-radius: var(--radius-inputs);
+  border-bottom: 0;
+  padding-inline: var(--spacing-12);
+  margin-inline: calc(-1 * var(--spacing-12));
+}
+.in-row--warm .in-row-main b,
+.in-row--warm .in-row-main span { color: var(--color-sienna-brown); }
+
+.in-chip {
+  flex: 0 0 auto;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: var(--radius-buttons);
+  background: var(--color-mist-gray);
+  color: var(--color-ink-black);
+}
+.in-chip--muted { background: transparent; box-shadow: inset 0 0 0 1px var(--color-mist-gray); color: var(--color-slate-gray); }
+.in-chip--onWarm { background: var(--color-sienna-brown); color: var(--color-paper-white); }
+
+/* Floor desk: a note straight from the shop floor */
+.in-note {
+  margin-top: var(--spacing-20);
+  padding-left: 20px;
+  border-left: 2px solid var(--color-ash-gray);
+}
+.in-note-quote { margin: 0; font-size: var(--text-body-lg); font-weight: var(--font-weight-w450); line-height: var(--leading-body-lg); color: var(--color-ink-black); }
+.in-note-who { margin: var(--spacing-8) 0 0; font-size: 14px; color: var(--color-ash-gray); }
+
+.in-desk-foot {
+  margin: var(--spacing-24) 0 0;
+  padding: var(--spacing-16) var(--spacing-20);
+  max-width: 640px;
+  background: var(--color-mist-gray);
+  border-radius: var(--radius-cards);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-slate-gray);
+}
+.in-desk-foot b { color: var(--color-ink-black); font-weight: 500; }
+
+/* ---------------------------------------------------------------
+   C2 — Ask the record
+   One thread artifact: asked, answered with citations, composer below
+   holding the next question typed but not sent.
+--------------------------------------------------------------- */
+.in-thread {
+  width: min(880px, 100%);
+  padding: var(--spacing-32);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-28);
+}
+
+.in-msg { display: flex; flex-direction: column; gap: var(--spacing-12); }
+.in-msg-who { margin: 0; font-size: 14px; font-weight: var(--font-weight-w450); color: var(--color-ash-gray); }
+.in-msg-who--ai { color: var(--color-ink-black); }
+
+.in-msg-bubble {
+  margin: 0;
+  align-self: flex-end;
+  max-width: 70%;
+  padding: 12px 18px;
+  border-radius: var(--radius-inputs);
+  background: var(--color-mist-gray);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-ink-black);
+}
+
+.in-msg--ai {
+  max-width: 640px;
+  padding-left: 20px;
+  border-left: 2px solid var(--color-ash-gray);
+}
+.in-msg-answer p { margin: 0; font-size: var(--text-body); line-height: 1.55; color: var(--color-ink-black); }
+.in-msg-answer p + p { margin-top: var(--spacing-12); }
+
+.in-src { display: flex; flex-wrap: wrap; gap: var(--spacing-8); margin-top: var(--spacing-4); }
+.in-src-chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: var(--font-weight-w450);
+  color: var(--color-slate-gray);
+  padding: 4px 12px;
+  border-radius: var(--radius-buttons);
+  background: var(--color-fog-white);
+  box-shadow: inset 0 0 0 1px var(--color-mist-gray);
+}
+
+/* Composer — the sanctioned #ececec hairline lives here and only here */
+.in-composer {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  padding: var(--spacing-16);
+  background: var(--color-paper-white);
+  border: 1px solid #ececec;
+  border-radius: var(--radius-inputs);
+}
+.in-comp-glyph {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  font-size: var(--text-body-lg);
+  color: var(--color-smoke-gray);
+}
+.in-comp-info {
+  flex: 0 0 auto;
+  width: 18px; height: 18px;
+  fill: none;
+  stroke: var(--color-smoke-gray);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+}
+.in-comp-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  color: var(--color-ink-black);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.in-caret {
+  display: inline-block;
+  width: 1.5px; height: 1.05em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--color-ink-black);
+}
+.in-send {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--color-ink-black);
+}
+.in-send svg {
+  width: 16px; height: 16px;
+  fill: none;
+  stroke: var(--color-paper-white);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ---------------------------------------------------------------
+   C3 — The answer lands (full-bleed ink close)
+   Second dark band of the page: the strongest quiet moment.
+   Chrome stays achromatic on ink.
+--------------------------------------------------------------- */
+.in-close-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) 1fr;
+  gap: var(--spacing-64);
+  align-items: center;
+}
+
+.in-close-heading { color: var(--color-paper-white); }
+.in-close-deck { color: var(--color-smoke-gray); }
+
+/* Bleeds past the 1200 column, but stops flush at the viewport edge:
+   the copy inside is load-bearing, so nothing here may be cropped. */
+.in-close-card {
+  justify-self: end;
+  width: min(600px, 100%);
+  padding: var(--spacing-28);
+  margin-right: min(0px, calc((min(100vw, var(--shell)) - 100vw) / 2 - var(--gutter)));
+}
+.in-close-card .in-msg-bubble { background: var(--color-fog-white); }
+.in-close-card .in-msg-answer p { color: var(--color-ink-black); }
+.in-close-card .in-msg--ai { border-left-color: var(--color-mist-gray); }
+
+/* ---------------------------------------------------------------
+   Responsive
+--------------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .in-head { margin-bottom: var(--spacing-40); }
+  .in-ask-top { grid-template-columns: 1fr; gap: var(--spacing-32); align-items: start; margin-bottom: var(--spacing-40); }
+
+  .in-desk-frame { margin-right: calc(-1 * var(--gutter)); min-height: 0; }
+  .in-desk-stage { padding: var(--spacing-20); min-height: 0; }
+
+  .in-close-grid { grid-template-columns: 1fr; gap: var(--spacing-40); }
+  .in-close-card { justify-self: stretch; width: 100%; margin-right: 0; }
+}
+
+@media (max-width: 720px) {
+  .in-heading { font-size: 44px; letter-spacing: var(--tracking-heading); }
+  .in-close-heading { font-size: 44px; letter-spacing: var(--tracking-heading); }
+
+  .in-desk-tabs { display: flex; width: 100%; }
+  .in-desk-tab { flex: 1 1 0; justify-content: center; padding: 0 8px; }
+
+  .in-desk-bar { padding: var(--spacing-12) var(--spacing-16); }
+  .in-desk-stage { padding: var(--spacing-16); }
+  .in-desk-title { flex-wrap: wrap; gap: 4px 10px; }
+
+  .in-row { align-items: flex-start; }
+  .in-chip { margin-top: 2px; }
+
+  .in-thread { padding: var(--spacing-20); gap: var(--spacing-24); }
+  .in-msg-bubble { max-width: 88%; }
+  .in-composer { padding: 12px; gap: var(--spacing-8); }
+  .in-comp-glyph { width: 36px; height: 36px; }
+  .in-send { width: 40px; height: 40px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .in-desk-tab { transition: none; }
+  .in-desk-panel { animation: none !important; }
+}

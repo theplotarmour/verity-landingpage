@@ -1,0 +1,119 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - link "Verity" [ref=f3e4] [cursor=pointer]:
+        - /url: "#"
+      - checkbox "Open menu"
+      - navigation "Primary" [ref=f3e5]:
+        - link "Platform" [ref=f3e6] [cursor=pointer]:
+          - /url: "#platform"
+        - link "Modules" [ref=f3e7] [cursor=pointer]:
+          - /url: "#modules"
+        - link "Industries" [ref=f3e8] [cursor=pointer]:
+          - /url: "#industries"
+        - link "Pricing" [ref=f3e9] [cursor=pointer]:
+          - /url: "#pricing"
+      - link "Book a demo" [ref=f3e11] [cursor=pointer]:
+        - /url: "#demo"
+  - generic [ref=f3e13]:
+    - generic [ref=f3e15]:
+      - generic [ref=f3e16]:
+        - paragraph [ref=f3e17]: Business operating system for MSMEs
+        - heading "The order was always real — the connection never was." [level=1] [ref=f3e18]:
+          - generic [ref=f3e19]: The
+          - generic [ref=f3e20]: order
+          - generic [ref=f3e21]: was
+          - generic [ref=f3e22]: always
+          - generic [ref=f3e23]: real
+          - generic [ref=f3e24]: —
+          - emphasis [ref=f3e25]:
+            - generic [ref=f3e26]: the
+            - generic [ref=f3e27]: connection
+            - generic [ref=f3e28]: never
+            - generic [ref=f3e29]: was.
+        - paragraph [ref=f3e30]: Right now, that order lives across WhatsApp, a spreadsheet, Tally and a notebook by the machine. Verity keeps it as one record — from the first enquiry to the last rupee collected.
+        - generic [ref=f3e31]:
+          - link "Book a demo" [ref=f3e32] [cursor=pointer]:
+            - /url: "#demo"
+          - link "Explore Verity" [ref=f3e33] [cursor=pointer]:
+            - /url: "#explore"
+        - paragraph [ref=f3e34]: Modular by design — start with Orders or Inventory, add the rest as you grow.
+      - generic [ref=f3e35]:
+        - generic:
+          - paragraph: Orders
+          - list:
+            - listitem:
+              - generic: SO-1038
+              - generic: Ready
+            - listitem:
+              - generic: SO-1041
+              - generic: In production
+            - listitem:
+              - generic: SO-1042
+              - generic: Delayed
+        - generic [ref=f3e36]: SO-1042
+        - generic:
+          - paragraph: Low stock
+          - paragraph: "12"
+          - paragraph: SO-1042 pulled the last MS sheet, 2mm
+      - generic:
+        - paragraph: Invoice
+        - paragraph:
+          - generic: INV-0871
+          - generic: SO-1042
+        - paragraph: ₹1,84,200 · due in 4 days
+    - generic:
+      - generic:
+        - generic:
+          - complementary:
+            - paragraph: Home
+            - paragraph: CRM
+            - paragraph: Sales
+            - paragraph: Orders
+            - paragraph: Inventory
+            - paragraph: Projects
+            - paragraph: Operations
+            - paragraph: Workforce
+            - paragraph: Finance
+            - paragraph: Reports
+          - generic:
+            - generic:
+              - generic:
+                - paragraph: SO-1042
+                - paragraph: Precision Fabricators Pvt Ltd · Pune
+              - generic: Work in progress
+            - list:
+              - listitem: Customer
+              - listitem: Order
+              - listitem: Work
+              - listitem: Inventory
+              - listitem: Delivery
+              - listitem: Invoice
+              - listitem: Payment
+            - table:
+              - rowgroup:
+                - row:
+                  - columnheader: Item
+                  - columnheader: Qty
+                  - columnheader: Stock
+                  - columnheader: Stage
+              - rowgroup:
+                - row:
+                  - cell: MS sheet, 2mm
+                  - cell: "40"
+                  - cell: Low stock
+                  - cell: Cutting
+                - row:
+                  - cell: Hex bolt, M8
+                  - cell: "240"
+                  - cell: In stock
+                  - cell: Assembly
+                - row:
+                  - cell: Powder coat, RAL 9005
+                  - cell: 1 lot
+                  - cell: In stock
+                  - cell: Queued
+            - generic:
+              - generic: Invoice INV-0871
+              - generic: ₹1,84,200
+              - generic: Due in 4 days

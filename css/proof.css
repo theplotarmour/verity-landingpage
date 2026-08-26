@@ -1,0 +1,331 @@
+/* ================= Piece D: trades, growth, comparison, ownership, close ================= */
+/* Tokens from variables.css (loaded by base.css). Classes prefixed pf-. */
+
+.pf-head { max-width: 720px; margin-bottom: var(--spacing-64); }
+.pf-heading { color: var(--color-ink-black); }
+.pf-deck { max-width: 600px; margin-top: var(--spacing-16); }
+
+/* ---------------------------------------------------------------
+   D1 — Four trades
+   Cards sit in a two-up grid and stagger vertically, the way the
+   reference offsets its card row instead of ruling it flat.
+--------------------------------------------------------------- */
+.pf-trade-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-32);
+  align-items: start;
+}
+
+.pf-trade {
+  background: var(--color-fog-white);
+  border-radius: var(--radius-cards);
+  padding: var(--spacing-40);
+  display: flex;
+  flex-direction: column;
+}
+.pf-trade:nth-child(2),
+.pf-trade:nth-child(4) { margin-top: var(--spacing-64); }
+
+.pf-trade-kind {
+  margin: 0 0 var(--spacing-20);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-w450);
+  color: var(--color-ash-gray);
+}
+.pf-trade-name { color: var(--color-ink-black); margin-bottom: var(--spacing-12); }
+.pf-trade-copy { color: var(--color-slate-gray); line-height: var(--leading-caption); max-width: 46ch; }
+
+.pf-trade-facts {
+  list-style: none;
+  margin: var(--spacing-28) 0 0;
+  padding: 0;
+}
+.pf-trade-facts li {
+  display: flex;
+  align-items: baseline;
+  gap: var(--spacing-16);
+  padding: var(--spacing-12) 0;
+  border-top: 1px solid var(--color-mist-gray);
+}
+.pf-trade-facts b {
+  flex: 0 0 78px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-ink-black);
+}
+.pf-trade-facts span { font-size: 14px; line-height: var(--leading-caption); color: var(--color-slate-gray); }
+
+/* ---------------------------------------------------------------
+   D2 — Switch on two
+   Copy column left, a floating list artifact right. The peach price
+   card is the single warm surface in this viewport.
+--------------------------------------------------------------- */
+.pf-grow-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(360px, 460px);
+  gap: var(--spacing-96);
+  align-items: center;
+}
+
+.pf-price {
+  margin-top: var(--spacing-40);
+  padding: var(--spacing-28);
+  max-width: 520px;
+}
+.pf-price-line {
+  margin: 0;
+  font-size: var(--text-body-lg);
+  line-height: var(--leading-body-lg);
+  font-weight: var(--font-weight-w450);
+  color: var(--color-sienna-brown);
+}
+.pf-price-note {
+  margin: var(--spacing-12) 0 0;
+  font-size: var(--text-caption);
+  line-height: var(--leading-caption);
+  color: var(--color-sienna-brown);
+  opacity: 0.78;
+}
+
+.pf-grow-list {
+  list-style: none;
+  margin: 0;
+  padding: var(--spacing-12) var(--spacing-28);
+}
+.pf-grow-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  padding: var(--spacing-16) 0;
+  border-bottom: 1px solid var(--color-mist-gray);
+}
+.pf-grow-item:last-child { border-bottom: 0; }
+
+.pf-grow-name {
+  position: relative;
+  padding-left: 22px;
+  font-size: var(--text-body);
+  font-weight: 500;
+  color: var(--color-smoke-gray);
+}
+.pf-grow-name::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  margin-top: -5px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1.5px var(--color-mist-gray);
+}
+.pf-grow-item.is-next .pf-grow-name { color: var(--color-slate-gray); }
+.pf-grow-item.is-next .pf-grow-name::before { box-shadow: inset 0 0 0 1.5px var(--color-smoke-gray); }
+.pf-grow-item.is-on .pf-grow-name { color: var(--color-ink-black); }
+.pf-grow-item.is-on .pf-grow-name::before { background: var(--color-ink-black); box-shadow: none; }
+
+.pf-grow-state {
+  flex: 0 0 auto;
+  font-size: 14px;
+  color: var(--color-ash-gray);
+}
+.pf-grow-item.is-on .pf-grow-state { color: var(--color-ink-black); }
+
+/* ---------------------------------------------------------------
+   D3 — Three ways to run it
+   A four-column comparison read as rows, our column tinted paper so
+   it reads as the resolved one without adding a second accent.
+--------------------------------------------------------------- */
+.pf-vs-table { width: 100%; }
+
+.pf-vs-row {
+  display: grid;
+  grid-template-columns: 200px repeat(3, 1fr);
+  gap: var(--spacing-24);
+  align-items: stretch;
+}
+
+/* Padding and rules live on the cells, not the row, so the Verity
+   column can run as one unbroken surface down the whole table. */
+.pf-vs-cell {
+  padding-block: var(--spacing-20);
+  font-size: var(--text-body);
+  line-height: var(--leading-caption);
+  color: var(--color-slate-gray);
+}
+.pf-vs-cell:not(.pf-vs-cell--ours) { border-top: 1px solid #e4e4e6; }
+.pf-vs-row--head .pf-vs-cell { border-top: 0; padding-top: 0; }
+.pf-vs-row--head .pf-vs-cell {
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-w450);
+  color: var(--color-ash-gray);
+}
+.pf-vs-cell--label { color: var(--color-ink-black); font-weight: 500; }
+.pf-vs-row--head .pf-vs-cell--label { font-weight: var(--font-weight-w450); color: var(--color-ash-gray); }
+
+/* Our column: paper surface running the height of the table */
+.pf-vs-cell--ours {
+  color: var(--color-ink-black);
+  font-weight: 500;
+  background: var(--color-paper-white);
+  margin-inline: calc(-1 * var(--spacing-20));
+  padding-inline: var(--spacing-20);
+}
+.pf-vs-row--head .pf-vs-cell--ours {
+  color: var(--color-ink-black);
+  border-radius: var(--radius-cards) var(--radius-cards) 0 0;
+  padding-top: 0;
+  margin-top: calc(-1 * var(--spacing-20));
+}
+.pf-vs-row:last-child .pf-vs-cell--ours { border-radius: 0 0 var(--radius-cards) var(--radius-cards); }
+
+.pf-vs-foot {
+  margin-top: var(--spacing-64);
+  max-width: 720px;
+  color: var(--color-slate-gray);
+  line-height: var(--leading-caption);
+}
+
+/* ---------------------------------------------------------------
+   D4 — Ownership, on ink
+--------------------------------------------------------------- */
+.pf-own-grid {
+  display: grid;
+  grid-template-columns: minmax(300px, 440px) 1fr;
+  gap: var(--spacing-96);
+  align-items: start;
+}
+.pf-own-heading { color: var(--color-paper-white); }
+.pf-own-deck { color: var(--color-smoke-gray); }
+
+.pf-own-list { list-style: none; margin: 0; padding: 0; }
+.pf-own-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  padding: var(--spacing-28) 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.pf-own-item:first-child { border-top: 0; padding-top: 0; }
+.pf-own-item b {
+  font-size: var(--text-body-lg);
+  font-weight: var(--font-weight-w450);
+  color: var(--color-paper-white);
+}
+.pf-own-item span {
+  font-size: var(--text-body);
+  line-height: var(--leading-caption);
+  color: var(--color-smoke-gray);
+  max-width: 58ch;
+}
+
+/* ---------------------------------------------------------------
+   D5 — The close
+--------------------------------------------------------------- */
+.pf-close { padding-bottom: var(--spacing-160); }
+.pf-close-shell { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.pf-close-heading { margin-top: var(--spacing-24); max-width: 15ch; }
+.pf-close-deck { margin-top: var(--spacing-28); max-width: 560px; }
+.pf-close-cta { display: flex; align-items: center; gap: var(--spacing-12); margin-top: var(--spacing-40); }
+.pf-close-fine { margin-top: var(--spacing-20); color: var(--color-ash-gray); }
+.pf-close-reach {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+  margin: var(--spacing-16) 0 0;
+  font-size: var(--text-caption);
+  color: var(--color-slate-gray);
+}
+.pf-close-reach a { color: var(--color-ink-black); transition: color 420ms cubic-bezier(.22,.61,.36,1); }
+.pf-close-reach a:hover { color: var(--color-slate-gray); }
+.pf-close-reach span { color: var(--color-smoke-gray); }
+
+/* ---------------------------------------------------------------
+   Footer
+--------------------------------------------------------------- */
+.pf-foot { background: var(--color-mist-gray); padding-block: var(--spacing-80) var(--spacing-40); }
+.pf-foot-inner {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) auto;
+  gap: var(--spacing-64);
+  align-items: start;
+}
+.pf-foot-logo {
+  font-family: var(--font-display);
+  font-size: var(--text-heading-sm);
+  color: var(--color-ink-black);
+}
+.pf-foot-line { margin-top: var(--spacing-12); max-width: 34ch; }
+
+.pf-foot-nav { display: flex; gap: var(--spacing-96); }
+.pf-foot-col { display: flex; flex-direction: column; gap: var(--spacing-12); }
+.pf-foot-head {
+  margin: 0 0 var(--spacing-4);
+  font-size: var(--text-caption);
+  font-weight: var(--font-weight-w450);
+  color: var(--color-ash-gray);
+}
+.pf-foot-col a {
+  font-size: var(--text-caption);
+  color: var(--color-ink-black);
+  transition: color 420ms cubic-bezier(.22,.61,.36,1);
+}
+.pf-foot-col a:hover { color: var(--color-slate-gray); }
+
+.pf-foot-base {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-16);
+  margin-top: var(--spacing-80);
+  padding-top: var(--spacing-24);
+  border-top: 1px solid #e4e4e6;
+}
+.pf-foot-base p { color: var(--color-ash-gray); }
+
+/* ---------------------------------------------------------------
+   Responsive
+--------------------------------------------------------------- */
+@media (max-width: 1080px) {
+  .pf-head { margin-bottom: var(--spacing-40); }
+  .pf-trade-grid { gap: var(--spacing-24); }
+  .pf-trade { padding: var(--spacing-32); }
+  .pf-trade:nth-child(2), .pf-trade:nth-child(4) { margin-top: var(--spacing-32); }
+  .pf-grow-grid, .pf-own-grid { grid-template-columns: 1fr; gap: var(--spacing-40); }
+  .pf-vs-row { grid-template-columns: 160px repeat(3, 1fr); gap: var(--spacing-16); }
+  .pf-foot-nav { gap: var(--spacing-40); }
+}
+
+@media (max-width: 720px) {
+  .pf-trade-grid { grid-template-columns: 1fr; }
+  .pf-trade:nth-child(2), .pf-trade:nth-child(4) { margin-top: 0; }
+
+  /* Comparison collapses to one stack per approach */
+  .pf-vs-row { grid-template-columns: 1fr; gap: var(--spacing-4); padding: var(--spacing-20) 0; }
+  .pf-vs-row--head { display: none; }
+  .pf-vs-cell { position: relative; padding-left: 0; }
+  .pf-vs-cell--label { margin-bottom: var(--spacing-8); }
+  .pf-vs-cell:not(.pf-vs-cell--label)::before {
+    display: block;
+    font-size: 13px;
+    font-weight: var(--font-weight-w450);
+    color: var(--color-ash-gray);
+  }
+  .pf-vs-cell:nth-child(2)::before { content: "Sheets & WhatsApp"; }
+  .pf-vs-cell:nth-child(3)::before { content: "One tool per problem"; }
+  .pf-vs-cell--ours::before { content: "Verity"; }
+  .pf-vs-cell--ours {
+    margin: var(--spacing-8) 0 0;
+    padding: var(--spacing-16);
+    border-radius: var(--radius-cards);
+  }
+  .pf-vs-row:last-child .pf-vs-cell--ours,
+  .pf-vs-row--head .pf-vs-cell--ours { border-radius: var(--radius-cards); }
+
+  .pf-foot-inner { grid-template-columns: 1fr; gap: var(--spacing-40); }
+  .pf-foot-nav { flex-wrap: wrap; gap: var(--spacing-32); }
+  .pf-foot-base { flex-direction: column; gap: var(--spacing-8); margin-top: var(--spacing-40); }
+  .pf-close-cta { flex-direction: column; width: 100%; }
+  .pf-close-cta .btn { width: 100%; }
+}
