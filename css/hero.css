@@ -133,10 +133,10 @@
      Peak alpha is tuned to the reference's own warm zone (chroma ~26 at the
      hot spots, falling to neutral at the edges). */
   background:
-    radial-gradient(64% 60% at 18% 14%, rgba(0, 209, 178, 0.20) 0%, rgba(0, 209, 178, 0) 78%),
-    radial-gradient(62% 56% at 80% 24%, rgba(0, 209, 178, 0.14) 0%, rgba(0, 209, 178, 0) 80%),
-    radial-gradient(78% 66% at 52% 94%, rgba(0, 209, 178, 0.10) 0%, rgba(0, 209, 178, 0) 82%),
-    linear-gradient(180deg, rgba(0, 209, 178, 0.05) 0%, rgba(0, 209, 178, 0.03) 100%),
+    radial-gradient(64% 60% at 18% 14%, color-mix(in srgb, var(--accent) 20%, transparent) 0%, color-mix(in srgb, var(--accent) 0%, transparent) 78%),
+    radial-gradient(62% 56% at 80% 24%, color-mix(in srgb, var(--accent) 14%, transparent) 0%, color-mix(in srgb, var(--accent) 0%, transparent) 80%),
+    radial-gradient(78% 66% at 52% 94%, color-mix(in srgb, var(--accent) 10%, transparent) 0%, color-mix(in srgb, var(--accent) 0%, transparent) 82%),
+    linear-gradient(180deg, color-mix(in srgb, var(--accent) 5%, transparent) 0%, color-mix(in srgb, var(--accent) 3%, transparent) 100%),
     var(--color-paper-white);
   opacity: calc(0.35 + var(--p, 0) * 0.65);
 }
@@ -170,8 +170,18 @@
 .hero-eyebrow { justify-content: center; }
 
 .hero-headline {
-  max-width: 640px;
+  max-width: 15ch;
+  margin-inline: auto;
+  font-family: var(--font-ui);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1.04;
   color: var(--color-ink-black);
+}
+.hero-headline em {
+  font-style: normal;
+  font-weight: 300;
+  color: var(--ink-muted);
 }
 
 .hero-sub {
@@ -499,7 +509,7 @@
   flex-direction: column;
   gap: 8px;
   background: var(--color-blush-peach);
-  border-radius: 12px;
+  border-radius: var(--r-inner);
   padding: 16px;
 }
 .hero-record-chart-title { font-size: 14px; color: var(--color-sienna-brown); margin: 0; }
@@ -516,7 +526,7 @@
   flex: 1 1 0;
   height: var(--v, 40%);
   background: rgba(93, 42, 26, 0.32);
-  border-radius: 3px 3px 0 0;
+  border-radius: var(--r-bar) var(--r-bar) 0 0;
 }
 .hero-record-chart-bars span.is-current { background: var(--color-sienna-brown); }
 .hero-record-chart-axis { display: flex; gap: 10px; }

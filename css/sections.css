@@ -1,0 +1,533 @@
+/* =============================================================================
+   Verity — section styles (nav, hero, operational network, strips).
+   ========================================================================== */
+
+/* Legacy token bridge: the product replica (dash.css) was authored against the
+   Overview screen's token names. Point them at the Verity tokens so one theme
+   drives everything, dark mode included. */
+:root {
+  --color-paper-white: var(--surface);
+  --color-fog-white: var(--base);
+  --color-mist-gray: var(--base-alt);
+  --color-ink-black: var(--ink);
+  --color-slate-gray: var(--ink-body);
+  --color-ash-gray: var(--ink-muted);
+  --color-smoke-gray: var(--ink-muted);
+  --border-strong: var(--line);
+  --thumb-bg: var(--base-alt);
+  --map-land: var(--base-alt);
+  /* One accent, spent on state. The reference marks exceptions, risk and low
+     stock with the accent itself, never with a second hue, so the amber and
+     red ramps that used to live here now resolve to it. Every downstream
+     chip, ring and bar follows without touching its own rule. */
+  --warn: var(--accent);
+  --danger: var(--accent);
+  --color-blush-peach: var(--accent-a14);
+  --color-sienna-brown: var(--accent-text);
+  --color-danger-tint: var(--accent-a14);
+  --radius-cards: var(--r-panel);
+  --radius-inputs: var(--r-inner);
+  --radius-elevatedcards: var(--r-panel);
+  --radius-buttons: var(--r-pill);
+  --shadow-subtle: var(--elev-low);
+  --shadow-subtle-2: var(--elev-mid);
+  --shadow-subtle-3: var(--elev-high);
+  --font-ui: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --spacing-4:4px; --spacing-8:8px; --spacing-12:12px; --spacing-16:16px;
+  --spacing-20:20px; --spacing-24:24px; --spacing-28:28px; --spacing-32:32px;
+  --spacing-40:40px; --spacing-64:64px; --spacing-80:80px; --spacing-96:96px;
+  --spacing-124:124px; --spacing-128:128px; --spacing-160:160px;
+  --shell: var(--maxw);
+
+  /* Display scale the restored hero is set in (previously carried by
+     variables.css, now stated here so the hero does not depend on an
+     @import chain). */
+  --font-display: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --text-display: 90px;  --leading-display: 1.1;  --tracking-display: -2.25px;
+  --text-heading-lg: 64px; --tracking-heading-lg: -0.96px;
+  --text-heading: 44px;    --tracking-heading: -0.66px;
+  --text-heading-sm: 26px; --leading-heading-sm: 1.18; --tracking-heading-sm: -0.23px;
+  --text-subheading: 22px; --leading-subheading: 1.5;
+  --text-body-lg: 20px;    --leading-body-lg: 1.35;
+  --text-body: 17px;       --leading-body: 1.35;
+  --text-caption: 15px;    --leading-caption: 1.5;
+  --font-weight-regular: 400; --font-weight-w430: 430; --font-weight-w450: 450;
+  --font-weight-w480: 480;    --font-weight-medium: 500;
+  --gutter-legacy: 24px;
+}
+
+@media (max-width: 1080px) {
+  :root { --text-display: 64px; --tracking-display: -1.4px; --text-heading-lg: 44px; --text-heading: 34px; }
+}
+@media (max-width: 720px) {
+  :root { --text-display: 44px; --tracking-display: -0.9px; --text-heading-lg: 34px; --text-heading: 28px; }
+}
+
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+}
+.skip:focus {
+  left: 12px; top: 12px;
+  padding: 10px 16px; border-radius: var(--r-control);
+  background: var(--surface); border: 1px solid var(--line);
+}
+
+/* ----------------------------------------------------------------- nav --- */
+.nav {
+  position: sticky; top: 0; z-index: 60;
+  border-bottom: 1px solid transparent;
+  transition: background-color .3s ease, border-color .3s ease, backdrop-filter .3s ease;
+}
+/* Glass: the bar frosts the page beneath it once you leave the top. */
+.nav.is-scrolled {
+  border-bottom-color: var(--line);
+  background: var(--surface-floating);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+}
+.nav-inner {
+  display: flex; align-items: center; gap: 56px;
+  /* Constant height on purpose. The bar used to shrink 68px to 56px, but a
+     sticky header in flow that animates its own height reflows the entire page
+     on every crossing of the scroll threshold. The frost, the border and the
+     shadow already say "you have left the top"; none of them cost layout. */
+  height: 68px;
+}
+.nav-logo { display: inline-flex; align-items: center; gap: 10px; flex: none; }
+.nav-logo span { font-size: 21px; font-weight: 300; letter-spacing: -0.01em; }
+
+.nav-toggle-input { position: absolute; opacity: 0; pointer-events: none; }
+.nav-links { display: none; gap: 32px; font-size: 13px; letter-spacing: .01em; }
+.nav-links a { color: var(--ink-body); transition: color .2s ease; }
+.nav-links a:hover { color: var(--ink); }
+@media (min-width: 1024px) { .nav-links { display: flex; } }
+
+.nav-actions { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.theme-toggle {
+  display: grid; place-items: center; width: 34px; height: 34px;
+  border-radius: var(--r-control); border: 1px solid var(--line); color: var(--ink-muted);
+  transition: color .2s ease, border-color .2s ease;
+}
+.theme-toggle:hover { color: var(--ink); border-color: var(--ink); }
+.nav-signin { display: none; font-size: 13px; color: var(--ink-body); }
+.nav-signin:hover { color: var(--ink); }
+.nav-cta { display: none; }
+@media (min-width: 640px) { .nav-signin, .nav-cta { display: inline-flex; } }
+
+.nav-burger {
+  display: grid; place-items: center; width: 36px; height: 36px;
+  border-radius: var(--r-control); border: 1px solid var(--line); cursor: pointer;
+}
+@media (min-width: 1024px) { .nav-burger { display: none; } }
+
+.nav-sheet { display: none; border-top: 1px solid var(--line); background: var(--base); padding: 24px var(--gutter); }
+.nav-toggle-input:checked ~ .nav-sheet { display: block; }
+@media (min-width: 1024px) { .nav-toggle-input:checked ~ .nav-sheet { display: none; } }
+.nav-sheet a { display: block; padding: 14px 0; border-bottom: 1px solid var(--line-hair); font-size: 18px; font-weight: 300; }
+.nav-sheet-cta { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+.nav-sheet-cta .btn { justify-content: center; }
+.nav-sheet-cta a { border-bottom: 0; padding: 12px 22px; font-size: 14px; }
+
+/* ---------------------------------------------------------------- hero --- */
+.hero { position: relative; overflow: hidden; padding-top: clamp(56px, 8vw, 96px); }
+.hero-grid {
+  display: grid; gap: 40px; align-items: end;
+  margin-top: 36px; padding-bottom: 44px; border-bottom: 1px solid var(--line);
+}
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr); gap: 64px; }
+}
+.hero-lede { max-width: 46ch; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.hero-note { margin-top: 24px; }
+.hero-net { margin-top: clamp(24px, 4vw, 48px); position: relative; }
+.hero-net::before {
+  content: ""; position: absolute; inset: 8% 18% 18%;
+  background: radial-gradient(ellipse at 50% 50%, var(--accent-a14), transparent 70%);
+  pointer-events: none;
+}
+
+/* ------------------------------------------------- operational network --- */
+.net { width: 100%; height: auto; position: relative; }
+.net-links line { stroke: var(--line); stroke-width: .8; transition: stroke .3s ease, stroke-width .3s ease; }
+.net-node { cursor: default; }
+.net-hit { fill: transparent; }
+.net-halo { fill: var(--accent-a24); opacity: 0; transform-box: fill-box; transform-origin: center; transition: opacity .3s ease; }
+.net-dot { fill: var(--ink); transition: fill .3s ease, r .3s ease; }
+.net-label { font-size: 13px; font-weight: 500; fill: var(--ink); letter-spacing: -.01em; }
+.net-detail { font-size: 11.5px; fill: var(--ink-muted); }
+.net-node:hover .net-halo, .net-node:focus-visible .net-halo { opacity: 1; }
+.net-node:hover .net-dot, .net-node:focus-visible .net-dot { fill: var(--accent); r: 5; }
+.net-node:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.net-node:focus-visible .net-label { fill: var(--accent-text); }
+
+/* --------------------------------------------------------------- strip --- */
+.strip { padding-bottom: clamp(56px, 8vw, 88px); }
+.strip-inner {
+  display: grid; gap: 24px; align-items: baseline;
+  border-top: 1px solid var(--line); padding-top: 24px;
+}
+@media (min-width: 1024px) {
+  .strip-inner { grid-template-columns: minmax(0,320px) minmax(0,1fr); gap: 48px; }
+}
+.strip-list { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: 15px; color: var(--ink-body); }
+.strip-list li { display: flex; align-items: center; gap: 20px; }
+.strip-list li:not(:last-child)::after { content: "·"; color: var(--ink-faint); }
+
+/* ------------------------------------------------------ product reveal --- */
+.pr { position: relative; }
+.pr-scrub { position: relative; height: 220vh; }
+.pr-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; display: grid; place-items: center; }
+.pr-layer { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.pr-head { position: relative; z-index: 2; text-align: center; max-width: 46ch; margin-inline: auto; }
+.pr-head .h2 { margin-top: 14px; }
+.pr-head p { margin-top: 14px; }
+
+/* =============================================================================
+   Reference skin over the existing sections.
+   The hero keeps its own serif display (it is unchanged by request); every
+   other heading, eyebrow, button and surface takes the reference's type,
+   colour and rhythm.
+   ========================================================================== */
+
+/* Section headings become Inter Light, the reference's display voice. */
+.h-lg, .h-md, .h-sm {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.03em;
+  text-wrap: pretty;
+}
+.h-lg { font-size: clamp(30px, 3.6vw, 52px); line-height: 1.05; font-weight: 300; }
+.h-md { font-size: clamp(24px, 2.6vw, 36px); line-height: 1.1;  font-weight: 300; }
+.h-sm { font-size: clamp(19px, 1.7vw, 22px); line-height: 1.2;  font-weight: 300; letter-spacing: -0.03em; }
+/* The reference sets emphasis in the same weight, not in italic serif. */
+.h-lg em, .h-md em { font-style: normal; color: var(--ink-muted); }
+
+/* Eyebrows: the reference's small uppercase operational label. The hero keeps
+   its chevron form. */
+.eyebrow:not(.hero-eyebrow) {
+  font-size: 10.5px; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--ink-muted); gap: 10px;
+}
+.eyebrow:not(.hero-eyebrow)::after {
+  content: ""; width: 6px; height: 6px; margin: 0;
+  border: 0; border-radius: 50%; background: var(--accent); transform: none;
+  order: -1;
+}
+.eyebrow--onDark:not(.hero-eyebrow) { color: var(--ink-muted); }
+
+/* Body copy inherits the reference's sizes and muted inks. */
+.sub  { font-size: 17px; line-height: 1.5; color: var(--ink-body); }
+.body { font-size: 15px; line-height: 1.6; color: var(--ink-body); }
+.caption { font-size: 13.5px; color: var(--ink-muted); }
+
+/* Section rhythm: the reference's clamp scale, not fixed 160px bands. */
+.band { padding-block: clamp(72px, 9vw, 112px); }
+.band--tall { padding-block: clamp(96px, 12vw, 152px); }
+.band--flush { padding-block: 0; }
+.band--fog  { background: var(--base); }
+.band--mist { background: var(--base-alt); border-block: 1px solid var(--line); }
+.band--dark {
+  background: #0f1115; color: #f7f8fa;
+  --ink:#f7f8fa; --ink-muted:#9aa1aa; --ink-body: rgba(247,248,250,0.64);
+  --line: rgba(247,248,250,0.14); --line-hair: rgba(247,248,250,0.08);
+  --surface:#16191f; --surface-elevated:#1c2027;
+  --accent-text: var(--accent-300);
+  /* The legacy sections were authored for a dark band that keeps LIGHT
+     semantics inside it: white cards, ink text on those cards, white type on
+     the band itself. Pin the bridged names so the band reads correctly in
+     either theme instead of inheriting the inverted ink. */
+  --color-ink-black: #0f1115;
+  --color-paper-white: #ffffff;
+  --color-mist-gray: #f2f3f5;
+  --color-fog-white: #f7f8fa;
+  --color-slate-gray: rgba(247,248,250,0.64);
+  --color-ash-gray: #9aa1aa;
+  --color-smoke-gray: #9aa1aa;
+}
+/* Amber reads brighter on dark surfaces, the way the reference's status text
+   does. */
+:root[data-theme="dark"], .band--dark { --color-sienna-brown: var(--accent-text); }
+
+/* Type set directly on the dark band (not inside a card) stays light. */
+.band--dark > .shell .h-lg,
+.band--dark > .shell .h-md,
+.band--dark > .shell .display,
+.band--dark > .shell > .cn-head .sub,
+.band--dark > .shell > .pf-grow-copy .sub,
+.band--dark > .shell > .pf-own-copy .sub,
+.band--dark > .shell > .in-close-copy .sub,
+.band--dark > .shell > .in-head .sub,
+.band--dark .eyebrow--onDark { color: #f7f8fa; }
+
+/* Surfaces take the reference's radius and elevation. */
+.artifact, .artifact--elevated { border-radius: var(--r-panel); box-shadow: var(--elev-mid); border: 1px solid var(--line); }
+
+/* Buttons: the reference's shape and accent. */
+.btn { height: auto; padding: 12px 22px; border-radius: var(--r-control); font-size: 14px; font-weight: 500; }
+.btn--fill { background: var(--accent); color: var(--accent-ink); }
+.btn--fill:hover { background: var(--accent-600); }
+.btn--ghost { color: var(--ink); }
+.btn--onDark.btn--fill { background: var(--accent); color: var(--accent-ink); }
+
+/* The one accent surface becomes the reference's accent wash. */
+.accent {
+  background: var(--accent-a08);
+  color: var(--accent-text);
+  border: 1px solid var(--accent-a24);
+  border-radius: var(--r-panel);
+}
+
+/* The reference never bleeds a panel past the shell: every surface sits inside
+   the gutters with both corners visible. Retire the old decorative bleeds. */
+.in-desk-frame { margin-right: 0; }
+.in-desk-stage { max-width: none; }
+.in-desk-bar { padding-right: var(--spacing-28); }
+.in-close-card { margin-right: 0; width: min(600px, 100%); }
+.pf-vs-cell--ours { margin-inline: 0; padding-inline: var(--spacing-20); }
+.pf-vs-row--head .pf-vs-cell--ours { margin-top: 0; padding-top: var(--spacing-20); }
+.pf-vs-row:last-child .pf-vs-cell--ours { padding-bottom: var(--spacing-20); }
+
+/* Only the hero keeps the serif. Every other display-scale heading — including
+   the ones set directly in the legacy files — takes the reference's Inter
+   Light voice. */
+.display:not(.hero-headline),
+.cn-frag-quote,
+.pf-foot-logo {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-weight: 300;
+  letter-spacing: -0.035em;
+}
+.display:not(.hero-headline) { font-size: clamp(38px, 4.6vw, 68px); line-height: 1.05; }
+.cn-frag-quote { letter-spacing: -0.02em; }
+.pf-foot-logo { letter-spacing: -0.01em; }
+.display:not(.hero-headline) em, .cn-frag-quote em { font-style: normal; color: var(--ink-muted); }
+
+/* Headings inside product surfaces sit at the system's light weight too. */
+.cn-modules-panel h3, .pf-trade-name, .in-desk-title, .cn-pillar-name { font-weight: 300; }
+
+/* The ghost numeral behind the chain is an ornament, not display type — it
+   moves to Inter Thin so no serif survives below the hero. */
+.cn-chain-mark { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-weight: 200; letter-spacing: -0.04em; }
+
+/* Card titles sit at the reference's 400; a large data value sits at 300, the
+   way its metric rows are set. */
+.cn-pillar-title, .pf-trade-name, .in-desk-title { font-weight: 400; letter-spacing: -0.02em; }
+.cn-chain-record-id, .cn-modules-ring b, .hero-record-id { font-weight: 300; letter-spacing: -0.02em; }
+
+/* Amber is status only. The narrative callout panels take the reference's
+   highlight treatment instead: accent tint, accent border, ordinary ink for
+   the prose — not a second chromatic family carrying copy. */
+.accent, .accent p, .accent b, .accent span { color: var(--ink); }
+.cn-pillar.accent .cn-pillar-body,
+.accent .pf-price-note, .accent .in-rule-note { color: var(--ink-body); }
+.cn-pillar.accent .cn-pillar-title,
+.pf-price-line, .in-rule-line { color: var(--ink); }
+/* The accent still marks the panel — as a tint, a border and a label. */
+.cn-pillar.accent .cn-pillar-title::before {
+  content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 10px;
+  border-radius: 50%; background: var(--accent); vertical-align: middle;
+}
+
+/* =============================================================================
+   REFERENCE SKIN — overrides the peach/sienna/serif rules that survived
+   from the old theme. Goal: zero warm colour outside amber status chips,
+   Inter weight 300 for every display heading, `.tnum` on numerics.
+   ========================================================================== */
+
+/* Kill every peach/sienna/scripted reference the legacy CSS still uses.
+   The reference app uses amber ONLY on status chips; we restore amber to
+   those chips and neutralise everything else. */
+:root {
+  --color-blush-peach: var(--accent-a14);
+  --color-sienna-brown: var(--accent-text);
+}
+:root[data-theme="dark"] { --color-sienna-brown: var(--accent-text); }
+
+/* Generic warm surfaces: stop painting them sienna. */
+.cn-pillar.accent .cn-pillar-title,
+.cn-pillar.accent .cn-pillar-body,
+.in-rule-line, .in-rule-note,
+.pf-price-line, .pf-price-note { color: var(--ink); opacity: 1; }
+.in-rule-note, .pf-price-note { color: var(--ink-body); }
+
+/* The peach row inside a panel: keep the amber tint but text stays readable. */
+.in-row--warm .in-row-main b, .in-row--warm .in-row-main span { color: var(--color-sienna-brown); }
+.in-row--warm { background: var(--color-blush-peach); }
+
+/* The peach chip set inside module panels: keep amber, drop the sienna text. */
+.cn-modules-chip--peach { background: var(--color-blush-peach); color: var(--color-sienna-brown); }
+.cn-modules-row:has(.cn-modules-chip--peach) {
+  background: var(--color-blush-peach);
+}
+.cn-modules-row:has(.cn-modules-chip--peach) .cn-modules-row-main b,
+.cn-modules-row:has(.cn-modules-chip--peach) .cn-modules-row-main span { color: var(--color-sienna-brown); }
+.cn-modules-row:has(.cn-modules-chip--peach) .cn-modules-chip--peach { background: var(--color-sienna-brown); color: #fff; }
+.cn-modules-stock-qty--low { background: var(--color-blush-peach); color: var(--color-sienna-brown); }
+.cn-modules-stock-row:has(.cn-modules-stock-qty--low) .cn-modules-stock-bar i { background: var(--color-sienna-brown); }
+.cn-modules-ring { background: conic-gradient(var(--color-sienna-brown) var(--v, 50%), var(--color-blush-peach) 0); }
+.cn-modules-ring b { color: var(--color-sienna-brown); }
+
+/* Eyebrows: the chevron ornament that base.css draws is the legacy site.
+   The reference uses a small dot instead. */
+.eyebrow:not(.hero-eyebrow)::after {
+  content: ""; display: inline-block; width: 6px; height: 6px; margin: 0 0 0 0;
+  border: 0; border-radius: 50%; background: var(--accent);
+  transform: none; order: -1; flex: none;
+}
+.eyebrow:not(.hero-eyebrow) { display: inline-flex; align-items: center; gap: 10px; }
+
+/* A section label always sits its own beat above the heading it introduces. */
+.eyebrow:not(.hero-eyebrow) + .h-lg,
+.eyebrow:not(.hero-eyebrow) + .h-md,
+.eyebrow:not(.hero-eyebrow) + .display,
+.eyebrow:not(.hero-eyebrow) + h2 { margin-top: 24px; }
+
+/* The ink stop on the dark chain reads cleanly without an italic emphasis. */
+.cn-frag-quote em,
+.h-lg em, .h-md em,
+.display:not(.hero-headline) em,
+.pf-close-heading em,
+.in-close-heading em,
+.pf-own-heading em,
+.pf-heading em,
+.cn-frag-heading em,
+.cn-chain-heading em,
+.cn-pillars-heading em,
+.cn-modules-heading em,
+.in-heading em { color: var(--ink-muted); font-style: normal; }
+.band--dark .h-lg em, .band--dark .h-md em { color: var(--ink-muted); }
+.cn-frag-quote em { color: var(--ink-muted); font-style: normal; }
+
+/* The fragmented field chips get the reference's panel chrome instead of
+   bare colourless rectangles. */
+.cn-frag-chip {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-inner);
+  box-shadow: var(--elev-low);
+  color: var(--ink);
+}
+
+/* The chain record card rides the dark band; the legacy pinned it as a
+   pure white block. Keep that but tighten to the reference radius. */
+.cn-chain-record { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-panel); box-shadow: var(--elev-mid); }
+
+/* The big watermark behind the chain moves to Inter Thin. */
+.cn-chain-mark { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; font-weight: 200; letter-spacing: -0.04em; }
+
+/* Pillar cards: flat mist surfaces, no sienna fill, no special chrome. */
+.cn-pillar--mist, .cn-pillar--fog { background: var(--base-alt); }
+
+/* Module selection strip: remove the legacy side accent bar; add a soft
+   fill so the selected row still reads. */
+.cn-modules-item:has(:checked) { background: var(--base-alt); }
+.cn-modules-item:has(:checked)::after { background: var(--accent); }
+
+/* Module frame: panel chrome, not a free-floating card. */
+.cn-modules-frame { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-panel); box-shadow: var(--elev-mid); }
+
+/* The three desks segment is the reference's Panel product surface —
+   give it the chrome, not the legacy free-floating card. */
+.in-desk-frame { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-panel); box-shadow: var(--elev-mid); overflow: hidden; }
+.in-desk-tabs { background: var(--base-alt); }
+
+/* The thread: the reference's product surface chrome. */
+.in-thread { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-panel); box-shadow: var(--elev-mid); }
+
+/* Composer: clean hairline, not a hard-coded #ececec. */
+.in-composer { background: var(--surface); border: 1px solid var(--line); }
+.in-send { background: var(--ink); }
+.band--dark .in-send { background: var(--accent); color: var(--accent-ink); }
+.band--dark .in-send svg { stroke: var(--accent-ink); }
+
+/* Source chips on the AI thread: soft pill, not a heavy bordered block. */
+.in-src-chip { background: var(--base-alt); color: var(--ink-muted); border: 1px solid var(--line); box-shadow: none; }
+
+/* The close card: panel chrome. */
+.in-close-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-panel); box-shadow: var(--elev-mid); }
+
+/* Trade cards: mist surface, like the reference's neutral panels. */
+.pf-trade { background: var(--base-alt); border: 1px solid var(--line); border-radius: var(--r-panel); box-shadow: none; }
+
+/* The "switch on two" list: a single surface, not a sienna card. */
+.pf-grow-list { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-panel); box-shadow: var(--elev-mid); }
+
+/* Comparison: lighter paper surface, no inner accent columns. */
+.pf-vs-cell--ours { background: var(--base-alt); }
+
+/* Dark band (Ownership) — all cards/rows use inked tokens, not warm fills. */
+.band--dark .pf-own-item b, .band--dark .pf-own-item span { color: var(--ink); }
+.band--dark .pf-own-item span { color: var(--ink-body); }
+.band--dark .pf-own-item { border-top-color: var(--line); }
+
+/* The final close: button is primary teal on light. */
+.pf-close-cta .btn--fill { background: var(--accent); color: var(--accent-ink); }
+.pf-close-cta .btn--fill:hover { background: var(--accent-600); }
+.pf-close-cta .btn--ghost { color: var(--ink); }
+
+/* Footer: 5 columns at desktop, brand left. The current markup has 4 nav
+   columns; expand to the reference's grid and re-style column heads. */
+.pf-foot { background: var(--base); border-top: 1px solid var(--line); }
+.pf-foot-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+  gap: 40px;
+  align-items: start;
+  padding-block: 56px;
+}
+.pf-foot-nav { display: contents; }
+.pf-foot-col { display: flex; flex-direction: column; gap: 10px; }
+.pf-foot-head {
+  margin: 0 0 8px;
+  font-size: 10.5px; font-weight: 500; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--ink-muted);
+}
+.pf-foot-col a {
+  font-size: 13px;
+  color: var(--ink-body);
+  transition: color .2s ease;
+}
+.pf-foot-col a:hover { color: var(--ink); }
+.pf-foot-logo { font-size: 21px; font-weight: 300; letter-spacing: -0.01em; }
+.pf-foot-line { color: var(--ink-muted); }
+
+/* Footer base line: thin border-top, small muted type. */
+.pf-foot-base { border-top: 1px solid var(--line); padding-top: 20px; margin-top: 0; padding-bottom: 28px; }
+.pf-foot-base p { color: var(--ink-muted); }
+
+/* Dark band: pf-close lives in the final pf-close section, ensure its
+   heading shows light. */
+.pf-close-heading { color: var(--ink); }
+.pf-close-deck, .pf-close-fine, .pf-close-reach { color: var(--ink-body); }
+.pf-close-reach a { color: var(--ink); }
+.pf-close-reach a:hover { color: var(--ink-muted); }
+
+/* Status chip text colours in the desks. */
+.in-chip--onWarm { background: var(--color-sienna-brown); color: #fff; }
+.band--dark .in-chip--onWarm { background: var(--accent); color: var(--accent-ink); }
+
+/* Reveal animation: matches the reference's 500ms cubic-bezier + per-row delay. */
+[data-reveal] { opacity: 0; transform: translateY(10px); transition: opacity .5s cubic-bezier(.22,.61,.36,1) var(--d, 0ms), transform .5s cubic-bezier(.22,.61,.36,1) var(--d, 0ms); }
+[data-reveal].is-in { opacity: 1; transform: none; }
+.rise { opacity: 0; transform: translateY(10px); transition: opacity .5s cubic-bezier(.22,.61,.36,1) var(--d, 0ms), transform .5s cubic-bezier(.22,.61,.36,1) var(--d, 0ms); }
+.is-in.rise, .is-in .rise { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal], .rise { transition: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* Inter Light — force weight 300 on all section headings */
+.display:not(.hero-headline),
+.h1, .h2, .h3,
+.h-lg, .h-md {
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+  font-weight: 300 !important;
+  letter-spacing: -0.03em !important;
+}
+
+
+/* ================================================================ HEADING MEASURE === */
+/* The contract caps headings at 15-18ch so a line never runs the full
+   container. Every section heading gets the cap; the ones that already set a
+   narrower max-width keep theirs. */
+.h-lg { max-width: 18ch; }
+.cta-heading { max-width: none; }

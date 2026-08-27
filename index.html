@@ -1,59 +1,106 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Verity — Business operating system for MSMEs</title>
-<meta name="description" content="Verity connects customers, orders, inventory, projects, people and operations into one modular business platform built for growing MSMEs.">
-<link rel="stylesheet" href="css/base.css?v=8">
-<link rel="stylesheet" href="css/overview-theme.css?v=8">
-<link rel="stylesheet" href="css/hero.css?v=8">
-<link rel="stylesheet" href="css/dash.css?v=8">
-<link rel="stylesheet" href="css/concept.css?v=8">
-<link rel="stylesheet" href="css/intelligence.css?v=8">
-<link rel="stylesheet" href="css/proof.css?v=8">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f7f8fa" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+<title>Verity: the operating system for modern business</title>
+<meta name="description" content="Verity connects the people, processes, data and workflows that keep your business moving, in one configurable operational workspace.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%277%27%20fill%3D%27%23F7F8FA%27%2F%3E%3Cg%20transform%3D%27translate%284%201%29%27%3E%3Cpath%20d%3D%27M2.6%201.6h18.8a1.6%201.6%200%20011.2%202.7L13.2%2014a1.6%201.6%200%2001-2.4%200L1.4%204.3A1.6%201.6%200%20012.6%201.6z%27%20fill%3D%27%230FA894%27%2F%3E%3Cpath%20d%3D%27M10.8%2016a1.6%201.6%200%20012.4%200l9.4%209.7a1.6%201.6%200%2001-1.2%202.7H2.6a1.6%201.6%200%2001-1.2-2.7z%27%20fill%3D%27%230FA894%27%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<script>
+  try {
+    /* Light is the default. Dark is opt-in via the toggle only. */
+    if (localStorage.getItem('verity-theme') === 'dark')
+      document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css?v=48">
+<link rel="stylesheet" href="css/hero.css?v=48">
+<link rel="stylesheet" href="css/dash.css?v=48">
+<link rel="stylesheet" href="css/concept.css?v=48">
+<link rel="stylesheet" href="css/intelligence.css?v=48">
+<link rel="stylesheet" href="css/proof.css?v=48">
+<link rel="stylesheet" href="css/verity.css?v=48">
+<link rel="stylesheet" href="css/sections.css?v=48">
+<link rel="stylesheet" href="css/motion.css?v=48">
 </head>
 <body>
 
-<!-- ===== PIECE A: shell + hero — owned by css/hero.css ===== -->
-<!-- A:START -->
-<header class="hero-nav">
-  <div class="hero-nav-inner shell">
-    <a href="#" class="hero-logo">Verity</a>
+<a href="#main" class="skip">Skip to content</a>
 
-    <input type="checkbox" id="hero-nav-toggle" class="hero-nav-toggle-input">
+<!-- ===================================================== nav ===== -->
+<header class="nav" id="nav">
+  <div class="shell nav-inner">
+    <a href="#top" class="nav-logo" aria-label="Verity, home">
+      <svg width="16" height="20" viewBox="0 0 24 30" aria-hidden="true">
+        <path d="M2.6 1.6h18.8a1.6 1.6 0 011.2 2.7L13.2 14a1.6 1.6 0 01-2.4 0L1.4 4.3A1.6 1.6 0 012.6 1.6z" fill="var(--accent)"/>
+        <path d="M10.8 16a1.6 1.6 0 012.4 0l9.4 9.7a1.6 1.6 0 01-1.2 2.7H2.6a1.6 1.6 0 01-1.2-2.7z" fill="var(--accent)"/>
+      </svg>
+      <span>verity</span>
+    </a>
 
-    <nav class="hero-nav-links" aria-label="Primary">
+    <nav class="nav-links" aria-label="Primary">
       <a href="#platform">Platform</a>
-      <a href="#modules">Modules</a>
-      <a href="#industries">Industries</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#primitives">Modules</a>
+      <a href="#intelligence">Verity AI</a>
+      <a href="#roles">Roles</a>
+      <a href="#implementation">Implementation</a>
     </nav>
 
-    <div class="hero-nav-cta">
-      <a href="https://wa.me/918744069597?text=Hi%20Verity%20%E2%80%94%20I%27d%20like%20to%20book%20a%20demo." class="btn btn--fill" target="_blank" rel="noopener">Book a demo</a>
-      <label for="hero-nav-toggle" class="hero-nav-toggle">
-        <span class="hero-sr-only">Open menu</span>
-        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+    <div class="nav-actions">
+      <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to dark theme">
+        <svg class="theme-icon theme-icon--moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M21 13a8.5 8.5 0 0 1-10-10 8.5 8.5 0 1 0 10 10Z"/></svg>
+        <svg class="theme-icon theme-icon--sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M4.2 12H2M22 12h-2.2M6.3 6.3 4.8 4.8M19.2 19.2l-1.5-1.5M17.7 6.3l1.5-1.5M4.8 19.2l1.5-1.5"/></svg>
+      </button>
+      <a href="mailto:theplotarmour@gmail.com?subject=Verity%20demo" class="nav-signin">Email us</a>
+      <a href="https://wa.me/918744069597?text=Hi%20Verity%2C%20I%27d%20like%20to%20book%20a%20demo." target="_blank" rel="noopener" class="btn btn--primary btn--sm nav-cta">Book a demo
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M1 5h11.5M8.5 1 12.8 5 8.5 9" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <label for="nav-toggle" class="nav-burger" aria-hidden="true">
+        <svg width="16" height="12" viewBox="0 0 16 12" aria-hidden="true"><path d="M0 1.5h16M0 10.5h16" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
       </label>
+    </div>
+  </div>
+
+  <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+
+  <div class="nav-sheet" id="mobile-nav">
+    <a href="#platform">Platform</a>
+    <a href="#primitives">Modules</a>
+    <a href="#intelligence">Verity AI</a>
+    <a href="#roles">Roles</a>
+    <a href="#implementation">Implementation</a>
+    <div class="nav-sheet-cta">
+      <a href="https://wa.me/918744069597?text=Hi%20Verity%2C%20I%27d%20like%20to%20book%20a%20demo." target="_blank" rel="noopener" class="btn btn--primary">Book a demo</a>
+      <a href="mailto:theplotarmour@gmail.com?subject=Verity%20demo" class="btn btn--secondary">Email us</a>
     </div>
   </div>
 </header>
 
-<section class="hero-scrub">
+<main id="main">
+<!-- ===== PIECE A: shell + hero, owned by css/hero.css ===== -->
+<!-- A:START -->
+
+
+<section class="hero-scrub" id="top" aria-labelledby="hero-heading">
   <div class="hero-stage">
     <div class="hero-wash" aria-hidden="true"></div>
 
     <div class="hero-copy">
       <div class="shell hero-copy-inner">
         <p class="eyebrow hero-eyebrow" data-reveal>Business operating system for MSMEs</p>
-        <h1 class="display hero-headline" data-words>The order was always real&nbsp;— <em>the connection never was.</em></h1>
-        <p class="sub hero-sub" data-reveal>Right now, that order lives across WhatsApp, a spreadsheet, Tally and a notebook by the machine. Verity keeps it as one record — from the first enquiry to the last rupee collected.</p>
+        <h1 class="display hero-headline" id="hero-heading" data-words>The order was always real. <em>The connection never was.</em></h1>
+        <p class="sub hero-sub" data-reveal>Right now, that order lives across WhatsApp, a spreadsheet, Tally and a notebook by the machine. Verity keeps it as one record, from the first enquiry to the last rupee collected.</p>
         <div class="hero-ctas" data-reveal>
-          <a href="https://wa.me/918744069597?text=Hi%20Verity%20%E2%80%94%20I%27d%20like%20to%20book%20a%20demo." class="btn btn--fill" target="_blank" rel="noopener">Book a demo</a>
+          <a href="https://wa.me/918744069597?text=Hi%20Verity%2C%20I%27d%20like%20to%20book%20a%20demo." class="btn btn--fill" target="_blank" rel="noopener">Book a demo</a>
           <a href="#platform" class="hero-explore-link">Explore Verity</a>
         </div>
-        <p class="caption hero-modular-note" data-reveal>Modular by design — start with Orders or Inventory, add the rest as you grow.</p>
+        <p class="caption hero-modular-note" data-reveal>Modular by design. Start with Orders or Inventory, add the rest as you grow.</p>
       </div>
 
     </div>
@@ -65,19 +112,19 @@
 
             <aside class="vd-side" data-shard>
               <div class="vd-brand">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M2.6 3.2Q12 6.6 21.4 3.2L12 12Z"/><path d="M2.6 20.8Q12 17.4 21.4 20.8L12 12Z"/></svg>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.6 3.2Q12 6.6 21.4 3.2L12 12Z"/><path d="M2.6 20.8Q12 17.4 21.4 20.8L12 12Z"/></svg>
                 <span>verity</span>
               </div>
               <nav class="vd-nav">
-                <span class="vd-navitem is-current"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.8V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.8"/></svg>Overview</span>
-                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 3v3M16 3v3"/></svg>Inventory</span>
-                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h11a1 1 0 0 1 1 1v11H5a1 1 0 0 1-1-1V5Z"/><path d="M16 9h3l2 3v5h-5"/><circle cx="8" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>Orders</span>
-                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg>Logistics</span>
-                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M17 7.5a2.5 2.5 0 0 1 0 5M18 20a5 5 0 0 0-2-4"/></svg>Suppliers</span>
-                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v4h4"/></svg>Reports</span>
-                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Analytics</span>
-                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="7" r="2.5"/><circle cx="18" cy="17" r="2.5"/><path d="M8.5 7H14a4 4 0 0 1 0 8h-4"/></svg>Workflows</span>
-                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7.5 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3 15a2 2 0 1 1 0-4 1.6 1.6 0 0 0 1.5-1.1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 9 4.6 2 2 0 1 1 13 4.6a1.6 1.6 0 0 0 1.8.3 1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0"/></svg>Settings</span>
+                <span class="vd-navitem is-current"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.8V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.8"/></svg>Overview</span>
+                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 3v3M16 3v3"/></svg>Inventory</span>
+                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h11a1 1 0 0 1 1 1v11H5a1 1 0 0 1-1-1V5Z"/><path d="M16 9h3l2 3v5h-5"/><circle cx="8" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>Orders</span>
+                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg>Logistics</span>
+                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M17 7.5a2.5 2.5 0 0 1 0 5M18 20a5 5 0 0 0-2-4"/></svg>Suppliers</span>
+                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v4h4"/></svg>Reports</span>
+                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Analytics</span>
+                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="7" r="2.5"/><circle cx="18" cy="17" r="2.5"/><path d="M8.5 7H14a4 4 0 0 1 0 8h-4"/></svg>Workflows</span>
+                <span class="vd-navitem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7.5 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3 15a2 2 0 1 1 0-4 1.6 1.6 0 0 0 1.5-1.1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.6 1.6 0 0 0 9 4.6 2 2 0 1 1 13 4.6a1.6 1.6 0 0 0 1.8.3 1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0"/></svg>Settings</span>
               </nav>
               <div class="vd-user">
                 <span class="vd-avatar"></span>
@@ -89,8 +136,8 @@
               <header class="vd-top" data-shard>
                 <span class="vd-search">Search for SKU, Product, Batch ID, or Location</span>
                 <span class="vd-pill">All Warehouses</span>
-                <span class="vd-iconbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></svg></span>
-                <span class="vd-iconbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 1 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 13 6 9Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg></span>
+                <span class="vd-iconbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></svg></span>
+                <span class="vd-iconbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9a6 6 0 1 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 13 6 9Z"/><path d="M10 19a2 2 0 0 0 4 0"/></svg></span>
                 <span class="vd-initials">JC</span>
               </header>
 
@@ -138,10 +185,10 @@
 
                 <article class="vd-card vd-logi" data-shard>
                   <div class="vd-map">
-                    <svg viewBox="0 0 800 260" preserveAspectRatio="xMidYMid slice">
+                    <svg viewBox="0 0 800 260" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
                       <defs>
                         <pattern id="vdLand" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="1.6" cy="1.6" r="1.5" fill="currentColor"/></pattern>
-                        <radialGradient id="vdGlow"><stop offset="0%" stop-color="#00d1b2" stop-opacity=".85"/><stop offset="60%" stop-color="#00d1b2" stop-opacity=".18"/><stop offset="100%" stop-color="#00d1b2" stop-opacity="0"/></radialGradient>
+                        <radialGradient id="vdGlow"><stop offset="0%" stop-color="var(--accent)" stop-opacity=".85"/><stop offset="60%" stop-color="var(--accent)" stop-opacity=".18"/><stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/></radialGradient>
                       </defs>
                       <g fill="url(#vdLand)">
                         <path d="M60 54c26-16 66-18 96-9 22 7 40 3 58 12 12 6 8 22-6 30-18 10-24 28-42 34-16 6-28 22-46 17-20-6-22-29-38-40-16-11-40-33-22-44Z"/>
@@ -151,10 +198,10 @@
                         <path d="M600 168c20-7 44 5 51 23 7 21-11 39-32 39-23 0-41-18-37-41 2-12 9-18 18-21Z"/>
                       </g>
                       <g>
-                        <path d="M196 118 Q330 60 430 130 T672 108" fill="none" stroke="#00d1b2" stroke-opacity=".5" stroke-width="1.4" stroke-dasharray="3 6" stroke-linecap="round"/>
-                        <circle cx="196" cy="118" r="46" fill="url(#vdGlow)"/><circle cx="196" cy="118" r="5" fill="#00d1b2"/>
-                        <circle cx="612" cy="92" r="26" fill="url(#vdGlow)"/><circle cx="612" cy="92" r="3.4" fill="#00d1b2"/>
-                        <circle cx="668" cy="152" r="22" fill="url(#vdGlow)"/><circle cx="668" cy="152" r="3.4" fill="#00d1b2"/>
+                        <path d="M196 118 Q330 60 430 130 T672 108" fill="none" stroke="var(--accent)" stroke-opacity=".5" stroke-width="1.4" stroke-dasharray="3 6" stroke-linecap="round"/>
+                        <circle cx="196" cy="118" r="46" fill="url(#vdGlow)"/><circle cx="196" cy="118" r="5" fill="var(--accent)"/>
+                        <circle cx="612" cy="92" r="26" fill="url(#vdGlow)"/><circle cx="612" cy="92" r="3.4" fill="var(--accent)"/>
+                        <circle cx="668" cy="152" r="22" fill="url(#vdGlow)"/><circle cx="668" cy="152" r="3.4" fill="var(--accent)"/>
                       </g>
                     </svg>
                   </div>
@@ -172,7 +219,7 @@
                 <span class="vd-pill">Category</span>
                 <span class="vd-pill">Supplier</span>
                 <span class="vd-pill">Design</span>
-                <span class="vd-iconbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span>
+                <span class="vd-iconbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span>
                 <span class="vd-add">+ Add item</span>
               </div>
 
@@ -193,662 +240,1132 @@
 </section>
 <!-- A:END -->
 
-<!-- ===== PIECE B: concept + modules — owned by css/concept.css ===== -->
+<!-- ===== PIECE B: concept + modules, owned by css/concept.css ===== -->
 <!-- B:START -->
 
-<!-- ---------- B1: the fragmentation problem ---------- -->
-<section class="cn-frag band" id="problem">
-  <div class="shell cn-frag-inner">
-    <div class="cn-frag-copy">
-      <p class="eyebrow" data-reveal>The Tuesday problem</p>
-      <h2 class="h-lg cn-frag-heading" data-words>Disconnected.</h2>
-      <p class="sub cn-frag-sub cn-deck" data-reveal>WhatsApp holds the chat. Excel holds the stock count. Tally holds the books. None of them talk to each other.</p>
-      <p class="cn-frag-quote" data-reveal>SO-1042 needed 40 sheets of MS&nbsp;2mm. Excel said 40 were in stock. The floor had 12. <em>Raj knew — he just hadn't opened Excel.</em></p>
-    </div>
-    <div class="cn-frag-scatter" aria-hidden="true" data-reveal>
-      <div class="cn-frag-chip artifact cn-frag-chip--1"><span class="cn-frag-chip-name">WhatsApp</span><small class="cn-frag-chip-line">Customer chat</small></div>
-      <div class="cn-frag-chip artifact cn-frag-chip--2"><span class="cn-frag-chip-name">Excel</span><small class="cn-frag-chip-line">Inventory count</small></div>
-      <div class="cn-frag-chip artifact cn-frag-chip--3"><span class="cn-frag-chip-name">Tally</span><small class="cn-frag-chip-line">Accounts</small></div>
-      <div class="cn-frag-chip artifact cn-frag-chip--4"><span class="cn-frag-chip-name">Notebook</span><small class="cn-frag-chip-line">Shop floor</small></div>
-      <div class="cn-frag-chip artifact cn-frag-chip--5"><span class="cn-frag-chip-name">CRM</span><small class="cn-frag-chip-line">Old leads</small></div>
-      <div class="cn-frag-chip artifact cn-frag-chip--6"><span class="cn-frag-chip-name">Billing tool</span><small class="cn-frag-chip-line">Invoices</small></div>
-    </div>
-  </div>
-</section>
-
-<!-- ---------- B2: the connected chain — one record, nine stops, full-bleed dark band ---------- -->
-<section class="cn-chain band band--dark" id="platform">
+<!-- ---------- B1: Fragmentation ---------- -->
+<section class="section section--alt section--tall" id="how-it-works" aria-labelledby="fragmentation-heading">
   <div class="shell">
-    <div class="cn-chain-head">
-      <p class="eyebrow eyebrow--onDark" data-reveal>The connected chain</p>
-      <h2 class="h-lg cn-chain-heading" data-words>One thread.</h2>
-      <p class="sub cn-chain-sub cn-deck" data-reveal>One business, one operational truth — the same order, seen nine ways, from first enquiry to the last rupee collected.</p>
-    </div>
+    <p class="eyebrow" data-reveal>The way business actually runs</p>
 
-    <div class="cn-chain-body">
-      <span class="cn-chain-mark" aria-hidden="true">01→09</span>
+    <div style="margin-top:48px;display:grid;gap:clamp(48px,5vw,80px);align-items:start;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);">
+      <div>
+        <h2 id="fragmentation-heading" class="h-lg" data-reveal data-words>Your business isn't broken.<br>Your systems are fragmented.</h2>
 
-      <div class="cn-chain-record" data-reveal>
-        <p class="cn-chain-record-eyebrow">The record</p>
-        <p class="cn-chain-record-id">SO-1042</p>
-        <p class="cn-chain-record-customer">Precision Fabricators Pvt Ltd · Pune</p>
-        <dl class="cn-chain-record-fields">
-          <div><dt>Promised</dt><dd>14 Aug</dd></div>
-          <div><dt>Shipped</dt><dd>22 Aug</dd></div>
-          <div><dt>Invoice</dt><dd>INV-0871</dd></div>
-          <div><dt>Amount</dt><dd>₹1,84,200</dd></div>
-        </dl>
-        <p class="cn-chain-record-note">Every stop below reads this same record. Nobody re-keys it.</p>
+        <div style="margin-top:48px;max-width:42ch;border-top:1px solid var(--line);" data-stagger="p">
+          <p style="padding:20px 0;border-bottom:1px solid var(--line);font-size:clamp(17px,1.8vw,22px);line-height:1.4;font-weight:300;" data-reveal>Information gets trapped in conversations.</p>
+          <p style="padding:20px 0;border-bottom:1px solid var(--line);font-size:clamp(17px,1.8vw,22px);line-height:1.4;font-weight:300;" data-reveal>Work gets trapped in spreadsheets.</p>
+          <p style="padding:20px 0;font-size:clamp(17px,1.8vw,22px);line-height:1.4;font-weight:300;" data-reveal>Decisions get trapped in people.</p>
+        </div>
       </div>
 
-      <div class="cn-chain-rail-wrap">
-        <span class="cn-chain-rail-line" aria-hidden="true"><i></i></span>
-        <ol class="cn-chain-rail">
-          <li class="cn-chain-stop" data-reveal style="--d:0ms">
-            <span class="cn-chain-stop-num">01</span>
-            <span class="cn-chain-stop-body">
-              <p class="cn-chain-stop-name">Customer</p>
-              <p class="cn-chain-stop-knows">Precision Fabricators Pvt Ltd, Pune — on the books since March 2023.</p>
-            </span>
-          </li>
-          <li class="cn-chain-stop" data-reveal style="--d:40ms">
-            <span class="cn-chain-stop-num">02</span>
-            <span class="cn-chain-stop-body">
-              <p class="cn-chain-stop-name">Opportunity</p>
-              <p class="cn-chain-stop-knows">PO-4471, quoted at ₹1,84,200.</p>
-            </span>
-          </li>
-          <li class="cn-chain-stop" data-reveal style="--d:80ms">
-            <span class="cn-chain-stop-num">03</span>
-            <span class="cn-chain-stop-body">
-              <p class="cn-chain-stop-name">Order <span class="cn-chain-tag">SO-1042</span></p>
-              <p class="cn-chain-stop-knows">Confirmed 12 Aug. Promised the 14th.</p>
-            </span>
-          </li>
-          <li class="cn-chain-stop" data-reveal style="--d:120ms">
-            <span class="cn-chain-stop-num">04</span>
-            <span class="cn-chain-stop-body">
-              <p class="cn-chain-stop-name">Work <span class="cn-chain-tag">SO-1042</span></p>
-              <p class="cn-chain-stop-knows">Cutting queue held — 12 sheets of MS 2mm on the floor, 40 needed.</p>
-            </span>
-          </li>
-          <li class="cn-chain-stop" data-reveal style="--d:160ms">
-            <span class="cn-chain-stop-num">05</span>
-            <span class="cn-chain-stop-body">
-              <p class="cn-chain-stop-name">Inventory <span class="cn-chain-tag">SO-1042</span></p>
-              <p class="cn-chain-stop-knows">Excel said 40 sheets in stock. There were 12.</p>
-            </span>
-          </li>
-          <li class="cn-chain-stop" data-reveal style="--d:200ms">
-            <span class="cn-chain-stop-num">06</span>
-            <span class="cn-chain-stop-body">
-              <p class="cn-chain-stop-name">Delivery <span class="cn-chain-tag">SO-1042</span></p>
-              <p class="cn-chain-stop-knows">Shipped the 22nd. The customer heard first, not last.</p>
-            </span>
-          </li>
-          <li class="cn-chain-stop" data-reveal style="--d:240ms">
-            <span class="cn-chain-stop-num">07</span>
-            <span class="cn-chain-stop-body">
-              <p class="cn-chain-stop-name">Invoice <span class="cn-chain-tag">INV-0871</span></p>
-              <p class="cn-chain-stop-knows">Raised the day it shipped, not a week after.</p>
-            </span>
-          </li>
-          <li class="cn-chain-stop" data-reveal style="--d:280ms">
-            <span class="cn-chain-stop-num">08</span>
-            <span class="cn-chain-stop-body">
-              <p class="cn-chain-stop-name">Payment <span class="cn-chain-tag">₹1,84,200</span></p>
-              <p class="cn-chain-stop-knows">Due in 4 days. Reminder sent automatically, not chased.</p>
-            </span>
-          </li>
-          <li class="cn-chain-stop cn-chain-stop--last" data-reveal style="--d:320ms">
-            <span class="cn-chain-stop-num">09</span>
-            <span class="cn-chain-stop-body">
-              <p class="cn-chain-stop-name">Intelligence</p>
-              <p class="cn-chain-stop-knows">Six orders held by the same MS-2mm shortage this month — caught after the first one.</p>
-            </span>
-          </li>
-        </ol>
+      <div style="position:relative;min-height:380px;" role="img" aria-label="Disconnected systems: Excel, WhatsApp, Email, Google Sheets, Legacy ERP, Manual approvals, Human follow-ups, Disconnected reports">
+        <svg style="position:absolute;inset:0;height:100%;width:100%;" aria-hidden="true" fill="none">
+          <line x1="12%" y1="14%" x2="26%" y2="22%" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 5"/>
+          <line x1="54%" y1="8%" x2="68%" y2="16%" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 5"/>
+          <line x1="82%" y1="22%" x2="96%" y2="30%" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 5"/>
+          <line x1="26%" y1="38%" x2="40%" y2="46%" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 5"/>
+          <line x1="64%" y1="46%" x2="78%" y2="54%" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 5"/>
+          <line x1="10%" y1="66%" x2="24%" y2="74%" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 5"/>
+          <line x1="48%" y1="78%" x2="62%" y2="86%" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 5"/>
+          <line x1="78%" y1="64%" x2="92%" y2="72%" stroke="var(--line)" stroke-width="1" stroke-dasharray="2 5"/>
+        </svg>
+        <span style="position:absolute;left:4%;top:6%;transform:rotate(-1.5deg);display:block;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--surface);font-size:12.5px;box-shadow:var(--elev-low);" data-reveal>Excel</span>
+        <span style="position:absolute;left:46%;top:0%;transform:rotate(1deg);display:block;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--surface);font-size:12.5px;box-shadow:var(--elev-low);" data-reveal>WhatsApp</span>
+        <span style="position:absolute;left:74%;top:14%;transform:rotate(-0.5deg);display:block;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--surface);font-size:12.5px;box-shadow:var(--elev-low);" data-reveal>Email</span>
+        <span style="position:absolute;left:18%;top:30%;transform:rotate(1.5deg);display:block;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--surface);font-size:12.5px;box-shadow:var(--elev-low);" data-reveal>Google Sheets</span>
+        <span style="position:absolute;left:56%;top:38%;transform:rotate(-1deg);display:block;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--surface);font-size:12.5px;box-shadow:var(--elev-low);" data-reveal>Legacy ERP</span>
+        <span style="position:absolute;left:2%;top:58%;transform:rotate(0.5deg);display:block;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--surface);font-size:12.5px;box-shadow:var(--elev-low);" data-reveal>Manual approvals</span>
+        <span style="position:absolute;left:40%;top:70%;transform:rotate(-1.5deg);display:block;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--surface);font-size:12.5px;box-shadow:var(--elev-low);" data-reveal>Human follow-ups</span>
+        <span style="position:absolute;left:70%;top:56%;transform:rotate(1deg);display:block;border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:var(--surface);font-size:12.5px;box-shadow:var(--elev-low);" data-reveal>Disconnected reports</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ---------- B3: three-card row ---------- -->
-<section class="cn-pillars band" id="why">
+<!-- ---------- B2: WhatIsVerity ---------- -->
+<section class="section section--alt section--tall" id="platform" aria-labelledby="platform-heading">
   <div class="shell">
-    <p class="eyebrow" data-reveal>Why it holds together</p>
-    <h2 class="h-lg cn-pillars-heading" data-words>By design.</h2>
-    <p class="sub cn-pillars-sub cn-deck" data-reveal>Connected software usually breaks in three places — memory, entry and adoption. Here's how Verity holds at each.</p>
+    <div style="display:grid;gap:clamp(48px,5vw,80px);align-items:start;grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);" data-stagger="> div > div">
+      <div>
+        <p class="eyebrow" data-reveal>What Verity is</p>
+        <h2 id="platform-heading" class="h-lg" data-reveal data-words>Not another tool.<br>Your operational layer.</h2>
+        <p class="sub" style="margin-top:24px;max-width:50ch;" data-reveal>Verity sits across the everyday operations of your business, connecting teams, workflows, records and decisions without forcing your business into someone else's rigid structure.</p>
+      </div>
 
-    <div class="cn-pillars-grid">
-      <div class="cn-pillar accent" data-reveal>
-        <p class="cn-pillar-title">No more ask-Raj.</p>
-        <p class="cn-pillar-body">Every order carries who confirmed it, who flagged the shortfall, and when. The answer doesn't live in one person's head anymore.</p>
-      </div>
-      <div class="cn-pillar cn-pillar--mist" data-reveal style="--d:80ms">
-        <p class="cn-pillar-title">Modular</p>
-        <p class="cn-pillar-body">Start with Orders or Inventory. Add Projects, Workforce or Finance when the business is ready for them — not before.</p>
-      </div>
-      <div class="cn-pillar cn-pillar--fog" data-reveal style="--d:160ms">
-        <p class="cn-pillar-title">No double entry.</p>
-        <p class="cn-pillar-body">Log it once — from the shop floor, a phone, or the office. It shows up already linked in Orders, Inventory and Finance.</p>
+      <div style="display:flex;flex-direction:column;gap:12px;align-items:center;perspective:1200px;">
+        <div style="width:100%;border:1px solid var(--accent-a40);border-radius:16px;padding:20px;background:var(--accent-a08);box-shadow:var(--elev-mid);transform:rotateX(9deg);" data-reveal>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+            <span style="font-size:26px;font-weight:300;letter-spacing:-0.02em;">Verity</span>
+            <span class="label">The operational layer</span>
+          </div>
+        </div>
+        <div style="width:94%;border:1px solid var(--line);border-radius:16px;padding:20px;background:var(--surface);box-shadow:var(--elev-mid);transform:rotateX(9deg) translateZ(-26px);" data-reveal>
+          <div style="display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;">
+            <span style="font-size:19px;font-weight:300;letter-spacing:-0.02em;">People</span>
+            <span style="font-size:19px;font-weight:300;letter-spacing:-0.02em;">Workflows</span>
+            <span style="font-size:19px;font-weight:300;letter-spacing:-0.02em;">Data</span>
+            <span class="label">What the business runs on</span>
+          </div>
+        </div>
+        <div style="width:88%;border:1px solid var(--line);border-radius:16px;padding:20px;background:var(--surface);box-shadow:var(--elev-mid);transform:rotateX(9deg) translateZ(-52px);" data-reveal>
+          <div style="display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;">
+            <span style="font-size:19px;font-weight:300;letter-spacing:-0.02em;">Automation</span>
+            <span class="label">Work that moves itself</span>
+          </div>
+        </div>
+        <div style="width:82%;border:1px solid var(--line);border-radius:16px;padding:20px;background:var(--surface);box-shadow:var(--elev-mid);transform:rotateX(9deg) translateZ(-78px);" data-reveal>
+          <div style="display:flex;align-items:baseline;gap:24px;flex-wrap:wrap;">
+            <span style="font-size:19px;font-weight:300;letter-spacing:-0.02em;">Insights</span>
+            <span class="label">What leadership sees</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ---------- B4: the modules ---------- -->
-<section class="cn-modules band band--mist" id="modules">
+<!-- ---------- B3: CommandCenter ---------- -->
+<section class="section section--alt section--tall" id="command" aria-labelledby="command-heading">
   <div class="shell">
-    <p class="eyebrow" data-reveal>Choose what you need</p>
-    <h2 class="h-lg cn-modules-heading" data-words>The modules.</h2>
-    <p class="sub cn-modules-sub cn-deck" data-reveal>Eight desks, one record. CRM opens at Customer, Orders carries Order through Delivery, Finance closes it at Invoice and Payment.</p>
+    <div style="display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:32px;margin-bottom:48px;">
+      <div>
+        <p class="eyebrow" data-reveal>Live operational picture</p>
+        <h2 id="command-heading" class="h-lg" data-reveal data-words>Know what is happening.<br>Before someone tells you.</h2>
+      </div>
+      <p class="sub" style="max-width:32ch;font-size:15px;" data-reveal>Leadership sees the operation as it runs, not in a report assembled a week after it mattered.</p>
+    </div>
 
-    <fieldset class="cn-modules-shell" data-reveal>
-      <legend class="cn-sr-only">Choose a module to preview</legend>
-      <div class="cn-modules-grid">
-        <div class="cn-modules-list">
-          <label class="cn-modules-item" data-mod="crm">
-            <input type="radio" name="cn-mod" class="cn-modules-radio" value="crm">
-            <span class="cn-modules-item-name">CRM</span>
-            <span class="cn-modules-item-line">Every account and conversation, in one place.</span>
-          </label>
-          <label class="cn-modules-item" data-mod="sales">
-            <input type="radio" name="cn-mod" class="cn-modules-radio" value="sales">
-            <span class="cn-modules-item-name">Sales</span>
-            <span class="cn-modules-item-line">Quotes and follow-ups that don't fall through WhatsApp.</span>
-          </label>
-          <label class="cn-modules-item" data-mod="orders">
-            <input type="radio" name="cn-mod" class="cn-modules-radio" value="orders" checked>
-            <span class="cn-modules-item-name">Orders</span>
-            <span class="cn-modules-item-line">From PO to delivery, tracked as one record.</span>
-          </label>
-          <label class="cn-modules-item" data-mod="inventory">
-            <input type="radio" name="cn-mod" class="cn-modules-radio" value="inventory">
-            <span class="cn-modules-item-name">Inventory</span>
-            <span class="cn-modules-item-line">Stock levels the shop floor and the office agree on.</span>
-          </label>
-          <label class="cn-modules-item" data-mod="projects">
-            <input type="radio" name="cn-mod" class="cn-modules-radio" value="projects">
-            <span class="cn-modules-item-name">Projects</span>
-            <span class="cn-modules-item-line">Milestones, drawings and site progress together.</span>
-          </label>
-          <label class="cn-modules-item" data-mod="operations">
-            <input type="radio" name="cn-mod" class="cn-modules-radio" value="operations">
-            <span class="cn-modules-item-name">Operations</span>
-            <span class="cn-modules-item-line">What's queued, what's running, what's stuck.</span>
-          </label>
-          <label class="cn-modules-item" data-mod="workforce">
-            <input type="radio" name="cn-mod" class="cn-modules-radio" value="workforce">
-            <span class="cn-modules-item-name">Workforce</span>
-            <span class="cn-modules-item-line">Attendance, shifts and who's on which job.</span>
-          </label>
-          <label class="cn-modules-item" data-mod="finance">
-            <input type="radio" name="cn-mod" class="cn-modules-radio" value="finance">
-            <span class="cn-modules-item-name">Finance</span>
-            <span class="cn-modules-item-line">Invoices, payments and the ledger, reconciled.</span>
-          </label>
+    <div style="position:relative;" data-reveal>
+      <div class="panel panel--high" style="position:relative;overflow:hidden;">
+
+        <!-- Panel header -->
+        <div class="panel-head">
+          <span class="label" style="flex:none;">Verity / Command centre</span>
+          <div class="panel-meta">
+            <span>All regions</span>
+            <span>Q3</span>
+            <span style="color:var(--accent-text);">3 need attention</span>
+          </div>
+          <div class="panel-live"><i></i><span class="label" style="color:var(--accent);">Live</span></div>
         </div>
 
-        <div class="cn-modules-visual" aria-hidden="true">
-          <div class="cn-modules-frame artifact">
-            <div class="cn-modules-panel" data-panel="crm">
-              <p class="cn-modules-crumb">Verity <i>/</i> CRM</p>
-              <div class="cn-modules-row"><div class="cn-modules-row-main"><b>Precision Fabricators</b><span>Pune · Open: SO-1042, promised 14 Aug</span></div><span class="cn-modules-chip">Active</span></div>
-              <div class="cn-modules-row"><div class="cn-modules-row-main"><b>Shree Engineering Works</b><span>Nashik · 5d ago</span></div><span class="cn-modules-chip cn-modules-chip--muted">Follow up</span></div>
-              <div class="cn-modules-row"><div class="cn-modules-row-main"><b>Om Sai Traders</b><span>Aurangabad · Today</span></div><span class="cn-modules-chip">New lead</span></div>
+        <!-- 6 metric blocks -->
+        <div class="metric-row">
+          <div class="metric">
+            <div class="label">Revenue</div>
+            <div style="margin-top:8px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;">
+              <span class="tnum" style="font-size:clamp(24px,2.6vw,32px);line-height:1;font-weight:300;letter-spacing:-0.025em;">₹4.2 Cr</span>
+              <svg width="78" height="26" aria-hidden="true"><polyline points="0,22 13,18 26,20 39,14 52,10 65,12 78,5" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="78" cy="5" r="2.5" fill="var(--accent)"/></svg>
             </div>
-            <div class="cn-modules-panel" data-panel="sales">
-              <p class="cn-modules-crumb">Verity <i>/</i> Sales</p>
-              <div class="cn-modules-row"><div class="cn-modules-row-main"><b>QT-118</b><span>Sheet metal enclosures</span></div><span class="cn-modules-chip cn-modules-chip--muted">Quoted</span></div>
-              <div class="cn-modules-row"><div class="cn-modules-row-main"><b>QT-121</b><span>SS railing set</span></div><span class="cn-modules-chip cn-modules-chip--muted">Negotiation</span></div>
-              <div class="cn-modules-row"><div class="cn-modules-row-main"><b>QT-124</b><span>Precision Fabricators · MS brackets, 500 pcs · ₹1,84,200</span></div><span class="cn-modules-chip">Won → SO-1042</span></div>
+            <div class="metric-note">quarter to date</div>
+          </div>
+          <div class="metric">
+            <div class="label">Active work</div>
+            <div style="margin-top:8px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;">
+              <span class="tnum" style="font-size:clamp(24px,2.6vw,32px);line-height:1;font-weight:300;letter-spacing:-0.025em;">318</span>
+              <svg width="78" height="26" aria-hidden="true"><polyline points="0,20 13,17 26,18 39,14 52,10 65,12 78,9" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="78" cy="9" r="2.5" fill="var(--accent)"/></svg>
             </div>
-            <div class="cn-modules-panel" data-panel="orders">
-              <p class="cn-modules-crumb">Verity <i>/</i> Orders</p>
-              <div class="cn-modules-row"><div class="cn-modules-row-main"><b>SO-1038</b><span>Anand Metal Works</span></div><span class="cn-modules-chip">Ready</span></div>
-              <div class="cn-modules-row"><div class="cn-modules-row-main"><b>SO-1041</b><span>Kalyani Structurals</span></div><span class="cn-modules-chip cn-modules-chip--muted">In production</span></div>
-              <div class="cn-modules-row"><div class="cn-modules-row-main"><b>SO-1042</b><span>Precision Fabricators · promised 14 Aug, now 22 Aug</span></div><span class="cn-modules-chip cn-modules-chip--peach">Delayed</span></div>
+            <div class="metric-note">items in flight</div>
+          </div>
+          <div class="metric" style="border-top:1px solid var(--line);">
+            <div class="label">Delayed</div>
+            <div style="margin-top:8px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;">
+              <span class="tnum" style="font-size:clamp(24px,2.6vw,32px);line-height:1;font-weight:300;letter-spacing:-0.025em;color:var(--warn);">14</span>
+              <svg width="78" height="26" aria-hidden="true"><polyline points="0,22 13,18 26,16 39,17 52,14 65,13 78,10" fill="none" stroke="var(--warn)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="78" cy="10" r="2.5" fill="var(--warn)"/></svg>
             </div>
-            <div class="cn-modules-panel" data-panel="inventory">
-              <p class="cn-modules-crumb">Verity <i>/</i> Inventory</p>
-              <div class="cn-modules-stock">
-                <div class="cn-modules-stock-row"><span class="cn-modules-stock-name">MS sheet, 2mm<small>Pulled by SO-1042</small></span><div class="cn-modules-stock-bar"><i style="--v:8%"></i></div><span class="cn-modules-stock-qty cn-modules-stock-qty--low">12 left</span></div>
-                <div class="cn-modules-stock-row"><span class="cn-modules-stock-name">Hex bolt, M8</span><div class="cn-modules-stock-bar"><i style="--v:70%"></i></div><span class="cn-modules-stock-qty">240 left</span></div>
-                <div class="cn-modules-stock-row"><span class="cn-modules-stock-name">Weld rod, E6013</span><div class="cn-modules-stock-bar"><i style="--v:14%"></i></div><span class="cn-modules-stock-qty cn-modules-stock-qty--low">6 kg</span></div>
+            <div class="metric-note">past committed date</div>
+          </div>
+          <div class="metric" style="border-top:1px solid var(--line);">
+            <div class="label">Pending approvals</div>
+            <div style="margin-top:8px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;">
+              <span class="tnum" style="font-size:clamp(24px,2.6vw,32px);line-height:1;font-weight:300;letter-spacing:-0.025em;">27</span>
+              <svg width="78" height="26" aria-hidden="true"><polyline points="0,20 13,18 26,19 39,17 52,15 65,16 78,14" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="78" cy="14" r="2.5" fill="var(--accent)"/></svg>
+            </div>
+            <div class="metric-note">4 over threshold</div>
+          </div>
+          <div class="metric" style="border-top:1px solid var(--line);">
+            <div class="label">Team utilisation</div>
+            <div style="margin-top:8px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;">
+              <span class="tnum" style="font-size:clamp(24px,2.6vw,32px);line-height:1;font-weight:300;letter-spacing:-0.025em;">78%</span>
+              <svg width="78" height="26" aria-hidden="true"><polyline points="0,22 13,20 26,18 39,17 52,16 65,17 78,16" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="78" cy="16" r="2.5" fill="var(--accent)"/></svg>
+            </div>
+            <div class="metric-note">billable capacity</div>
+          </div>
+          <div class="metric" style="border-top:1px solid var(--line);">
+            <div class="label">Customer health</div>
+            <div style="margin-top:8px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;">
+              <span class="tnum" style="font-size:clamp(24px,2.6vw,32px);line-height:1;font-weight:300;letter-spacing:-0.025em;">92</span>
+              <svg width="78" height="26" aria-hidden="true"><polyline points="0,20 13,19 26,17 39,18 52,15 65,13 78,13" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="78" cy="13" r="2.5" fill="var(--accent)"/></svg>
+            </div>
+            <div class="metric-note">of 100 · 3 accounts at risk</div>
+          </div>
+        </div>
+
+        <!-- Body: chart + sidebar -->
+        <div style="display:grid;grid-template-columns:1fr 340px;">
+          <div style="padding:18px;display:flex;flex-direction:column;">
+            <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:16px;">
+              <span class="label">Operational throughput</span>
+              <span style="font-size:11.5px;color:var(--ink-muted);">rolling 7 days</span>
+            </div>
+            <!-- Seven days of throughput. A trend over time is a line, not a
+                 row of bars, and one series carries one hue: the tint used to
+                 grade these bars by value was colouring rank, not identity. -->
+            <figure style="margin:0;flex:1;display:flex;flex-direction:column;min-height:120px;">
+              <svg viewBox="0 0 700 132" preserveAspectRatio="none" style="display:block;width:100%;flex:1;min-height:120px;overflow:visible;" role="img" aria-label="Operational throughput over the last seven days, rising from 62 to 91 percent of capacity.">
+                <path d="M0,120 L0,53 L116.7,46.6 L233.3,49.8 L350,40.1 L466.7,34.7 L583.3,30.4 L700,21.7 L700,120 Z" fill="var(--accent-a14)"/>
+                <polyline points="0,53 116.7,46.6 233.3,49.8 350,40.1 466.7,34.7 583.3,30.4 700,21.7" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+                <line x1="0" y1="120" x2="700" y2="120" stroke="var(--line)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+                <circle cx="700" cy="21.7" r="3.5" fill="var(--accent)" stroke="var(--surface)" stroke-width="2" vector-effect="non-scaling-stroke"/>
+              </svg>
+              <figcaption style="display:flex;justify-content:space-between;margin-top:8px;font-size:11.5px;color:var(--ink-muted);">
+                <span>Mon</span><span class="tnum" style="color:var(--accent-text);">91% today</span>
+              </figcaption>
+            </figure>
+
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;border-top:1px solid var(--line);padding-top:20px;margin-top:20px;">
+              <div>
+                <div class="label" style="margin-bottom:12px;">Task completion</div>
+                <div style="display:flex;align-items:flex-end;gap:6px;height:48px;max-width:180px;border-bottom:1px solid var(--line);" role="img" aria-label="Task completion over the last six days, ending at 94 percent.">
+                  <div style="flex:1;height:52%;background:var(--accent-a24);border-radius:var(--r-focus) var(--r-focus) 0 0;"></div>
+                  <div style="flex:1;height:68%;background:var(--accent-a24);border-radius:var(--r-focus) var(--r-focus) 0 0;"></div>
+                  <div style="flex:1;height:44%;background:var(--accent-a24);border-radius:var(--r-focus) var(--r-focus) 0 0;"></div>
+                  <div style="flex:1;height:80%;background:var(--accent-a24);border-radius:var(--r-focus) var(--r-focus) 0 0;"></div>
+                  <div style="flex:1;height:72%;background:var(--accent-a24);border-radius:var(--r-focus) var(--r-focus) 0 0;"></div>
+                  <div style="flex:1;height:94%;background:var(--accent);border-radius:var(--r-focus) var(--r-focus) 0 0;"></div>
+                </div>
               </div>
-            </div>
-            <div class="cn-modules-panel" data-panel="projects">
-              <p class="cn-modules-crumb">Verity <i>/</i> Projects</p>
-              <div class="cn-modules-row"><div class="cn-modules-row-main"><b>SO-1042 · MS brackets, 500 pcs</b><span>Precision Fabricators · promised 14 Aug</span></div><span class="cn-modules-chip cn-modules-chip--peach">Delayed</span></div>
-              <ul class="cn-modules-checklist">
-                <li class="is-done">Cutting — 40 sheets MS 2mm</li>
-                <li class="is-done">Welding — 500 brackets</li>
-                <li class="is-active">Assembly &amp; QC</li>
-                <li>Dispatch · promised 14 Aug, running 8 late</li>
-              </ul>
-            </div>
-            <div class="cn-modules-panel" data-panel="operations">
-              <p class="cn-modules-crumb">Verity <i>/</i> Operations <i>/</i> SO-1042</p>
-              <ol class="cn-modules-stages">
-                <li class="is-done">Cutting</li>
-                <li class="is-done">Welding</li>
-                <li class="is-current">Assembly</li>
-                <li>QC</li>
-                <li>Packing</li>
-              </ol>
-            </div>
-            <div class="cn-modules-panel" data-panel="workforce">
-              <p class="cn-modules-crumb">Verity <i>/</i> Workforce</p>
-              <div class="cn-modules-row"><div class="cn-modules-row-main cn-modules-row-main--avatar"><span class="cn-modules-avatar">RK</span><span><b>R. Kumar</b><span>Fabrication · Shift A · Assembly on SO-1042</span></span></div></div>
-              <div class="cn-modules-row"><div class="cn-modules-row-main cn-modules-row-main--avatar"><span class="cn-modules-avatar">PS</span><span><b>P. Sharma</b><span>Operations · Shift A</span></span></div></div>
-              <div class="cn-modules-row"><div class="cn-modules-row-main cn-modules-row-main--avatar"><span class="cn-modules-avatar">AM</span><span><b>A. More</b><span>QC · Shift B</span></span></div></div>
-            </div>
-            <div class="cn-modules-panel" data-panel="finance">
-              <p class="cn-modules-crumb">Verity <i>/</i> Finance</p>
-              <div class="cn-modules-finance-gauge">
-                <span class="cn-modules-ring" style="--v:60%" aria-hidden="true"><b>4</b></span>
-                <span class="cn-modules-finance-gauge-copy"><b>Due in 4 days</b><span>INV-0871 · SO-1042</span></span>
+              <div>
+                <div class="label" style="margin-bottom:8px;">Median response</div>
+                <div class="tnum" style="font-size:26px;line-height:1;font-weight:300;">6m 12s</div>
+                <div style="margin-top:6px;font-size:11.5px;color:var(--ink-muted);">across 24 sites</div>
               </div>
-              <div class="cn-modules-row"><div class="cn-modules-row-main"><b>INV-0871</b><span>SO-1042 · due in 4 days</span></div><span class="cn-modules-chip cn-modules-chip--peach">₹1,84,200</span></div>
-              <div class="cn-modules-row"><div class="cn-modules-row-main"><b>INV-0866</b><span>SO-1035</span></div><span class="cn-modules-chip">Paid</span></div>
-              <div class="cn-modules-row"><div class="cn-modules-row-main"><b>PAY-2291</b><span>Received today</span></div><span class="cn-modules-chip">₹40,000</span></div>
+              <div>
+                <div class="label" style="margin-bottom:8px;">Exceptions closed</div>
+                <div class="tnum" style="font-size:26px;line-height:1;font-weight:300;">88%</div>
+                <div style="margin-top:6px;font-size:11.5px;color:var(--ink-muted);">within SLA window</div>
+              </div>
             </div>
           </div>
-          <p class="cn-modules-visual-foot"><b>SO-1042</b> is the same record in every module above — nothing re-entered, nothing re-typed.</p>
+
+          <!-- Sidebar -->
+          <div style="border-top:1px solid var(--line);padding:18px;border-left:1px solid var(--line);">
+            <div class="label" style="margin-bottom:12px;color:var(--ink);">3 things need your attention</div>
+            <ul style="display:flex;flex-direction:column;gap:14px;list-style:none;padding:0;margin:0;">
+              <li style="border-left:2px solid var(--accent);padding-left:12px;">
+                <div style="font-size:13px;">Project Orion delayed 4 days</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);">Delivery · escalated to Pod 3 lead</div>
+              </li>
+              <li style="border-left:2px solid var(--accent);padding-left:12px;">
+                <div style="font-size:13px;">Vendor payment pending</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);">Finance · ₹3,80,000 · above approval threshold</div>
+              </li>
+              <li style="border-left:2px solid var(--accent);padding-left:12px;">
+                <div style="font-size:13px;">17 orders awaiting QC</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);">Plant 2 · blocking dispatch since 09:20</div>
+              </li>
+            </ul>
+
+            <div style="margin-top:24px;border-top:1px solid var(--line-hair);padding-top:20px;">
+              <div class="label" style="margin-bottom:12px;">Performance by region</div>
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                  <span style="font-size:12px;">North</span>
+                  <div style="flex:1;height:4px;background:var(--line);border-radius:2px;overflow:hidden;"><div style="height:100%;width:92%;background:var(--accent);border-radius:2px;"></div></div>
+                  <span class="tnum" style="font-size:12px;min-width:40px;text-align:right;">99.1%</span>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                  <span style="font-size:12px;">West</span>
+                  <div style="flex:1;height:4px;background:var(--line);border-radius:2px;overflow:hidden;"><div style="height:100%;width:84%;background:var(--accent);border-radius:2px;"></div></div>
+                  <span class="tnum" style="font-size:12px;min-width:40px;text-align:right;">98.4%</span>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                  <span style="font-size:12px;">Central</span>
+                  <div style="flex:1;height:4px;background:var(--line);border-radius:2px;overflow:hidden;"><div style="height:100%;width:71%;background:var(--warn);border-radius:2px;"></div></div>
+                  <span class="tnum" style="font-size:12px;min-width:40px;text-align:right;">97.2%</span>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                  <span style="font-size:12px;">South</span>
+                  <div style="flex:1;height:4px;background:var(--line);border-radius:2px;overflow:hidden;"><div style="height:100%;width:88%;background:var(--accent);border-radius:2px;"></div></div>
+                  <span class="tnum" style="font-size:12px;min-width:40px;text-align:right;">98.9%</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top:24px;border-top:1px solid var(--line-hair);padding-top:20px;">
+              <div class="label" style="margin-bottom:12px;">Activity</div>
+              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;">
+                <li style="display:flex;justify-content:space-between;gap:16px;font-size:11.5px;">
+                  <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Shift handover · Site 7</span>
+                  <span class="tnum" style="color:var(--ink-muted);flex-shrink:0;">09:41</span>
+                </li>
+                <li style="display:flex;justify-content:space-between;gap:16px;font-size:11.5px;">
+                  <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Patrol closed · Site 2</span>
+                  <span class="tnum" style="color:var(--ink-muted);flex-shrink:0;">09:36</span>
+                </li>
+                <li style="display:flex;justify-content:space-between;gap:16px;font-size:11.5px;">
+                  <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Task reassigned · Depot 3</span>
+                  <span class="tnum" style="color:var(--ink-muted);flex-shrink:0;">09:28</span>
+                </li>
+                <li style="display:flex;justify-content:space-between;gap:16px;font-size:11.5px;">
+                  <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Audit uploaded · Tower A</span>
+                  <span class="tnum" style="color:var(--ink-muted);flex-shrink:0;">09:11</span>
+                </li>
+                <li style="display:flex;justify-content:space-between;gap:16px;font-size:11.5px;">
+                  <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">PO-4417 approved</span>
+                  <span class="tnum" style="color:var(--ink-muted);flex-shrink:0;">08:54</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-    </fieldset>
+    </div>
   </div>
 </section>
+
+<!-- ---------- B3b: Verity AI ---------- -->
+<!-- AI sits low on the page on purpose: it is a way to reach the operation, not
+     the reason the operation exists. No sparkles. A question, an answer grounded
+     in records, and an action taken. The three records answered here are the same
+     three exceptions the command centre above is already flagging. -->
+<section class="section section--tall" id="intelligence" aria-labelledby="ai-heading">
+  <div class="shell">
+    <div class="ai-grid">
+      <div>
+        <p class="eyebrow" data-reveal>Verity AI</p>
+        <h2 id="ai-heading" class="h-lg" data-reveal data-words>Ask your business anything.</h2>
+        <p class="sub ai-deck" data-reveal>Verity already holds the operational context: who owns what, what is blocked, what is late. Asking is another way to reach it, and the answer can act.</p>
+        <dl class="ai-facts" data-stagger="&gt; div">
+          <div>
+            <dt class="label">Grounded in</dt>
+            <dd>Your own records, never a general model guess</dd>
+          </div>
+          <div>
+            <dt class="label">Permissions</dt>
+            <dd>It answers only from what the asker can already see</dd>
+          </div>
+          <div>
+            <dt class="label">Acts</dt>
+            <dd>Creates tasks, assigns owners, sets due dates</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div data-reveal>
+        <div class="panel">
+          <div class="panel-head">
+            <span class="label">Verity / Ask</span>
+            <div class="panel-meta"><span>Operational context</span><span>All regions</span></div>
+          </div>
+          <ol class="ai-thread" data-stagger="&gt; li">
+
+            <li class="ai-turn ai-turn--user">
+              <p class="ai-said">Which projects are at risk this month?</p>
+            </li>
+
+            <li class="ai-turn">
+              <span class="label ai-who">Verity</span>
+              <p class="ai-body">3 projects need attention.</p>
+              <ul class="ai-records">
+                <li><span class="ai-rec-name">Project Orion</span><span class="ai-rec-meta">4 days behind &middot; QC backlog upstream</span></li>
+                <li><span class="ai-rec-name">Vendor payment, Finance</span><span class="ai-rec-meta">&#8377;3,80,000 &middot; above approval threshold</span></li>
+                <li><span class="ai-rec-name">Compliance refresh</span><span class="ai-rec-meta">Two inspections overdue &middot; Site 14</span></li>
+              </ul>
+            </li>
+
+            <li class="ai-turn ai-turn--user">
+              <p class="ai-said">Why?</p>
+            </li>
+
+            <li class="ai-turn">
+              <span class="label ai-who">Verity</span>
+              <p class="ai-body">Each one is blocked on a step someone else owns. Orion is waiting on QC for Batch 214, open since Monday. The vendor payment was never routed for approval. The compliance refresh is scheduled against a site with no supervisor assigned this week.</p>
+            </li>
+
+            <li class="ai-turn ai-turn--user">
+              <p class="ai-said">Create follow-ups for their managers.</p>
+            </li>
+
+            <li class="ai-turn">
+              <span class="label ai-who">Verity</span>
+              <p class="ai-body">Done.</p>
+              <p class="ai-done"><span class="ai-done-dot" aria-hidden="true"></span>3 tasks created and assigned &middot; due tomorrow 10:00 &middot; managers notified</p>
+            </li>
+
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- B4: Roles ---------- -->
+<section class="section section--tall" id="roles" aria-labelledby="roles-heading">
+  <div class="shell">
+    <div style="display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:32px;margin-bottom:40px;">
+      <div>
+        <p class="eyebrow" data-reveal>One system, four vantage points</p>
+        <h2 id="roles-heading" class="h-lg" data-reveal data-words>One system.<br>Designed around the work.</h2>
+      </div>
+      <p class="sub" style="max-width:34ch;font-size:15px;" data-reveal>One system does not mean one interface for everyone. Each role opens on the question it actually needs answered.</p>
+    </div>
+
+    <!-- Tab buttons -->
+    <div role="tablist" aria-label="Role" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;" data-stagger="> button">
+      <button type="button" role="tab" aria-selected="true" aria-controls="role-panel-owner" onclick="document.querySelectorAll('[data-role-tab]').forEach(b=>b.setAttribute('aria-selected','false'));this.setAttribute('aria-selected','true');document.querySelectorAll('[data-role-panel]').forEach(p=>p.style.display='none');document.getElementById('role-panel-owner').style.display=''" data-role-tab class="role-tab">Operations Lead</button>
+      <button type="button" role="tab" aria-selected="false" aria-controls="role-panel-manager" onclick="document.querySelectorAll('[data-role-tab]').forEach(b=>b.setAttribute('aria-selected','false'));this.setAttribute('aria-selected','true');document.querySelectorAll('[data-role-panel]').forEach(p=>p.style.display='none');document.getElementById('role-panel-manager').style.display=''" data-role-tab class="role-tab">Sales Manager</button>
+      <button type="button" role="tab" aria-selected="false" aria-controls="role-panel-finance" onclick="document.querySelectorAll('[data-role-tab]').forEach(b=>b.setAttribute('aria-selected','false'));this.setAttribute('aria-selected','true');document.querySelectorAll('[data-role-panel]').forEach(p=>p.style.display='none');document.getElementById('role-panel-finance').style.display=''" data-role-tab class="role-tab">Finance Controller</button>
+      <button type="button" role="tab" aria-selected="false" aria-controls="role-panel-hr" onclick="document.querySelectorAll('[data-role-tab]').forEach(b=>b.setAttribute('aria-selected','false'));this.setAttribute('aria-selected','true');document.querySelectorAll('[data-role-panel]').forEach(p=>p.style.display='none');document.getElementById('role-panel-hr').style.display=''" data-role-tab class="role-tab">HR Manager</button>
+    </div>
+
+    <!-- Panel container -->
+    <div data-reveal>
+      <!-- Owner / Operations Lead -->
+      <div id="role-panel-owner" role="tabpanel" aria-live="polite" data-role-panel>
+        <div class="panel">
+          <div class="panel-head">
+            <span class="label" style="flex:none;">Verity / Operations Lead</span>
+            <div class="panel-meta">
+              <span>What's happening across my business?</span>
+            </div>
+          </div>
+          <div class="role-panel-body" style="display:grid;grid-template-columns:1fr 320px;">
+            <div class="role-panel-metrics" style="display:grid;grid-template-columns:repeat(5,1fr);border-right:1px solid var(--line);">
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Revenue</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">₹4.2 Cr</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">quarter to date</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Operations</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">128</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">active across 24 sites</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Issues</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;color:var(--accent-text);">3</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">need attention today</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Approvals</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">27</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">in the queue</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);">
+                <div class="label">Performance</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">98.6%</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">SLA compliance</div>
+              </div>
+            </div>
+            <div style="border-top:1px solid var(--line);padding:18px;border-left:1px solid var(--line);">
+              <div class="label" style="margin-bottom:12px;">Needs attention</div>
+              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
+                <li style="border-left:2px solid var(--accent);padding-left:12px;">
+                  <div style="font-size:12.5px;">Project Orion delayed 4 days</div>
+                  <div style="font-size:11.5px;color:var(--ink-muted);">Delivery · escalated</div>
+                </li>
+                <li style="border-left:2px solid var(--line);padding-left:12px;">
+                  <div style="font-size:12.5px;">Vendor payment pending approval</div>
+                  <div style="font-size:11.5px;color:var(--ink-muted);">Finance · ₹3.8 L</div>
+                </li>
+                <li style="border-left:2px solid var(--line);padding-left:12px;">
+                  <div style="font-size:12.5px;">17 orders awaiting QC</div>
+                  <div style="font-size:11.5px;color:var(--ink-muted);">Plant 2 · since 09:20</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sales Manager -->
+      <div id="role-panel-manager" role="tabpanel" aria-live="polite" data-role-panel style="display:none;">
+        <div class="panel">
+          <div class="panel-head">
+            <span class="label" style="flex:none;">Verity / Sales Manager</span>
+            <div class="panel-meta">
+              <span>What needs my attention?</span>
+            </div>
+          </div>
+          <div class="role-panel-body" style="display:grid;grid-template-columns:1fr 320px;">
+            <div class="role-panel-metrics" style="display:grid;grid-template-columns:repeat(5,1fr);border-right:1px solid var(--line);">
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Pipeline</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">₹9.4 Cr</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">weighted value</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Deals</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">64</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">in active stage</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Closing</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;color:var(--accent-text);">9</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">due this week</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Follow-ups</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">18</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">overdue</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);">
+                <div class="label">Win rate</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">78%</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">last 90 days</div>
+              </div>
+            </div>
+            <div style="border-top:1px solid var(--line);padding:18px;border-left:1px solid var(--line);">
+              <div class="label" style="margin-bottom:12px;">Needs attention</div>
+              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
+                <li style="border-left:2px solid var(--accent);padding-left:12px;">
+                  <div style="font-size:12.5px;">Harbour Logistics · at risk</div>
+                  <div style="font-size:11.5px;color:var(--ink-muted);">₹38 L · renewal due</div>
+                </li>
+                <li style="border-left:2px solid var(--line);padding-left:12px;">
+                  <div style="font-size:12.5px;">3 quotes awaiting response</div>
+                  <div style="font-size:11.5px;color:var(--ink-muted);">Sent 5+ days ago</div>
+                </li>
+                <li style="border-left:2px solid var(--line);padding-left:12px;">
+                  <div style="font-size:12.5px;">Scope change unapproved</div>
+                  <div style="font-size:11.5px;color:var(--ink-muted);">Meridian Retail · ₹1.2 Cr</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Finance Controller -->
+      <div id="role-panel-finance" role="tabpanel" aria-live="polite" data-role-panel style="display:none;">
+        <div class="panel">
+          <div class="panel-head">
+            <span class="label" style="flex:none;">Verity / Finance Controller</span>
+            <div class="panel-meta">
+              <span>What needs to be reconciled?</span>
+            </div>
+          </div>
+          <div class="role-panel-body" style="display:grid;grid-template-columns:1fr 320px;">
+            <div class="role-panel-metrics" style="display:grid;grid-template-columns:repeat(5,1fr);border-right:1px solid var(--line);">
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Invoiced</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">₹4.2 Cr</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">this quarter</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Payments</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">₹2.4 Cr</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">received</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Expenses</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;color:var(--warn);">₹38 L</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">submitted for review</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Approvals</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">11</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">over ₹1,00,000</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);">
+                <div class="label">Overdue</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">₹42 L</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">beyond 30 days</div>
+              </div>
+            </div>
+            <div style="border-top:1px solid var(--line);padding:18px;border-left:1px solid var(--line);">
+              <div class="label" style="margin-bottom:12px;">Needs attention</div>
+              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
+                <li style="border-left:2px solid var(--accent);padding-left:12px;">
+                  <div style="font-size:12.5px;">INV-20419 above approval threshold</div>
+                  <div style="font-size:11.5px;color:var(--ink-muted);">₹3,80,000 · Finance Head</div>
+                </li>
+                <li style="border-left:2px solid var(--line);padding-left:12px;">
+                  <div style="font-size:12.5px;">Vendor invoice unmatched</div>
+                  <div style="font-size:11.5px;color:var(--ink-muted);">Construction · Site 14</div>
+                </li>
+                <li style="border-left:2px solid var(--line);padding-left:12px;">
+                  <div style="font-size:12.5px;">Expense claim missing receipt</div>
+                  <div style="font-size:11.5px;color:var(--ink-muted);">Field Services</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- HR Manager -->
+      <div id="role-panel-hr" role="tabpanel" aria-live="polite" data-role-panel style="display:none;">
+        <div class="panel">
+          <div class="panel-head">
+            <span class="label" style="flex:none;">Verity / HR Manager</span>
+            <div class="panel-meta">
+              <span>How is my workforce?</span>
+            </div>
+          </div>
+          <div class="role-panel-body" style="display:grid;grid-template-columns:1fr 320px;">
+            <div class="role-panel-metrics" style="display:grid;grid-template-columns:repeat(5,1fr);border-right:1px solid var(--line);">
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Headcount</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">1,092</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">on shift now</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Attendance</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">87.5%</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">today</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Open shifts</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;color:var(--accent-text);">6</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">unfilled</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);">
+                <div class="label">Leave</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">23</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">pending approval</div>
+              </div>
+              <div style="padding:18px;border-bottom:1px solid var(--line);">
+                <div class="label">Onboarding</div>
+                <div class="tnum" style="font-size:clamp(20px,2.2vw,28px);line-height:1;font-weight:300;letter-spacing:-0.02em;margin-top:8px;">4</div>
+                <div style="font-size:11.5px;color:var(--ink-muted);margin-top:6px;">this month</div>
+              </div>
+            </div>
+            <div style="border-top:1px solid var(--line);padding:18px;border-left:1px solid var(--line);">
+              <div class="label" style="margin-bottom:12px;">Needs attention</div>
+              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;">
+                <li style="border-left:2px solid var(--accent);padding-left:12px;">
+                  <div style="font-size:12.5px;">Unfilled shift · Site 14 night</div>
+                  <div style="font-size:11.5px;color:var(--ink-muted);">Starts in 3 hours</div>
+                </li>
+                <li style="border-left:2px solid var(--line);padding-left:12px;">
+                  <div style="font-size:12.5px;">Onboarding checklist pending</div>
+                  <div style="font-size:11.5px;color:var(--ink-muted);">3 new hires · docs missing</div>
+                </li>
+                <li style="border-left:2px solid var(--line);padding-left:12px;">
+                  <div style="font-size:12.5px;">Leave request · L. Chen</div>
+                  <div style="font-size:11.5px;color:var(--ink-muted);">Awaiting your approval</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- B5: Primitives ---------- -->
+<section class="section section--tall" id="primitives" aria-labelledby="primitives-heading">
+  <div class="shell">
+    <p class="eyebrow" data-reveal>The eight primitives</p>
+    <h2 id="primitives-heading" class="h-lg" data-reveal data-words>One operating environment. Built from the primitives of your business.</h2>
+
+    <div style="margin-top:48px;display:grid;gap:12px;grid-template-columns:repeat(6,1fr);" data-stagger="> *">
+
+      <!-- Featured card -->
+      <div style="grid-column:span 6;position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--elev-mid);padding:24px;" data-reveal>
+        <div aria-hidden="true" style="pointer-events:none;position:absolute;inset:0;background:radial-gradient(ellipse at 82% 30%, var(--accent-a14), transparent 62%);"></div>
+        <div style="position:relative;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px;">
+          <div>
+            <!-- Verity logo mark -->
+            <svg width="26" height="32" viewBox="0 0 24 30" role="img" aria-label="The Verity mark" style="display:block;">
+              <path d="M2.6 1.6h18.8a1.6 1.6 0 011.2 2.7L13.2 14a1.6 1.6 0 01-2.4 0L1.4 4.3A1.6 1.6 0 012.6 1.6z" fill="var(--accent)"/>
+              <path d="M10.8 16a1.6 1.6 0 012.4 0l9.4 9.7a1.6 1.6 0 01-1.2 2.7H2.6a1.6 1.6 0 01-1.2-2.7z" fill="var(--accent)"/>
+            </svg>
+            <p style="margin-top:16px;max-width:38ch;font-size:17px;line-height:1.5;color:var(--ink-body);">Every primitive shares one record, one permission model and one activity history. Nothing is bolted on afterwards.</p>
+          </div>
+          <dl style="display:flex;flex-wrap:wrap;gap-x:40px;gap-y:16px;">
+            <div>
+              <dt class="label">Objects</dt>
+              <dd style="margin-top:4px;font-size:15px;font-weight:300;">One data model</dd>
+            </div>
+            <div>
+              <dt class="label">Permissions</dt>
+              <dd style="margin-top:4px;font-size:15px;font-weight:300;">One policy layer</dd>
+            </div>
+            <div>
+              <dt class="label">History</dt>
+              <dd style="margin-top:4px;font-size:15px;font-weight:300;">One audit trail</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- 8 primitive cards -->
+      <div style="grid-column:span 3;" data-reveal>
+        <button type="button" onclick="document.querySelectorAll('[data-prim-card]').forEach(function(c){c.style.borderColor='var(--line)';c.style.background='var(--surface)';c.setAttribute('aria-pressed','false');});this.setAttribute('aria-pressed','true');this.style.borderColor='var(--accent-a40)';this.style.background='var(--accent-a08)';" data-prim-card aria-pressed="false" style="height:100%;width:100%;border-radius:16px;border:1px solid var(--line);background:var(--surface);padding:20px;text-align:left;cursor:pointer;transition:border-color .3s,background-color .3s;">
+          <span class="label tnum">01</span>
+          <span style="display:block;margin-top:12px;font-size:21px;font-weight:300;letter-spacing:-0.02em;">People</span>
+          <span style="display:block;margin-top:8px;font-size:13.5px;line-height:1.4;color:var(--ink-body);">Teams, roles, responsibilities, workforce.</span>
+        </button>
+      </div>
+
+      <div style="grid-column:span 3;" data-reveal>
+        <button type="button" onclick="document.querySelectorAll('[data-prim-card]').forEach(function(c){c.style.borderColor='var(--line)';c.style.background='var(--surface)';c.setAttribute('aria-pressed','false');});this.setAttribute('aria-pressed','true');this.style.borderColor='var(--accent-a40)';this.style.background='var(--accent-a08)';" data-prim-card aria-pressed="false" style="height:100%;width:100%;border-radius:16px;border:1px solid var(--line);background:var(--surface);padding:20px;text-align:left;cursor:pointer;transition:border-color .3s,background-color .3s;">
+          <span class="label tnum">02</span>
+          <span style="display:block;margin-top:12px;font-size:21px;font-weight:300;letter-spacing:-0.02em;">Work</span>
+          <span style="display:block;margin-top:8px;font-size:13.5px;line-height:1.4;color:var(--ink-body);">Tasks, projects, jobs, orders, activities.</span>
+        </button>
+      </div>
+
+      <div style="grid-column:span 3;" data-reveal>
+        <button type="button" onclick="document.querySelectorAll('[data-prim-card]').forEach(function(c){c.style.borderColor='var(--line)';c.style.background='var(--surface)';c.setAttribute('aria-pressed','false');});this.setAttribute('aria-pressed','true');this.style.borderColor='var(--accent-a40)';this.style.background='var(--accent-a08)';" data-prim-card aria-pressed="false" style="height:100%;width:100%;border-radius:16px;border:1px solid var(--line);background:var(--surface);padding:20px;text-align:left;cursor:pointer;transition:border-color .3s,background-color .3s;">
+          <span class="label tnum">03</span>
+          <span style="display:block;margin-top:12px;font-size:21px;font-weight:300;letter-spacing:-0.02em;">Relationships</span>
+          <span style="display:block;margin-top:8px;font-size:13.5px;line-height:1.4;color:var(--ink-body);">Customers, vendors, partners, stakeholders.</span>
+        </button>
+      </div>
+
+      <div style="grid-column:span 3;" data-reveal>
+        <button type="button" onclick="document.querySelectorAll('[data-prim-card]').forEach(function(c){c.style.borderColor='var(--line)';c.style.background='var(--surface)';c.setAttribute('aria-pressed','false');});this.setAttribute('aria-pressed','true');this.style.borderColor='var(--accent-a40)';this.style.background='var(--accent-a08)';" data-prim-card aria-pressed="false" style="height:100%;width:100%;border-radius:16px;border:1px solid var(--line);background:var(--surface);padding:20px;text-align:left;cursor:pointer;transition:border-color .3s,background-color .3s;">
+          <span class="label tnum">04</span>
+          <span style="display:block;margin-top:12px;font-size:21px;font-weight:300;letter-spacing:-0.02em;">Records</span>
+          <span style="display:block;margin-top:8px;font-size:13.5px;line-height:1.4;color:var(--ink-body);">Documents, products, assets, transactions.</span>
+        </button>
+      </div>
+
+      <div style="grid-column:span 2;" data-reveal>
+        <button type="button" onclick="document.querySelectorAll('[data-prim-card]').forEach(function(c){c.style.borderColor='var(--line)';c.style.background='var(--surface)';c.setAttribute('aria-pressed','false');});this.setAttribute('aria-pressed','true');this.style.borderColor='var(--accent-a40)';this.style.background='var(--accent-a08)';" data-prim-card aria-pressed="false" style="height:100%;width:100%;border-radius:16px;border:1px solid var(--line);background:var(--surface);padding:20px;text-align:left;cursor:pointer;transition:border-color .3s,background-color .3s;">
+          <span class="label tnum">05</span>
+          <span style="display:block;margin-top:12px;font-size:21px;font-weight:300;letter-spacing:-0.02em;">Workflows</span>
+          <span style="display:block;margin-top:8px;font-size:13.5px;line-height:1.4;color:var(--ink-body);">Approvals, processes, states, automations.</span>
+        </button>
+      </div>
+
+      <div style="grid-column:span 2;" data-reveal>
+        <button type="button" onclick="document.querySelectorAll('[data-prim-card]').forEach(function(c){c.style.borderColor='var(--line)';c.style.background='var(--surface)';c.setAttribute('aria-pressed','false');});this.setAttribute('aria-pressed','true');this.style.borderColor='var(--accent-a40)';this.style.background='var(--accent-a08)';" data-prim-card aria-pressed="false" style="height:100%;width:100%;border-radius:16px;border:1px solid var(--line);background:var(--surface);padding:20px;text-align:left;cursor:pointer;transition:border-color .3s,background-color .3s;">
+          <span class="label tnum">06</span>
+          <span style="display:block;margin-top:12px;font-size:21px;font-weight:300;letter-spacing:-0.02em;">Communication</span>
+          <span style="display:block;margin-top:8px;font-size:13.5px;line-height:1.4;color:var(--ink-body);">Comments, notifications, activity, conversations.</span>
+        </button>
+      </div>
+
+      <div style="grid-column:span 2;" data-reveal>
+        <button type="button" onclick="document.querySelectorAll('[data-prim-card]').forEach(function(c){c.style.borderColor='var(--line)';c.style.background='var(--surface)';c.setAttribute('aria-pressed','false');});this.setAttribute('aria-pressed','true');this.style.borderColor='var(--accent-a40)';this.style.background='var(--accent-a08)';" data-prim-card aria-pressed="false" style="height:100%;width:100%;border-radius:16px;border:1px solid var(--line);background:var(--surface);padding:20px;text-align:left;cursor:pointer;transition:border-color .3s,background-color .3s;">
+          <span class="label tnum">07</span>
+          <span style="display:block;margin-top:12px;font-size:21px;font-weight:300;letter-spacing:-0.02em;">Intelligence</span>
+          <span style="display:block;margin-top:8px;font-size:13.5px;line-height:1.4;color:var(--ink-body);">Reports, dashboards, insights, AI.</span>
+        </button>
+      </div>
+
+      <div style="grid-column:span 2;" data-reveal>
+        <button type="button" onclick="document.querySelectorAll('[data-prim-card]').forEach(function(c){c.style.borderColor='var(--line)';c.style.background='var(--surface)';c.setAttribute('aria-pressed','false');});this.setAttribute('aria-pressed','true');this.style.borderColor='var(--accent-a40)';this.style.background='var(--accent-a08)';" data-prim-card aria-pressed="false" style="height:100%;width:100%;border-radius:16px;border:1px solid var(--line);background:var(--surface);padding:20px;text-align:left;cursor:pointer;transition:border-color .3s,background-color .3s;">
+          <span class="label tnum">08</span>
+          <span style="display:block;margin-top:12px;font-size:21px;font-weight:300;letter-spacing:-0.02em;">Control</span>
+          <span style="display:block;margin-top:8px;font-size:13.5px;line-height:1.4;color:var(--ink-body);">Permissions, policies, audit trails.</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <!-- B:END -->
 
-<!-- ===== PIECE C: intelligence + roles + AI — owned by css/intelligence.css ===== -->
-<!-- C:START -->
-
-<!-- ---------- C1: three desks, one record ---------- -->
-<section class="in-desks band band--fog" id="intelligence">
+<!-- ---------- 11: Schedule ---------- -->
+<section class="section--alt section--tall" id="schedule" aria-labelledby="schedule-heading">
   <div class="shell">
-    <div class="in-head">
-      <p class="eyebrow" data-reveal>Three desks</p>
-      <h2 class="h-lg in-heading" data-words>Any desk.</h2>
-      <p class="sub in-deck" data-reveal>The owner opens Verity for cash and overdue. Raj opens it for today's queue and shortages. Same Tuesday, same order — a different view from each desk.</p>
+    <div class="shd-head">
+      <p class="eyebrow" data-reveal>A day on the floor</p>
+      <h2 id="schedule-heading" class="h-lg">See the work moving.</h2>
+      <p class="body shd-deck">A day of operations, in order. Each item carries its sites, its owner and its evidence.</p>
     </div>
 
-    <fieldset class="in-desk-shell" data-reveal>
-      <legend class="in-sr-only">Choose a desk to preview Verity</legend>
-      <div class="in-desk-tabs">
-        <label class="in-desk-tab">
-          <input type="radio" name="in-desk" class="in-desk-radio" value="owner" checked>
-          <span>Owner</span>
-        </label>
-        <label class="in-desk-tab">
-          <input type="radio" name="in-desk" class="in-desk-radio" value="floor">
-          <span>Floor</span>
-        </label>
-        <label class="in-desk-tab">
-          <input type="radio" name="in-desk" class="in-desk-radio" value="accounts">
-          <span>Accounts</span>
-        </label>
-      </div>
-
-      <div class="in-desk-frame artifact" aria-hidden="true">
-        <div class="in-desk-bar">
-          <p class="in-desk-crumb">Verity <i>/</i> Orders <i>/</i> SO-1042</p>
-          <span class="in-desk-bar-icons"><span></span><span></span><span></span></span>
+      <div class="panel op-grid" data-reveal>
+        <div class="panel-head">
+          <span class="label">Verity / Schedule</span>
+          <div class="panel-meta"><span>Site 7</span><span>Today</span><span>7 items</span></div>
+        <span class="label panel-live"><i aria-hidden="true"></i>Live</span>
         </div>
+        <div class="panel-body">
+    <ol class="shd-timeline" id="shd-list" data-stagger="> li">
+      <span class="shd-track" aria-hidden="true"></span>
+      <span class="shd-progress" aria-hidden="true" id="shd-progress" style="--pct-n:0.5"></span>
 
-        <div class="in-desk-stage">
-          <div class="in-desk-panel" data-desk="owner">
-            <p class="in-desk-title">Owner<span>· cash and commitments</span></p>
-            <div class="in-row in-row--warm">
-              <div class="in-row-main"><b>₹1,84,200</b><span>INV-0871 · Precision Fabricators Pvt Ltd · due in 4 days</span></div>
-              <span class="in-chip in-chip--onWarm">Collect</span>
-            </div>
-            <div class="in-row">
-              <div class="in-row-main"><b>₹40,000</b><span>PAY-2291 · Shree Engineering Works · received today</span></div>
-              <span class="in-chip">Banked</span>
-            </div>
-            <div class="in-row">
-              <div class="in-row-main"><b>1 of 9</b><span>Shipments late this month · SO-1042, promised 14 Aug, shipped 22 Aug</span></div>
-              <span class="in-chip in-chip--muted">Closed</span>
-            </div>
-          </div>
+      <li class="shd-item" data-state="done" data-reveal style="--d:0ms">
+        <span class="shd-dot" aria-hidden="true"></span>
+        <div class="shd-row">
+          <span class="tnum label shd-time">06:00</span>
+          <span class="shd-name">Site 7 shift starts</span>
+          <span class="label shd-state">Completed</span>
+        </div>
+        <p class="shd-meta">Night handover complete · 12 crew on site</p>
+      </li>
 
-          <div class="in-desk-panel" data-desk="floor">
-            <p class="in-desk-title">Floor<span>· today's queue and shortages</span></p>
-            <div class="in-row">
-              <div class="in-row-main"><b>Assembly — SO-1041</b><span>Kalyani Structurals · bay 2, until 4 pm</span></div>
-              <span class="in-chip">Running</span>
-            </div>
-            <div class="in-row in-row--warm">
-              <div class="in-row-main"><b>MS sheet, 2mm — 12 left</b><span>Vendor lot landed 21 Aug · 40 sheets went to SO-1042</span></div>
-              <span class="in-chip in-chip--onWarm">Low</span>
-            </div>
-            <div class="in-note">
-              <p class="in-note-quote">"Weld bay frees up after 4 — pulling QC on SO-1041 forward to tonight."</p>
-              <p class="in-note-who">Raj · Floor · logged this morning</p>
-            </div>
-          </div>
+      <li class="shd-item" data-state="done" data-reveal style="--d:50ms">
+        <span class="shd-dot" aria-hidden="true"></span>
+        <div class="shd-row">
+          <span class="tnum label shd-time">07:30</span>
+          <span class="shd-name">Material delivery</span>
+          <span class="label shd-state">Completed</span>
+        </div>
+        <p class="shd-meta">3 vendors confirmed · Site 7 and Site 12</p>
+      </li>
 
-          <div class="in-desk-panel" data-desk="accounts">
-            <p class="in-desk-title">Accounts<span>· money moving</span></p>
-            <div class="in-row">
-              <div class="in-row-main"><b>INV-0871 · ₹1,84,200</b><span>Raised 22 Aug — the day SO-1042 shipped</span></div>
-              <span class="in-chip">Sent</span>
-            </div>
-            <div class="in-row">
-              <div class="in-row-main"><b>Reminder</b><span>Payment reminder goes to Precision Fabricators 4 days before due</span></div>
-              <span class="in-chip in-chip--muted">Automatic</span>
-            </div>
-            <div class="in-row">
-              <div class="in-row-main"><b>INV-0866</b><span>SO-1035 · matched with the bank feed</span></div>
-              <span class="in-chip">Paid</span>
-            </div>
-          </div>
+      <li class="shd-item" data-state="live" data-reveal style="--d:100ms">
+        <span class="shd-dot" aria-hidden="true"></span>
+        <div class="shd-row">
+          <span class="tnum label shd-time">09:15</span>
+          <span class="shd-name">QC complete</span>
+          <span class="label shd-state" style="color:var(--accent-text)">In progress</span>
+        </div>
+        <p class="shd-meta">Batch 214 · 8 of 11 items signed off</p>
+      </li>
+
+      <li class="shd-item" data-state="next" data-reveal style="--d:150ms">
+        <span class="shd-dot" aria-hidden="true"></span>
+        <div class="shd-row">
+          <span class="tnum label shd-time">11:00</span>
+          <span class="shd-name">Dispatch</span>
+          <span class="label shd-state">Scheduled</span>
+        </div>
+        <p class="shd-meta">3 vehicles queued · Loading Bay A</p>
+      </li>
+
+      <li class="shd-item" data-state="next" data-reveal style="--d:200ms">
+        <span class="shd-dot" aria-hidden="true"></span>
+        <div class="shd-row">
+          <span class="tnum label shd-time">14:00</span>
+          <span class="shd-name">Delivery</span>
+          <span class="label shd-state">Scheduled</span>
+        </div>
+        <p class="shd-meta">6 stops · Route North-04 · ETA updated live</p>
+      </li>
+    </ol>
         </div>
       </div>
 
-      <p class="in-desk-foot"><b>SO-1042</b> sits under all three views. Nobody re-keys it, and nobody is chasing a different version of it.</p>
-    </fieldset>
   </div>
 </section>
 
-<!-- ---------- C2: ask the record — composer + grounded answer ---------- -->
-<section class="in-ask band" id="ask">
+<!-- ---------- 12: Workforce ---------- -->
+<section class="section--tall" id="workforce" aria-labelledby="workforce-heading">
   <div class="shell">
-    <div class="in-ask-top">
-      <div class="in-head in-head--ask">
-        <p class="eyebrow" data-reveal>Verity AI</p>
-        <h2 class="h-lg in-heading" data-words>It knows.</h2>
-        <p class="sub in-deck" data-reveal>Ask in plain words. Answers come back from your own entries — with the note, the date and the record they came from attached.</p>
-      </div>
-
-      <aside class="in-rule accent" data-reveal>
-        <p class="in-rule-line">If the record doesn't say it, Verity doesn't either.</p>
-        <p class="in-rule-note">Every answer names the entries it came from. Nothing is inferred from outside your own data, and nothing is trained on it.</p>
-      </aside>
-    </div>
-
-    <p class="in-sr-only">Preview of a Verity AI exchange. Asked why sales order SO-1042 shipped late, Verity answers from the order, a floor note dated 20 Aug and the delivery record.</p>
-
-    <div class="in-thread artifact" data-reveal aria-hidden="true">
-      <div class="in-msg in-msg--you">
-        <p class="in-msg-who">You</p>
-        <p class="in-msg-bubble">Why did SO-1042 ship late?</p>
-      </div>
-
-      <div class="in-msg in-msg--ai">
-        <p class="in-msg-who in-msg-who--ai">Verity</p>
-        <div class="in-msg-answer">
-          <p>Promised for 14 Aug. Shipped the 22nd — eight days late.</p>
-          <p>"Shipped the 22nd because the cutting queue held — 12 sheets on the floor, 40 needed." Raj logged that note against the work stage on 20 Aug.</p>
-          <p>The vendor's sheet lot reached Pune on 21 Aug. Cutting cleared in a day, and Precision Fabricators heard the same morning it moved.</p>
-        </div>
-        <div class="in-src">
-          <span class="in-src-chip">Order · SO-1042</span>
-          <span class="in-src-chip">Work · note, 20 Aug</span>
-          <span class="in-src-chip">Delivery · 22 Aug</span>
-        </div>
-      </div>
-
-      <div class="in-composer">
-        <span class="in-comp-glyph">@</span>
-        <svg class="in-comp-info" viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="8"></circle><line x1="9" y1="8" x2="9" y2="13"></line><circle cx="9" cy="5" r="0.5"></circle></svg>
-        <p class="in-comp-text">What needs me before Friday?<span class="in-caret"></span></p>
-        <span class="in-send">
-          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M4 7l4-4 4 4"></path></svg>
-        </span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ---------- C3: the answer lands — full-bleed ink close ---------- -->
-<section class="in-close band band--dark">
-  <div class="shell">
-    <div class="in-close-grid">
-      <div class="in-close-copy">
-        <p class="eyebrow eyebrow--onDark" data-reveal>Whatever you ask</p>
-        <h2 class="h-lg in-close-heading" data-words>One source.</h2>
-        <p class="sub in-deck in-close-deck" data-reveal>Roles decide what you see. Questions decide what you ask. Neither changes the record underneath.</p>
-      </div>
-
-      <p class="in-sr-only">Preview of a second Verity AI exchange. Asked what needs attention before Friday, Verity points to invoice INV-0871 for 1,84,200 rupees due in four days and to the low stock of 2mm MS sheet.</p>
-
-      <div class="in-close-card artifact" data-reveal aria-hidden="true">
-        <div class="in-msg in-msg--you">
-          <p class="in-msg-who">You</p>
-          <p class="in-msg-bubble">What needs me before Friday?</p>
-        </div>
-
-        <div class="in-msg in-msg--ai">
-          <p class="in-msg-who in-msg-who--ai">Verity</p>
-          <div class="in-msg-answer">
-            <p>Two things. Collect ₹1,84,200 — INV-0871, Precision Fabricators, due in 4 days. The reminder went out this morning.</p>
-            <p>And reorder MS sheet, 2mm. Twelve left on the floor after SO-1042 — six orders stalled behind that shortage this month.</p>
+    <div class="wf-grid">
+      <div class="wf-left">
+        <p class="eyebrow" data-reveal>Attendance and deployment</p>
+        <h2 id="workforce-heading" class="h-lg">Know where your workforce stands.</h2>
+        <div class="wf-stats">
+          <div class="wf-stat">
+            <span class="tnum wf-stat-num">1,092</span>
+            <span class="label wf-stat-label">Active now · of 1,248</span>
           </div>
-          <div class="in-src">
-            <span class="in-src-chip">Finance · INV-0871</span>
-            <span class="in-src-chip">Inventory · MS sheet 2mm</span>
-            <span class="in-src-chip">Orders · this month</span>
+          <div class="wf-stat">
+            <span class="tnum wf-stat-num">87.5%</span>
+            <span class="label wf-stat-label">Attendance today</span>
           </div>
         </div>
+      </div>
+
+      <div class="wf-right">
+      <div class="panel op-grid" data-reveal>
+        <div class="panel-head">
+          <span class="label">Verity / Workforce</span>
+          <div class="panel-meta"><span>1,248 assigned</span><span>Attendance 87.5%</span></div>
+        <span class="label panel-live"><i aria-hidden="true"></i>Live</span>
+        </div>
+        <div class="panel-body">
+        <ol class="wf-bars" data-stagger="> li">
+          <li class="wf-bar-row">
+            <span class="label wf-bar-label">Assigned</span>
+            <span class="wf-bar-track">
+              <span class="wf-bar-fill" style="--pct:100%"></span>
+            </span>
+            <span class="tnum wf-bar-count">1,248</span>
+          </li>
+          <li class="wf-bar-row">
+            <span class="label wf-bar-label">On Duty</span>
+            <span class="wf-bar-track">
+              <span class="wf-bar-fill wf-bar-fill--accent" style="--pct:87.5%"></span>
+            </span>
+            <span class="tnum wf-bar-count">1,092</span>
+          </li>
+          <li class="wf-bar-row">
+            <span class="label wf-bar-label">Working</span>
+            <span class="wf-bar-track">
+              <span class="wf-bar-fill" style="--pct:67.9%"></span>
+            </span>
+            <span class="tnum wf-bar-count">847</span>
+          </li>
+          <li class="wf-bar-row">
+            <span class="label wf-bar-label">Completed</span>
+            <span class="wf-bar-track">
+              <span class="wf-bar-fill" style="--pct:58.8%"></span>
+            </span>
+            <span class="tnum wf-bar-count">734</span>
+          </li>
+        </ol>
+        </div>
+      </div>
+
+        <p class="wf-note">Every state is a record, not a status someone typed into a sheet: attendance, assignment and completion are captured where the work happens.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- C:END -->
-
-<!-- ===== PIECE D: proof + close + footer — owned by css/proof.css ===== -->
-<!-- D:START -->
-<!-- ---------- D1: the trades — different work, same spine ---------- -->
-<section class="pf-trades band" id="industries">
+<!-- ---------- 13: Locations ---------- -->
+<section class="section--alt section--tall" id="locations" aria-labelledby="locations-heading">
   <div class="shell">
-    <div class="pf-head">
-      <p class="eyebrow" data-reveal>Who runs on it</p>
-      <h2 class="h-lg pf-heading" data-words>Four trades. <em>One spine each.</em></h2>
-      <p class="sub pf-deck" data-reveal>The record changes shape by trade. What never changes is that there is only one of it, and everyone downstream reads the same one.</p>
-    </div>
+    <div class="loc-grid">
+      <div class="loc-left">
+        <p class="eyebrow" data-reveal>Sites, regions, rollup</p>
+        <h2 id="locations-heading" class="h-lg">Every location, in one operating picture.</h2>
+        <p class="body loc-deck">Sites roll up into regions and regions into the organisation. Permissions, reporting and exceptions follow the same hierarchy.</p>
 
-    <div class="pf-trade-grid">
-      <article class="pf-trade rise" data-reveal>
-        <p class="pf-trade-kind">Fabrication &amp; machine shops</p>
-        <h3 class="h-sm pf-trade-name">A drawing becomes a job card</h3>
-        <p class="body pf-trade-copy">Quote by weight and process. Cutting, welding, QC as stages on the order — not a WhatsApp thread. Sheet stock draws down as the job moves.</p>
-        <ul class="pf-trade-facts">
-          <li><b>Order</b><span>SO-1042 · MS brackets, 500 pcs</span></li>
-          <li><b>Draws</b><span>MS sheet 2mm · 40 of 52</span></li>
-          <li><b>Closes</b><span>INV-0871 on dispatch</span></li>
+        <ul class="loc-list" id="loc-list" data-stagger="> li">
+          <li class="loc-item is-active" data-city="0">
+            <button class="loc-btn" type="button" aria-pressed="true">
+              <span class="loc-dot" aria-hidden="true"></span>
+              <span class="loc-city">Delhi</span>
+              <span class="tnum label loc-meta">42 ops · 98.7% SLA · 3 exceptions</span>
+            </button>
+          </li>
+          <li class="loc-item" data-city="1">
+            <button class="loc-btn" type="button" aria-pressed="false">
+              <span class="loc-dot" aria-hidden="true"></span>
+              <span class="loc-city">Noida</span>
+              <span class="tnum label loc-meta">18 ops · 99.1% SLA</span>
+            </button>
+          </li>
+          <li class="loc-item" data-city="2">
+            <button class="loc-btn" type="button" aria-pressed="false">
+              <span class="loc-dot" aria-hidden="true"></span>
+              <span class="loc-city">Gurgaon</span>
+              <span class="tnum label loc-meta">24 ops · 98.2% SLA · 1 exception</span>
+            </button>
+          </li>
+          <li class="loc-item" data-city="3">
+            <button class="loc-btn" type="button" aria-pressed="false">
+              <span class="loc-dot" aria-hidden="true"></span>
+              <span class="loc-city">Mumbai</span>
+              <span class="tnum label loc-meta">36 ops · 97.9% SLA · 2 exceptions</span>
+            </button>
+          </li>
+          <li class="loc-item" data-city="4">
+            <button class="loc-btn" type="button" aria-pressed="false">
+              <span class="loc-dot" aria-hidden="true"></span>
+              <span class="loc-city">Hyderabad</span>
+              <span class="tnum label loc-meta">21 ops · 98.8% SLA</span>
+            </button>
+          </li>
+          <li class="loc-item" data-city="5">
+            <button class="loc-btn" type="button" aria-pressed="false">
+              <span class="loc-dot" aria-hidden="true"></span>
+              <span class="loc-city">Bengaluru</span>
+              <span class="tnum label loc-meta">29 ops · 99.0% SLA · 1 exception</span>
+            </button>
+          </li>
         </ul>
-      </article>
+      </div>
 
-      <article class="pf-trade rise" data-reveal style="--d:90ms">
-        <p class="pf-trade-kind">Contractors &amp; site services</p>
-        <h3 class="h-sm pf-trade-name">A site becomes a project</h3>
-        <p class="body pf-trade-copy">Milestones, not month-ends. Material issued to a site stays attached to that site, and the running bill is the project — not a separate sheet someone rebuilds each Friday.</p>
-        <ul class="pf-trade-facts">
-          <li><b>Project</b><span>Baner site · 3 of 7 milestones</span></li>
-          <li><b>Issued</b><span>To site, not to a person</span></li>
-          <li><b>Bills</b><span>Against the milestone</span></li>
-        </ul>
-      </article>
-
-      <article class="pf-trade rise" data-reveal style="--d:180ms">
-        <p class="pf-trade-kind">Distribution &amp; trading</p>
-        <h3 class="h-sm pf-trade-name">A godown becomes a number you trust</h3>
-        <p class="body pf-trade-copy">Multi-location stock, batch and expiry, dispatch against the order that reserved it. Reorder points fire off real movement instead of a memory of last month.</p>
-        <ul class="pf-trade-facts">
-          <li><b>Stock</b><span>2 godowns, one figure</span></li>
-          <li><b>Reserves</b><span>At order, not at pick</span></li>
-          <li><b>Reorders</b><span>On movement, not hunch</span></li>
-        </ul>
-      </article>
-
-      <article class="pf-trade rise" data-reveal style="--d:270ms">
-        <p class="pf-trade-kind">Assembly &amp; light manufacturing</p>
-        <h3 class="h-sm pf-trade-name">A BOM becomes a shortage warning</h3>
-        <p class="body pf-trade-copy">The bill of materials knows what a build consumes, so a confirmed order tells you what is short before the line stops — not on the morning it stops.</p>
-        <ul class="pf-trade-facts">
-          <li><b>Build</b><span>BOM per assembly</span></li>
-          <li><b>Warns</b><span>Short before start</span></li>
-          <li><b>Tracks</b><span>Shift output per line</span></li>
-        </ul>
-      </article>
+      <div class="loc-right">
+        <div class="loc-stack">
+          <div class="loc-summary panel">
+            <div class="loc-summary-head">
+              <span class="label loc-card-city">Delhi</span>
+              <span class="loc-summary-status"><span class="loc-summary-dot"></span>Live</span>
+            </div>
+            <dl class="loc-card-dl" id="loc-card">
+              <div class="loc-card-row">
+                <dt>Active operations</dt>
+                <dd class="tnum">42</dd>
+              </div>
+              <div class="loc-card-row">
+                <dt>SLA</dt>
+                <dd class="tnum">98.7%</dd>
+              </div>
+              <div class="loc-card-row">
+                <dt>Exceptions</dt>
+                <dd class="tnum" style="color:var(--accent-text)">3</dd>
+              </div>
+            </dl>
+            <ul class="loc-region-list" aria-label="Operations by region" data-stagger="> li">
+            <li class="loc-region">
+              <span class="loc-region-name">North</span>
+              <span class="loc-region-bar"><i style="--w:84%"></i></span>
+              <span class="tnum loc-region-count">84</span>
+            </li>
+            <li class="loc-region">
+              <span class="loc-region-name">West</span>
+              <span class="loc-region-bar"><i style="--w:36%"></i></span>
+              <span class="tnum loc-region-count">36</span>
+            </li>
+            <li class="loc-region">
+              <span class="loc-region-name">South</span>
+              <span class="loc-region-bar"><i style="--w:50%"></i></span>
+              <span class="tnum loc-region-count">50</span>
+            </li>
+            <li class="loc-region">
+              <span class="loc-region-name">Central</span>
+              <span class="loc-region-bar"><i style="--w:21%"></i></span>
+              <span class="tnum loc-region-count">21</span>
+            </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ---------- D2: modular expansion + how it's priced ---------- -->
-<section class="pf-grow band band--fog" id="pricing">
+<!-- ---------- 14: Migration ---------- -->
+<section class="section--alt section--tall" id="migration" aria-labelledby="migration-heading">
   <div class="shell">
-    <div class="pf-grow-grid">
-      <div class="pf-grow-copy">
-        <p class="eyebrow" data-reveal>Modular, honestly</p>
-        <h2 class="h-lg pf-heading" data-words>Switch on two. <em>Add the rest when the work asks.</em></h2>
-        <p class="sub pf-deck" data-reveal>Nobody adopts eight modules in a week. Start where the pain is — usually orders and inventory — and turn on the next one the day a spreadsheet appears to cover it.</p>
+    <div class="mig-grid">
+      <div class="mig-left">
+        <p class="eyebrow" data-reveal>Migration</p>
+        <h2 id="migration-heading" class="h-lg">Bring your business with you.</h2>
+        <p class="body mig-deck">Already living in Excel, Sheets or another system? We'll help you move, mapped object by object, with the old system running in parallel until you're ready to stop.</p>
+        <a href="#cta" class="btn btn--secondary">Talk about migration</a>
+      </div>
 
-        <div class="pf-price accent" data-reveal>
-          <p class="pf-price-line">You pay for the modules you switch on, per user, per month.</p>
-          <p class="pf-price-note">No platform fee to unlock the ones you don't use. Turning one on doesn't re-import anything — the records are already there.</p>
+      <div class="mig-right">
+        <ul class="mig-sources" data-stagger="> li">
+          <li class="mig-source">Excel</li>
+          <li class="mig-source">Google Sheets</li>
+          <li class="mig-source">Legacy ERP</li>
+          <li class="mig-source">CRM</li>
+        </ul>
+
+        <div class="mig-arrow" aria-hidden="true">
+          <svg width="72" height="140" viewBox="0 0 72 140" fill="none" class="mig-arrow-svg" aria-hidden="true">
+            <path d="M0 16 C 34 16, 38 70, 72 70" stroke="var(--accent-a40)" stroke-width="1" fill="none"/>
+            <path d="M0 54 C 34 54, 38 70, 72 70" stroke="var(--accent-a40)" stroke-width="1" fill="none"/>
+            <path d="M0 92 C 34 92, 38 70, 72 70" stroke="var(--accent-a40)" stroke-width="1" fill="none"/>
+            <path d="M0 130 C 34 130, 38 70, 72 70" stroke="var(--accent-a40)" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+
+        <div class="mig-dest">
+          <span class="mig-logo"><svg width="22" height="27" viewBox="0 0 24 30" role="img" aria-label="Verity"><path d="M2.6 1.6h18.8a1.6 1.6 0 011.2 2.7L13.2 14a1.6 1.6 0 01-2.4 0L1.4 4.3A1.6 1.6 0 012.6 1.6z" fill="currentColor"/><path d="M10.8 16a1.6 1.6 0 012.4 0l9.4 9.7a1.6 1.6 0 01-1.2 2.7H2.6a1.6 1.6 0 01-1.2-2.7z" fill="currentColor"/></svg></span>
+          <p class="label">One operating environment</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------- 15: Implementation ---------- -->
+<section class="section--tall section--impl" id="implementation" aria-labelledby="implementation-heading">
+  <div class="shell">
+    <div class="impl-head">
+      <div class="impl-heading-wrap">
+        <p class="eyebrow" data-reveal>Implementation, four weeks</p>
+        <h2 id="implementation-heading" class="h-lg impl-heading" data-reveal>We don't just give you software.<br>We help you run it.</h2>
+      </div>
+      <p class="sub impl-deck" data-reveal>Verity is a platform and an operations practice. The second half is what makes the first half land.</p>
+    </div>
+
+      <div class="panel op-grid" data-reveal>
+        <div class="panel-head">
+          <span class="label">Verity / Implementation</span>
+          <div class="panel-meta"><span>Four weeks</span><span>Four stages</span></div>
+        </div>
+        <div class="panel-body">
+    <ol class="impl-grid" data-stagger="> li">
+      <li class="impl-cell">
+        <span class="tnum label impl-num">01</span>
+        <h3 class="h-sm impl-cell-title">Discovery &amp; mapping</h3>
+        <p class="body impl-cell-body">We map how work reaches you and where it stalls.</p>
+      </li>
+      <li class="impl-cell">
+        <span class="tnum label impl-num">02</span>
+        <h3 class="h-sm impl-cell-title">Configuration</h3>
+        <p class="body impl-cell-body">We configure Verity around your real process.</p>
+      </li>
+      <li class="impl-cell">
+        <span class="tnum label impl-num">03</span>
+        <h3 class="h-sm impl-cell-title">Migration</h3>
+        <p class="body impl-cell-body">We move your existing data object by object.</p>
+      </li>
+      <li class="impl-cell">
+        <span class="tnum label impl-num">04</span>
+        <h3 class="h-sm impl-cell-title">Operations partnership</h3>
+        <p class="body impl-cell-body">We stay on after go-live.</p>
+      </li>
+    </ol>
         </div>
       </div>
 
-      <ol class="pf-grow-list artifact" data-reveal>
-        <li class="pf-grow-item is-on"><span class="pf-grow-name">Orders</span><span class="pf-grow-state">Day one</span></li>
-        <li class="pf-grow-item is-on"><span class="pf-grow-name">Inventory</span><span class="pf-grow-state">Day one</span></li>
-        <li class="pf-grow-item is-next"><span class="pf-grow-name">CRM &amp; Sales</span><span class="pf-grow-state">When quotes pile up</span></li>
-        <li class="pf-grow-item is-next"><span class="pf-grow-name">Projects</span><span class="pf-grow-state">When jobs run past a week</span></li>
-        <li class="pf-grow-item"><span class="pf-grow-name">Operations</span><span class="pf-grow-state">When stages need tracking</span></li>
-        <li class="pf-grow-item"><span class="pf-grow-name">Workforce</span><span class="pf-grow-state">When shifts decide output</span></li>
-        <li class="pf-grow-item"><span class="pf-grow-name">Finance</span><span class="pf-grow-state">When collection slips</span></li>
-        <li class="pf-grow-item is-on"><span class="pf-grow-name">Verity AI</span><span class="pf-grow-state">Included from day one</span></li>
-      </ol>
-    </div>
   </div>
 </section>
 
-<!-- ---------- D3: the honest comparison ---------- -->
-<section class="pf-vs band band--mist">
+<!-- ---------- 16: Final CTA ---------- -->
+<section class="section--tall section--cta" id="cta" aria-labelledby="cta-heading-h" style="padding-block:clamp(120px,18vw,220px)">
   <div class="shell">
-    <div class="pf-head">
-      <p class="eyebrow" data-reveal>Straight answer</p>
-      <h2 class="h-lg pf-heading" data-words>Three ways to run it. <em>Only one keeps the thread.</em></h2>
-    </div>
-
-    <div class="pf-vs-table" role="table" aria-label="How each approach handles the same four moments">
-      <div class="pf-vs-row pf-vs-row--head" role="row">
-        <span class="caption pf-vs-cell pf-vs-cell--label" role="columnheader">The moment</span>
-        <span class="pf-vs-cell" role="columnheader">Sheets &amp; WhatsApp</span>
-        <span class="pf-vs-cell" role="columnheader">One tool per problem</span>
-        <span class="pf-vs-cell pf-vs-cell--ours" role="columnheader">Verity</span>
-      </div>
-      <div class="pf-vs-row" role="row">
-        <span class="pf-vs-cell pf-vs-cell--label" role="rowheader">Where the order lives</span>
-        <span class="pf-vs-cell" role="cell">In a sheet, and in a chat, and in someone's head</span>
-        <span class="pf-vs-cell" role="cell">In the tool that created it</span>
-        <span class="pf-vs-cell pf-vs-cell--ours" role="cell">One record every module reads</span>
-      </div>
-      <div class="pf-vs-row" role="row">
-        <span class="pf-vs-cell pf-vs-cell--label" role="rowheader">Who re-types it</span>
-        <span class="pf-vs-cell" role="cell">Everyone, at every hand-off</span>
-        <span class="pf-vs-cell" role="cell">Whoever owns the next tool</span>
-        <span class="pf-vs-cell pf-vs-cell--ours" role="cell">Nobody</span>
-      </div>
-      <div class="pf-vs-row" role="row">
-        <span class="pf-vs-cell pf-vs-cell--label" role="rowheader">When stock is wrong</span>
-        <span class="pf-vs-cell" role="cell">You find out on the floor</span>
-        <span class="pf-vs-cell" role="cell">You find out at the nightly sync</span>
-        <span class="pf-vs-cell pf-vs-cell--ours" role="cell">The order that drew it says so</span>
-      </div>
-      <div class="pf-vs-row" role="row">
-        <span class="pf-vs-cell pf-vs-cell--label" role="rowheader">When someone asks why</span>
-        <span class="pf-vs-cell" role="cell">Three people reconstruct it</span>
-        <span class="pf-vs-cell" role="cell">Three exports, then a guess</span>
-        <span class="pf-vs-cell pf-vs-cell--ours" role="cell">The note, the date, the record</span>
-      </div>
-    </div>
-
-    <p class="body pf-vs-foot" data-reveal>And the honest half: if you run one desk and ten orders a month, a spreadsheet is genuinely fine. Verity starts paying for itself the day work crosses hands — when the person who sells is no longer the person who ships.</p>
-  </div>
-</section>
-
-<!-- ---------- D4: ownership — full-bleed ink ---------- -->
-<section class="pf-own band band--dark">
-  <div class="shell">
-    <div class="pf-own-grid">
-      <div class="pf-own-copy">
-        <p class="eyebrow eyebrow--onDark" data-reveal>Your side of it</p>
-        <h2 class="h-lg pf-own-heading" data-words>Your records. <em>Yours to take.</em></h2>
-        <p class="sub pf-deck pf-own-deck" data-reveal>An operating system for a business only works if leaving it is possible. Export is a button, not a support ticket.</p>
-      </div>
-
-      <ul class="pf-own-list">
-        <li class="pf-own-item rise" data-reveal><b>Full export, any time</b><span>Every module, as CSV, on your own initiative — including the notes and the timestamps.</span></li>
-        <li class="pf-own-item rise" data-reveal style="--d:90ms"><b>Roles decide the view</b><span>The floor sees stages, accounts sees money, the owner sees both. The record underneath doesn't change.</span></li>
-        <li class="pf-own-item rise" data-reveal style="--d:180ms"><b>Every change is attributable</b><span>Who changed the promised date, and when. An audit trail on the record, not in a log nobody opens.</span></li>
-        <li class="pf-own-item rise" data-reveal style="--d:270ms"><b>Hosted in India</b><span>Data resides in Indian regions, with daily backups and encryption in transit and at rest.</span></li>
-      </ul>
+    <div class="cta-inner">
+      <p class="eyebrow" data-reveal>Start where it hurts most</p>
+      <h2 id="cta-heading-h" class="display cta-heading" data-reveal>Run your business<br>your way.</h2>
+      <p class="sub cta-deck" data-reveal>One system for the work, people and decisions that move your business forward.</p>
+      <div class="cta-buttons" data-reveal>
+        <a href="https://wa.me/918744069597?text=Hi%20Verity%2C%20I%27d%20like%20to%20book%20a%20demo." class="btn btn--fill" target="_blank" rel="noopener">Book a demo
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M1 5h11.5M8.5 1 12.8 5 8.5 9" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        </div>
     </div>
   </div>
 </section>
 
-<!-- ---------- D5: the close + footer ---------- -->
-<section class="pf-close band" id="demo">
-  <div class="shell pf-close-shell">
-    <p class="eyebrow" data-reveal>Start with one order</p>
-    <h2 class="display pf-close-heading" data-words>One business, <em>one operational truth.</em></h2>
-    <p class="sub pf-close-deck" data-reveal>Bring one live order to the demo — a real one, mid-flight. We'll run it end to end on Verity and you can decide from that.</p>
-    <div class="pf-close-cta" data-reveal>
-      <a href="https://wa.me/918744069597?text=Hi%20Verity%20%E2%80%94%20I%27d%20like%20to%20book%20a%20demo." class="btn btn--fill" target="_blank" rel="noopener">Book a demo on WhatsApp</a>
-      <a href="mailto:theplotarmour@gmail.com?subject=Verity%20demo" class="btn btn--ghost">Email us instead</a>
-    </div>
-    <p class="caption pf-close-fine" data-reveal>30 minutes, your data shape, no slide deck.</p>
-    <p class="pf-close-reach" data-reveal><a href="tel:+918744069597">+91 87440 69597</a><span aria-hidden="true">·</span><a href="mailto:theplotarmour@gmail.com?subject=Verity%20demo">theplotarmour@gmail.com</a></p>
-  </div>
-</section>
-
+<!-- ---------- 17: Footer ---------- -->
 <footer class="pf-foot">
   <div class="shell pf-foot-inner">
     <div class="pf-foot-brand">
-      <span class="pf-foot-logo">Verity</span>
-      <p class="caption pf-foot-line">A modular business operating system for Indian production and service MSMEs.</p>
+      <a href="#top" class="nav-logo pf-foot-logo-link" aria-label="Verity, home">
+        <svg width="16" height="20" viewBox="0 0 24 30" aria-hidden="true">
+          <path d="M2.6 1.6h18.8a1.6 1.6 0 011.2 2.7L13.2 14a1.6 1.6 0 01-2.4 0L1.4 4.3A1.6 1.6 0 012.6 1.6z" fill="var(--accent)"/>
+          <path d="M10.8 16a1.6 1.6 0 012.4 0l9.4 9.7a1.6 1.6 0 01-1.2 2.7H2.6a1.6 1.6 0 01-1.2-2.7z" fill="var(--accent)"/>
+        </svg>
+        <span class="pf-foot-logo">verity</span>
+      </a>
+      <p class="caption pf-foot-line">Operate. Optimize. Outperform.</p>
     </div>
     <nav class="pf-foot-nav" aria-label="Footer">
       <div class="pf-foot-col">
-        <p class="pf-foot-head">Product</p>
-        <a href="#platform">Platform</a>
-        <a href="#modules">Modules</a>
-        <a href="#intelligence">Verity AI</a>
-        <a href="#pricing">Pricing</a>
+        <p class="pf-foot-head label">Product</p>
+        <a href="#platform">Overview</a>
+        <a href="#command">Orders</a>
+        <a href="#primitives">Inventory</a>
+        <a href="#schedule">Projects</a>
+        <a href="#workforce">Workforce</a>
+        <a href="#roles">Finance</a>
       </div>
       <div class="pf-foot-col">
-        <p class="pf-foot-head">Trades</p>
-        <a href="#industries">Fabrication</a>
-        <a href="#industries">Contracting</a>
-        <a href="#industries">Distribution</a>
-        <a href="#industries">Assembly</a>
+        <p class="pf-foot-head label">Company</p>
+        <a href="mailto:theplotarmour@gmail.com?subject=Verity%20enquiry">About</a>
+        <a href="mailto:theplotarmour@gmail.com?subject=Verity%20enquiry">Careers</a>
+        <a href="mailto:theplotarmour@gmail.com?subject=Verity%20enquiry">Contact</a>
       </div>
       <div class="pf-foot-col">
-        <p class="pf-foot-head">Company</p>
-        <a href="https://wa.me/918744069597?text=Hi%20Verity%20%E2%80%94%20I%27d%20like%20to%20book%20a%20demo." target="_blank" rel="noopener">WhatsApp</a>
-        <a href="tel:+918744069597">+91 87440 69597</a>
-        <a href="mailto:theplotarmour@gmail.com?subject=Verity%20demo">theplotarmour@gmail.com</a>
-        <a href="#demo">Book a demo</a>
+        <p class="pf-foot-head label">Resources</p>
+        <a href="mailto:theplotarmour@gmail.com?subject=Verity%20enquiry">Documentation</a>
+        <a href="mailto:theplotarmour@gmail.com?subject=Verity%20enquiry">API reference</a>
+        <a href="mailto:theplotarmour@gmail.com?subject=Verity%20enquiry">Status page</a>
+        <a href="mailto:theplotarmour@gmail.com?subject=Verity%20enquiry">Blog</a>
+      </div>
+      <div class="pf-foot-col">
+        <p class="pf-foot-head label">Legal</p>
+        <a href="mailto:theplotarmour@gmail.com?subject=Verity%20enquiry">Privacy policy</a>
+        <a href="mailto:theplotarmour@gmail.com?subject=Verity%20enquiry">Terms of service</a>
       </div>
     </nav>
   </div>
   <div class="shell pf-foot-base">
-    <p class="caption">© 2026 Verity</p>
-    <p class="caption">Made for the floor, the desk and the ledger.</p>
+    <p class="caption">© 2025 Verity · Enterprise Operations Platform</p>
   </div>
 </footer>
 <!-- D:END -->
 
+
+</main>
+
 <script src="js/vendor/lenis.min.js"></script>
-<script src="js/motion.js?v=8"></script>
-<script src="js/hero-assemble.js?v=8"></script>
+<script src="js/motion.js?v=48"></script>
+<script src="js/hero-assemble.js?v=48"></script>
+<script src="js/ui.js?v=48"></script>
 </body>
 </html>

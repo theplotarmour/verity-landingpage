@@ -1,0 +1,296 @@
+/* =============================================================================
+   Verity — motion polish, performance hints, and mobile overflow fixes.
+   Loaded last so it extends all other stylesheets.
+   ========================================================================== */
+
+/* ============================================================ EASE TOKEN === */
+/* Single shared easing curve used site-wide. */
+:root { --ease-out: cubic-bezier(0.22, 0.61, 0.36, 1); }
+
+/* ======================================================= BUTTON LIFTS & STATES === */
+/* Subtle hover lift with translateY + soft shadow; press-down on active. */
+.btn {
+  transition:
+    background-color 200ms var(--ease-out),
+    border-color     200ms var(--ease-out),
+    color            200ms var(--ease-out),
+    box-shadow       200ms var(--ease-out),
+    transform        200ms var(--ease-out);
+}
+.btn:hover { transform: translateY(-1px); box-shadow: var(--elev-low); }
+.btn:active { transform: translateY(0px) scale(0.98); box-shadow: none; }
+
+/* Focus ring: smooth scale-in ring on keyboard navigation. */
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  transform: scale(1.02);
+}
+
+/* Primary: deepen on hover */
+.btn--primary:hover { background: var(--accent-600); border-color: var(--accent-600); transform: translateY(-1px); box-shadow: var(--elev-low); }
+
+/* Secondary: border darkens, slight lift */
+.btn--secondary:hover { border-color: var(--ink); transform: translateY(-1px); box-shadow: var(--elev-low); }
+
+/* Quiet: underline appears on hover */
+.btn--quiet:hover { border-color: var(--line); transform: translateY(-1px); box-shadow: var(--elev-low); }
+
+/* On-dark variants */
+.btn--onDark:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+
+/* ========================================================= CARD / PANEL HOVER === */
+/* Subtle background tint on hover for all interactive card surfaces. */
+.panel {
+  transition: box-shadow 250ms var(--ease-out), background-color 250ms var(--ease-out);
+}
+.panel:hover { box-shadow: var(--elev-high); }
+
+/* vd-card hover lift */
+.vd-card {
+  transition: box-shadow 250ms var(--ease-out), transform 250ms var(--ease-out);
+}
+.vd-card:hover { box-shadow: var(--elev-high); transform: translateY(-2px); }
+
+/* cn-pillar cards */
+.cn-pillar {
+  transition: box-shadow 250ms var(--ease-out), transform 250ms var(--ease-out), background-color 250ms var(--ease-out);
+}
+.cn-pillar:hover { box-shadow: var(--elev-high); transform: translateY(-2px); }
+
+/* cn-frag-chip hover: slight scale + shadow lift */
+.cn-frag-chip {
+  transition: box-shadow 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+.cn-frag-chip:hover { box-shadow: var(--elev-mid); transform: translateY(-3px) !important; }
+
+/* cn-modules-item */
+
+/* impl-cell: hover background */
+.impl-cell:hover { background-color: var(--base-alt); }
+
+/* ======================================================= LOCATIONS & SCHEDULE === */
+/* loc-item hover: very subtle accent tint */
+.loc-item {
+  transition: background-color 200ms var(--ease-out);
+}
+.loc-item:hover { background-color: var(--accent-a08); }
+
+/* loc-dot pulse on item hover (parent hover) */
+.loc-item:hover .loc-dot { background: var(--accent); }
+
+/* shd-item hover: faint highlight */
+.shd-item {
+  transition: background-color 200ms var(--ease-out);
+}
+.shd-item:hover .shd-row { background-color: var(--accent-a08); border-radius: var(--r-focus); }
+
+/* ========================================================== NAV LINKS === */
+/* Smooth color transition for all nav links */
+.nav-links a {
+  transition: color 200ms var(--ease-out);
+}
+
+/* Theme toggle animation */
+.theme-toggle {
+  transition: color 200ms var(--ease-out), border-color 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+.theme-toggle:hover { transform: rotate(15deg); }
+
+/* ========================================================== DIVIDER FADES === */
+/* Section hairline dividers fade in as they cross the viewport. */
+@keyframes hairline-fade {
+  from { opacity: 0; transform: scaleX(0.6); transform-origin: left; }
+  to   { opacity: 1; transform: scaleX(1);   transform-origin: left; }
+}
+.hairline {
+  opacity: 0;
+  transform: scaleX(0.6);
+  transform-origin: left;
+}
+.hairline.is-in {
+  opacity: 1;
+  transform: scaleX(1);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+
+/* ===================================================== EYEBROW LEAD-IN === */
+/* Eyebrow label fades in 100ms before its heading via staggered reveal delays.
+   The heading carries --d:100ms; the eyebrow next to it gets --d:0ms so it
+   appears first, then the heading follows. */
+.eyebrow {
+  transition: opacity 400ms var(--ease-out) var(--d, 0ms);
+}
+
+/* ============================================================ TNUM FADE-IN === */
+/* Tabular numbers in stats dissolve in smoothly */
+.tnum {
+  transition: opacity 500ms var(--ease-out);
+}
+
+/* ============================================================== THE ENTRANCE === */
+/* One entrance motion, used everywhere below the hero: a short rise on first
+   view. Time-based, not scroll-scrubbed — a view() timeline ties progress to
+   scroll position, so a fast scroll skips it entirely and it never reads as
+   motion. Values match the reference: 500ms, y 10px, fires once, 80px early.
+   js/motion.js adds .is-in and sets --d for stagger. */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(10px);
+}
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity   500ms var(--ease-out) var(--d, 0ms),
+    transform 500ms var(--ease-out) var(--d, 0ms);
+}
+
+/* Promote only while an element is still waiting to move, and release the
+   layer the moment it lands. Holding one per card is what made this lag. */
+[data-reveal]:not(.is-in) { will-change: transform, opacity; }
+[data-reveal].is-in { will-change: auto; }
+
+.rise:not(.is-in) { will-change: transform, opacity; }
+.is-in > .rise, .rise.is-in { will-change: auto; }
+
+/* Hero shards are scrubbed every scroll tick, so they keep their layer. */
+[data-shard] { will-change: transform, opacity; }
+
+.reveal-word:not(.is-in *) { will-change: transform, opacity; }
+.is-in .reveal-word { will-change: auto; }
+
+/* Reduced motion: land everything, animate nothing. */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1; transform: none; }
+  [data-reveal].is-in { transition: none; }
+}
+
+/* ======================================================== PERFORMANCE: CONTAIN === */
+/* Card grids and list containers: isolate layout so reflows don't cascade */
+.impl-grid { contain: layout; }
+.cn-pillars-grid { contain: layout; }
+.loc-list { contain: layout; }
+.shd-timeline { contain: layout; }
+
+/* Panel rows: a reflow inside one row should not cascade */
+.metric-row { contain: layout; }
+
+/* ==================================================== PERFORMANCE: CONTENT-VISIBILITY === */
+
+/* =================================================== MOBILE: HOW IT WORKS GRID === */
+/* The fragment grid is 1fr 1fr, with absolute-positioned chips using
+   percentage left values. The 96% chip overflows the 167px column on phones.
+   Stack to a single column and let chips sit comfortably. */
+@media (max-width: 639px) {
+  #how-it-works [style*="grid-template-columns:minmax"] {
+    grid-template-columns: 1fr !important;
+  }
+  #how-it-works [style*="position:relative;min-height:380px"] {
+    min-height: 320px;
+  }
+}
+
+/* =================================================== MOBILE: PRIMITIVES GRID === */
+/* The primitives grid uses repeat(6, 1fr) with span overrides. On phones the
+   grid auto-stacks to 1fr tracks but child min-content can still overflow.
+   Force min-width: 0 on grid children. */
+@media (max-width: 639px) {
+  #primitives div[style*="grid-template-columns:repeat(6,1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+    min-width: 0;
+  }
+  #primitives div[style*="grid-template-columns:repeat(6,1fr)"] > div {
+    grid-column: span 1 !important;
+    min-width: 0;
+  }
+  #primitives div[style*="grid-template-columns:repeat(6,1fr)"] > div:first-child {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* =================================================== MOBILE: ROLE PANEL FIX === */
+/* The role tab panels have hardcoded grids that overflow at narrow widths.
+   Collapse the side panel and make the metric row scrollable on mobile. */
+@media (max-width: 639px) {
+  .role-panel-body { grid-template-columns: 1fr !important; }
+  .role-panel-metrics { display: flex !important; flex-wrap: wrap; border-right: none !important; }
+  .role-panel-metrics > div { flex: 1 1 40%; min-width: 100px; }
+  .role-panel-body > div:last-child { border-left: none !important; border-top: 1px solid var(--line) !important; width: 100% !important; }
+  .role-panel-body > div:last-child > * { max-width: 100% !important; }
+}
+
+/* ===================================================== MOBILE: BUTTON TOUCH TARGET === */
+@media (max-width: 639px) {
+  .btn { min-height: 44px; }
+  .btn--sm { min-height: 36px; }
+  /* Keep hero CTA buttons slightly smaller on mobile */
+  .hero-ctas .btn { min-height: 44px; }
+  /* Nav CTA stays touch-friendly */
+  .nav-cta .btn { min-height: 44px; }
+}
+
+/* =========================================== MOBILE: 1440px SHELL PADDING === */
+/* The maxw is 1440px with clamp(gutter, 4vw, 40px). At very wide viewports
+   (1440+) the 40px gutters are fine. On ultra-wide monitors (1920+), clamp
+   already handles it. No extra rules needed here — the token is correct. */
+
+/* ============================================ DARK MODE: ACCENT TINT HOVER === */
+/* Ensure accent tint hovers work correctly in dark mode */
+.loc-item:hover { background-color: var(--accent-a14); }
+.shd-item:hover .shd-row { background-color: var(--accent-a14); }
+.impl-cell:hover { background-color: var(--base-alt); }
+.panel:hover { box-shadow: var(--elev-high); }
+
+/* ================================================ PREFERS-REDUCED-MOTION: COMPLETE === */
+/* Extend the base rule to cover everything this file adds. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  /* Undo transform lifts so buttons sit flush */
+  .btn:hover, .btn:active, .btn--secondary:hover,
+  .btn--quiet:hover, .btn--onDark:hover,
+  .vd-card:hover, .cn-pillar:hover, .cn-frag-chip:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Skip all scroll-driven line reveals */
+  .hairline { animation: none !important; opacity: 1 !important; }
+
+  /* Keep reveal elements visible */
+  [data-reveal], .rise, .reveal-word, [data-shard] {
+    opacity: 1 !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+
+  /* Skip chain rail scroll animation */
+  .cn-chain-rail-line i { transform: scaleY(1) !important; }
+
+  /* Skip workforce bar grow */
+  .wf-bar-fill { animation: none !important; transform: none !important; }
+
+  /* Skip eyebrow lead-in */
+  .eyebrow { transition: none !important; }
+
+  /* Disable theme toggle spin */
+  .theme-toggle:hover { transform: none !important; }
+}
+
+
+/* =============================================== PANEL SPLITS ON NARROW SCREENS === */
+/* The command centre and the four role panels each hold a fixed
+   `1fr 320-340px` split. Panels clip their overflow, so on a phone the whole
+   right-hand column was cut off and unreachable rather than wrapping. Stack
+   the split below the panel's own breakpoint. */
+@media (max-width: 860px) {
+  .panel [style*="grid-template-columns:1fr 340px"],
+  .panel [style*="grid-template-columns:1fr 320px"] {
+    grid-template-columns: 1fr !important;
+  }
+}

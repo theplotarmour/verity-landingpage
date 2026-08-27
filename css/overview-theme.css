@@ -2,7 +2,7 @@
    Overview theme — the palette, radii and elevation of verity-overview.html
    applied over the landing page's existing token names, so every piece
    re-themes without touching its own CSS.
-   Source palette: #0F1115 #1C1F24 #2A2E33 #E6E8EB #F7F8FA #00D1B2
+   Source palette: #0F1115 #1C1F24 #2A2E33 #E6E8EB #F7F8FA var(--accent)
    ========================================================================== */
 :root {
   /* Ink + neutrals */
@@ -20,7 +20,7 @@
   --color-sienna-brown: #04231f;
 
   /* Product accent */
-  --accent: #00d1b2;
+  --accent: var(--accent);
   --accent-strong: #0bb69c;
   --accent-ink: #04231f;
   --warn: #e0a02a;
@@ -31,12 +31,12 @@
   --map-land: #e9ecef;
 
   /* Radii — overview uses 16 card / 12 control / pill */
-  --radius-cards: 16px;
-  --radius-elevatedcards: 16px;
+  --radius-cards: var(--r-panel);
+  --radius-elevatedcards: var(--r-panel);
   --radius-smallcards: 12px;
-  --radius-inputs: 12px;
+  --radius-inputs: var(--r-inner);
   --radius-images: 12px;
-  --radius-buttons: 999px;
+  --radius-buttons: var(--r-pill);
 
   /* Elevation */
   --shadow-subtle:   0 1px 2px rgba(15,17,21,.04), 0 8px 24px -12px rgba(15,17,21,.10);

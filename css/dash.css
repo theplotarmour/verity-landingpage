@@ -132,23 +132,23 @@
 .vd-stats .is-accent b, .vd-stats .is-accent small { color: var(--accent); }
 
 .vd-spark { display: flex; align-items: flex-end; gap: 10px; flex: 1; min-height: 0; padding: 12px 17px 0; }
-.vd-spark i { flex: 1; border-radius: 4px 4px 0 0; }
-.vd-spark .s-solid { background: var(--accent); border-radius: 2px; }
+.vd-spark i { flex: 1; border-radius: var(--r-focus) var(--r-focus) 0 0; }
+.vd-spark .s-solid { background: var(--accent); border-radius: var(--r-bar); }
 .vd-spark .s-dot { background-image: radial-gradient(currentColor 1px, transparent 1.1px); background-size: 6px 6px; color: var(--color-ash-gray); }
 .vd-spark .s-hatch { background-image: repeating-linear-gradient(45deg, var(--accent) 0 1px, transparent 1px 6px); opacity: .55; }
-.vd-spark .s-fill { background: linear-gradient(180deg, rgba(0,209,178,.6), rgba(0,209,178,.06)); }
+.vd-spark .s-fill { background: linear-gradient(180deg, color-mix(in srgb, var(--accent) 60%, transparent), color-mix(in srgb, var(--accent) 6%, transparent)); }
 
 .vd-stockbody { display: flex; align-items: center; gap: 16px; padding: 14px 17px 18px; }
 .vd-legend { display: flex; flex-direction: column; gap: 9px; font-size: 13px; color: var(--color-slate-gray); }
 .vd-legend span { display: flex; align-items: center; gap: 8px; }
 .vd-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none; }
-.vd-dot.d-soft { background: rgba(0,209,178,.45); }
+.vd-dot.d-soft { background: color-mix(in srgb, var(--accent) 45%, transparent); }
 .vd-dot.d-mute { background: var(--border-strong); }
 .vd-dot.d-ink { background: var(--color-ink-black); }
 .vd-donut { position: relative; width: 104px; height: 104px; flex: none; }
 .vd-ring {
   position: absolute; inset: 0; border-radius: 50%;
-  background: conic-gradient(from 205deg, var(--accent) 0 56%, rgba(0,209,178,.16) 56% 74%, transparent 74% 100%);
+  background: conic-gradient(from 205deg, var(--accent) 0 56%, color-mix(in srgb, var(--accent) 16%, transparent) 56% 74%, transparent 74% 100%);
   -webkit-mask: radial-gradient(circle, transparent 44px, #000 45px);
           mask: radial-gradient(circle, transparent 44px, #000 45px);
 }
@@ -164,6 +164,8 @@
 .vd-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.55), transparent 55%); }
 .vd-ph {
   width: 58%; aspect-ratio: 1; border-radius: 50%;
+  /* Photographic stand-in for a delivery image: a neutral material, not a
+     brand colour, so it is deliberately outside the token ramp. */
   background: radial-gradient(120% 90% at 30% 22%, rgba(255,255,255,.55), transparent 55%), linear-gradient(150deg, #c9ced4, #7c848d 55%, #4a5057);
 }
 .vd-badge {
@@ -173,12 +175,12 @@
   background: var(--color-paper-white); border-radius: var(--radius-buttons);
   font-size: 13px; box-shadow: var(--shadow-subtle-2);
 }
-.vd-mediameta { position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 2; color: #fff; }
+.vd-mediameta { position: absolute; left: 14px; right: 14px; bottom: 12px; z-index: 2; color: var(--color-paper-white); }
 .vd-mediameta b { display: block; font-size: 17px; font-weight: 400; }
 .vd-mediameta small { font-size: 13px; color: rgba(255,255,255,.72); }
 .vd-mediacta {
   position: absolute; right: 14px; bottom: 12px; z-index: 3;
-  width: 32px; height: 32px; border-radius: 10px; background: var(--accent);
+  width: 32px; height: 32px; border-radius: var(--r-control); background: var(--accent);
 }
 
 .vd-map { position: absolute; inset: 0 0 0 290px; z-index: 1; color: var(--map-land); }
@@ -187,7 +189,7 @@
 .vd-loginote { margin: 20px 0 10px; font-size: 13px; }
 .vd-thumbs { display: flex; align-items: center; }
 .vd-thumbs i {
-  width: 42px; height: 38px; border-radius: 8px;
+  width: 42px; height: 38px; border-radius: var(--r-control);
   background: var(--thumb-bg); border: 2px solid var(--color-paper-white);
   margin-right: -8px;
 }
@@ -223,7 +225,7 @@
 }
 .vd-tr--head { font-size: 13px; color: var(--color-slate-gray); padding-block: 10px; }
 .vd-item { display: flex; align-items: center; gap: 11px; min-width: 0; }
-.vd-thumb { width: 38px; height: 38px; border-radius: 9px; background: var(--thumb-bg); flex: none; }
+.vd-thumb { width: 38px; height: 38px; border-radius: var(--r-control); background: var(--thumb-bg); flex: none; }
 .vd-item b { display: block; font-weight: 400; }
 .vd-item small { font-size: 13px; color: var(--color-slate-gray); }
 .vd-num { color: var(--accent); }
@@ -240,11 +242,9 @@
 /* The assembling screen sits BEHIND the hero copy, so scattered shards can
    never make the headline unreadable. The copy clears out well before the
    assembly resolves, handing the frame over. */
-.hero-workspace { z-index: 1; }
+.hero-workspace, .pr-layer { z-index: 1; }
 .hero-copy { z-index: 2; opacity: max(0, calc(1 - var(--p, 0) * 2.4)); }
-@media (max-width: 720px) {
-  .hero-copy { opacity: max(0, calc(1 - var(--p, 0) * 2.6)); }
-}
+
 
 /* ---------------------------------------------------------------------------
    Narrow widths: the canvas itself changes shape rather than shrinking the
@@ -307,4 +307,4 @@
   position: relative; top: auto; left: auto; margin: 0 auto;
   transform: scale(var(--vd-scale, 1)); transform-origin: 50% 0;
 }
-.vd-static .hero-wash { opacity: 0.5; }
+
