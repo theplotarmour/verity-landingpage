@@ -170,6 +170,7 @@
 .hero-eyebrow { justify-content: center; }
 
 .hero-headline {
+  font-size: clamp(40px, 5.4vw, 78px);
   max-width: 15ch;
   margin-inline: auto;
   font-family: var(--font-ui);
@@ -678,4 +679,18 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero-copy, .hero-workspace, .hero-wash, .hero-window, .hero-window-body { transition: none; }
+}
+
+/* ---- Short viewports ------------------------------------------------------
+   The hero copy is centred in 100vh, so on a laptop the supporting line lands
+   on the fold rather than above it. Tighten the stack and ease the headline
+   down by viewport height, not just width. */
+@media (max-height: 880px) and (min-width: 900px) {
+  .hero-copy-inner { padding-top: 48px; gap: 16px; }
+  .hero-headline { font-size: clamp(38px, 4.6vw, 64px); }
+  .hero-sub { font-size: 16px; }
+}
+@media (max-height: 760px) and (min-width: 900px) {
+  .hero-copy-inner { padding-top: 32px; gap: 12px; }
+  .hero-headline { font-size: clamp(34px, 4vw, 54px); }
 }
