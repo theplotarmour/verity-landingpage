@@ -6,7 +6,7 @@
    ========================================================================== */
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var scrub  = document.querySelector('.hero-scrub');
+  var scrub  = document.querySelector('[data-assemble], .hero-scrub');
   var scaler = document.querySelector('.vd-scaler');
   if (!scrub || !scaler) return;
 
@@ -40,7 +40,6 @@
       smoothWheel: true,
       touchMultiplier: 1.6
     });
-    document.documentElement.classList.add('has-lenis');
 
     var raf = function (time) { lenis.raf(time); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
@@ -96,13 +95,24 @@
         scale: 0.62 + rand(i, 7) * 0.22
       };
 
-      /* Keep every shard on screen at rest: a piece that starts outside the
-         viewport reads as missing rather than as scattered. */
+      /* Keep every shard fully on screen at rest. The clamp has to use the
+         piece's real extent once it is scaled AND rotated: a rotated rectangle
+         is wider than the rectangle. Measuring only 42% of the unrotated half
+         let corners hang past the edge, so a card read as cropped rather than
+         scattered. */
+      var rad = Math.abs(p.rot) * Math.PI / 180;
+      var cos = Math.cos(rad), sin = Math.sin(rad);
+      var w = r.width * p.scale, h = r.height * p.scale;
+      var halfW = (w * cos + h * sin) / 2;
+      var halfH = (w * sin + h * cos) / 2;
       var cxv = r.left + r.width / 2, cyv = r.top + r.height / 2;
-      var halfW = r.width * 0.42, halfH = r.height * 0.42;
       var tx = cxv + p.x * vs, ty = cyv + p.y * vs;
-      p.x += (Math.min(vw - halfW - 16, Math.max(halfW + 16, tx)) - tx) / vs;
-      p.y += (Math.min(vh - halfH - 16, Math.max(halfH + 84, ty)) - ty) / vs;
+      var loX = halfW + 20, hiX = vw - halfW - 20;
+      var loY = halfH + 88, hiY = vh - halfH - 20;
+      /* A shard taller or wider than the viewport cannot satisfy both bounds;
+         centre it on that axis instead of letting the clamp fight itself. */
+      p.x += ((loX > hiX ? vw / 2 : Math.min(hiX, Math.max(loX, tx))) - tx) / vs;
+      p.y += ((loY > hiY ? vh / 2 : Math.min(hiY, Math.max(loY, ty))) - ty) / vs;
 
       var key = Object.keys(weight).filter(function (k) { return el.classList.contains(k); })[0];
       p.at  = key !== undefined ? weight[key] : 0.16 + rand(i, 8) * 0.42;
@@ -136,6 +146,13 @@
       s.el.style.opacity = (0.42 + 0.58 * t).toFixed(3);
       s.el.style.filter  = t > 0.995 ? 'none' : 'blur(' + (5 * inv).toFixed(2) + 'px)';
     }
+
+    /* The frame clips its content so the assembled app sits inside rounded
+       corners. While the pieces are still scattered they are deliberately
+       outside it, so clipping there slices them against the frame edge rather
+       than letting them fly. The frame's own chrome is a separate ::before
+       layer, so releasing the clip mid-flight costs nothing visually. */
+    frameEl.style.overflow = p > 0.995 ? '' : 'visible';
 
     /* the whole screen also travels: the camera pushing in */
     var camera = 0.82 + 0.18 * ease(p);

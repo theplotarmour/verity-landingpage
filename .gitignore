@@ -1,0 +1,18 @@
+# OS
+.DS_Store
+
+# Local agent/editor config
+.claude/
+
+# Browser-automation scratch output
+.playwright-cli/
+
+# Reference app kept locally for comparison; 98MB with node_modules
+verityexplore-main/
+verityexplore-main.zip
+
+# Working screenshots and snapshots from design comparison
+ours-*.png
+ours-*.yml
+ref-*.yml
+reference-*.png

@@ -1,10 +1,9 @@
-@import url("../variables.css");
+/* Tokens now live in css/verity.css (reference theme) + css/sections.css (bridge). */
 
-/* ---------- Font substitutes: Instrument Serif (display) + Inter (UI) ---------- */
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;450;500&display=swap');
+/* ---------- One family: Inter, across the whole site including the hero. ---------- */
 
 :root {
-  --font-display: 'Instrument Serif', 'Signifier', ui-serif, Georgia, serif;
+  --font-display: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-ui: 'Inter', 'Sohne', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --shell: 1200px;
   --gutter: 24px;
@@ -28,7 +27,8 @@ img, svg { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; }
 
-/* ---------- Display type: serif, weight 400 only, three sizes ---------- */
+/* ---------- Display type: serif reserved for hero only; sections use Inter Light.
+   These are fallbacks; sections.css overrides with Inter for non-hero headings. ---- */
 .display, .h-lg, .h-md {
   font-family: var(--font-display);
   font-weight: 400;
@@ -43,19 +43,13 @@ button { font: inherit; color: inherit; }
 .sub      { font-size: var(--text-body-lg); line-height: var(--leading-body-lg); font-weight: var(--font-weight-regular); color: var(--color-slate-gray); margin: 0; }
 .body     { font-size: var(--text-body);    line-height: var(--leading-body);    margin: 0; }
 .caption  { font-size: var(--text-caption); line-height: var(--leading-caption); color: var(--color-slate-gray); margin: 0; }
-.h-sm     { font-size: var(--text-heading-sm); line-height: var(--leading-heading-sm); letter-spacing: var(--tracking-heading-sm); font-weight: var(--font-weight-w450); margin: 0; }
+.h-sm     { font-size: var(--text-heading-sm); line-height: var(--leading-heading-sm); letter-spacing: var(--tracking-heading-sm); font-weight: 300; margin: 0; }
 
-/* ---------- Eyebrow: 15px sans + chevron ---------- */
+/* ---------- Eyebrow: 10.5px sans + dot (sections.css overrides the legacy chevron) ---------- */
 .eyebrow {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: var(--text-caption); font-weight: var(--font-weight-w450);
   color: var(--color-ink-black);
-}
-.eyebrow::after {
-  content: ""; width: 6px; height: 6px; margin-top: 1px;
-  border-right: 1.25px solid var(--color-smoke-gray);
-  border-top: 1.25px solid var(--color-smoke-gray);
-  transform: rotate(45deg);
 }
 .eyebrow--onDark { color: var(--color-paper-white); }
 
@@ -65,19 +59,18 @@ button { font: inherit; color: inherit; }
 .band--fog   { background: var(--color-fog-white); }
 .band--mist  { background: var(--color-mist-gray); }
 .band--dark  { background: var(--color-ink-black); color: var(--color-paper-white); }
-.band--tint  { background: #e6ecf8; }
+.band--tint  { background: var(--accent-a08); }
 
 /* ---------- Buttons: pill, flat ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  height: 44px; padding-inline: 22px; border: 0; cursor: pointer;
-  border-radius: var(--radius-buttons);
-  font-size: var(--text-body); font-weight: var(--font-weight-w450);
+  height: auto; padding: 12px 22px; border-radius: var(--r-control);
+  font-size: 14px; font-weight: 500;
   transition: transform 420ms cubic-bezier(.22,.61,.36,1), background-color 420ms cubic-bezier(.22,.61,.36,1), opacity 420ms cubic-bezier(.22,.61,.36,1);
 }
 .btn--fill  { background: var(--color-ink-black); color: var(--color-paper-white); }
-.btn--fill:hover { background: #2a2d31; }
-.btn--ghost { background: transparent; color: var(--color-ink-black); padding-inline: 8px; }
+.btn--fill:hover { background: color-mix(in srgb, var(--ink) 86%, var(--surface)); }
+.btn--ghost { background: transparent; color: var(--color-ink-black); }
 .btn--ghost:hover { color: var(--color-slate-gray); }
 .btn--onDark.btn--fill { background: var(--color-paper-white); color: var(--color-ink-black); }
 .btn--onDark.btn--ghost { color: var(--color-paper-white); }
@@ -100,7 +93,7 @@ button { font: inherit; color: inherit; }
 }
 
 /* ---------- Scroll reveal primitives (see js/motion.js) ---------- */
-.reveal-word { display: inline-block; opacity: 0; transform: translateY(0.22em); will-change: opacity, transform; }
+.reveal-word { display: inline-block; opacity: 0; transform: translateY(0.22em); }
 .is-in .reveal-word { opacity: 1; transform: none; transition: opacity 700ms cubic-bezier(.22,.61,.36,1), transform 700ms cubic-bezier(.22,.61,.36,1); }
 .rise { opacity: 0; transform: translateY(18px); }
 .is-in.rise, .is-in .rise { opacity: 1; transform: none; transition: opacity 640ms cubic-bezier(.22,.61,.36,1) var(--d, 0ms), transform 640ms cubic-bezier(.22,.61,.36,1) var(--d, 0ms); }
