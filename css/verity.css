@@ -941,7 +941,7 @@ img { max-width: 100%; display: block; }
 .ai-grid { display: grid; gap: 48px; }
 @media (min-width: 1024px) {
   .ai-grid {
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
     gap: 80px;
     align-items: start;
   }
@@ -964,6 +964,7 @@ img { max-width: 100%; display: block; }
 .ai-thread {
   list-style: none;
   margin: 0;
+  max-width: 62ch;
   padding: clamp(16px, 2.2vw, 24px);
   display: flex;
   flex-direction: column;
@@ -974,7 +975,7 @@ img { max-width: 100%; display: block; }
 .ai-turn--user { display: flex; justify-content: flex-end; }
 .ai-said {
   margin: 0;
-  max-width: 42ch;
+  max-width: 34ch;
   border: 1px solid var(--line);
   background: var(--base);
   border-radius: var(--r-panel) var(--r-panel) var(--r-bar) var(--r-panel);
@@ -983,7 +984,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* What Verity answered runs full measure, unbubbled: it is a record, not chat. */
-.ai-turn { max-width: 56ch; }
+.ai-turn { max-width: 52ch; }
 .ai-who { display: block; margin-bottom: 8px; }
 .ai-body { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--ink-body); }
 
@@ -1057,4 +1058,40 @@ img { max-width: 100%; display: block; }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .theme-icon--moon { display: none; }
   :root:not([data-theme="light"]) .theme-icon--sun { display: block; }
+}
+
+/* ------------------------------------------------------ Platform parts --- */
+/* The six things the operational layer is made of, sitting under the Verity
+   plate so the stack still reads as a layer above the business. */
+.plat-parts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 12px 0 0;
+  width: 94%;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--r-panel);
+  overflow: hidden;
+}
+.plat-parts > div { background: var(--surface); padding: 18px 20px; }
+@media (max-width: 560px) { .plat-parts { grid-template-columns: 1fr; width: 100%; } }
+
+/* The three-beat summary of what the panel just demonstrated. */
+.ai-flow {
+  margin: 28px 0 0;
+  font-family: var(--font-ui);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--ink-muted);
+}
+
+/* The path the closing argument describes, stated once under the button. */
+.cta-flow {
+  margin: 0;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--ink-muted);
 }
