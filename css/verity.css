@@ -1124,11 +1124,12 @@ img { max-width: 100%; display: block; }
   font-size: 12.5px;
   white-space: nowrap;
   box-shadow: var(--elev-low);
+  --collapse: clamp(0, calc((var(--q) - 0.52) / 0.18), 1);
   transform:
     translate3d(calc(var(--dx, 0px) * var(--q)), calc(var(--dy, 0px) * var(--q)), 0)
     rotate(calc(var(--rot, 0deg) * (1 - var(--q))))
-    scale(calc(1 - 0.45 * var(--q)));
-  opacity: clamp(0, calc((1 - var(--q)) * 4), 1);
+    scale(calc(1 - 0.97 * var(--collapse)));
+  opacity: calc(1 - var(--collapse));
 }
 
 @media (max-width: 640px) {
@@ -1176,10 +1177,16 @@ img { max-width: 100%; display: block; }
 
 
 /* --------------------------------------------------- The layer is born --- */
-/* Verity does not sit waiting in the next section. It comes into being as the
-   fragments arrive on it: nothing at all until the pieces are most of the way
-   there, then it resolves in the last third of their journey. --q is set on
-   the root by js/motion.js so both sections read one progress. */
+/* The pieces gather, shrink to a point, and the layer grows out of that point
+   before it says its name. Four phases off one progress, which js/motion.js
+   derives from where the plate actually sits on screen, so every beat happens
+   somewhere the reader can see it.
+
+     0.00 - 0.70  the pieces travel
+     0.52 - 0.70  they collapse to nothing
+     0.68 - 0.86  the layer expands from that point
+     0.86 - 0.95  it says its name
+     0.90 - 1.00  its parts unfold                                          */
 :root { --q: 0; }
 
 .plat-plate {
@@ -1189,27 +1196,32 @@ img { max-width: 100%; display: block; }
   padding: 20px;
   background: var(--accent-a08);
   box-shadow: var(--elev-mid);
-  transform-origin: 50% 60%;
-  /* Held at nothing until 0.62, then eased up to full by 1. */
-  --birth: clamp(0, calc((var(--q) - 0.62) / 0.38), 1);
-  opacity: var(--birth);
-  transform:
-    rotateX(9deg)
-    scale(calc(0.86 + 0.14 * var(--birth)));
+  transform-origin: 50% 50%;
+
+  --expand: clamp(0, calc((var(--q) - 0.68) / 0.18), 1);
+  /* Starts as a speck rather than at zero, so the border and fill are already
+     drawn when it begins to grow. */
+  transform: rotateX(9deg) scale(calc(0.03 + 0.97 * var(--expand)));
+  opacity: clamp(0, calc(var(--expand) * 8), 1);
 }
 
-/* The parts unfold just behind the layer they belong to. */
+/* The name arrives once the box has somewhere to put it. */
+.plat-plate-text {
+  --say: clamp(0, calc((var(--q) - 0.86) / 0.09), 1);
+  opacity: var(--say);
+}
+
 .plat-parts {
-  --unfold: clamp(0, calc((var(--q) - 0.78) / 0.22), 1);
+  --unfold: clamp(0, calc((var(--q) - 0.90) / 0.10), 1);
   opacity: var(--unfold);
   transform: translateY(calc(14px * (1 - var(--unfold))));
 }
 
-/* No motion, or the section reached without the trip: everything is simply
-   present. js/motion.js pins --q to 1 in that case. */
-:root.no-converge .plat-plate,
-:root.no-converge .plat-parts {
+/* No motion, or the section reached without the trip: everything is present.
+   js/motion.js pins --q to 1 in that case. */
+:root.no-converge .plat-plate {
   opacity: 1;
   transform: rotateX(9deg);
 }
-:root.no-converge .plat-parts { transform: none; }
+:root.no-converge .plat-plate-text { opacity: 1; }
+:root.no-converge .plat-parts { opacity: 1; transform: none; }

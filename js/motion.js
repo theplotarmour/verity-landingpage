@@ -118,8 +118,6 @@
       document.documentElement.classList.add('no-converge');
       document.documentElement.style.setProperty('--q', '1');
     } else {
-      var startY = 0, endY = 1;
-
       var docBox = function (el) {
         var r = el.getBoundingClientRect();
         return {
@@ -128,32 +126,45 @@
         };
       };
 
+      var span = 1;
+
       var measure = function () {
         chips.forEach(function (el) {
           el.style.setProperty('--dx', '0px');
           el.style.setProperty('--dy', '0px');
         });
-
         var target = docBox(landing);
         chips.forEach(function (el) {
           var c = docBox(el);
           el.style.setProperty('--dx', (target.cx - c.cx).toFixed(1) + 'px');
           el.style.setProperty('--dy', (target.cy - c.cy).toFixed(1) + 'px');
         });
-
-        /* The trip begins once the scatter is properly on screen and ends when
-           the plate settles near the middle of the viewport. */
-        var vh = window.innerHeight;
-        var f = docBox(field);
-        startY = f.cy - vh * 0.72;
-        endY = target.cy - vh * 0.52;
-        if (endY - startY < 200) { endY = startY + 200; }
+        /* How far the pieces have to fall. The trip is given exactly this much
+           scroll, so the page moves up by the same distance the pieces move
+           down and they hold their place on screen instead of leaving by the
+           top before they have arrived. */
+        span = Math.max(240, Math.abs(target.cy - docBox(field).cy));
       };
 
       var qTick = false;
       var qPaint = function () {
         qTick = false;
-        var q = (window.scrollY - startY) / (endY - startY);
+        /* Progress is taken from where the plate actually is on screen, not
+           from a scroll range. Tie it to scroll distance and the later beats
+           land while the plate is still near the bottom edge, where nobody
+           sees them. This way every phase happens at a known screen position:
+           the collapse at roughly two thirds down, the expansion just above
+           centre, the name at centre. */
+        var r = landing.getBoundingClientRect();
+        var vh = window.innerHeight;
+        var centre = r.top + r.height / 2;
+        /* The plate ends just above the middle of the screen; the trip starts
+           one full fall earlier, which puts the scattered pieces at that same
+           spot when it begins. Everything then happens around the centre of
+           the viewport rather than at its edges. */
+        var to = vh * 0.46;
+        var from = to + span;
+        var q = (from - centre) / span;
         q = q < 0 ? 0 : q > 1 ? 1 : q;
         /* Smoothstep. Linear progress starts and stops abruptly, which reads as
            the pieces being dragged; eased, they gather speed and settle. */
