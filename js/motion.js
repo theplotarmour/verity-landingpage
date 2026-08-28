@@ -50,6 +50,8 @@
 
   if (reduce) {
     targets.forEach(function (el) { el.classList.add('is-in'); });
+    var staticField = document.querySelector('[data-converge]');
+    if (staticField) { staticField.classList.add('is-static'); }
     return;
   }
 
@@ -93,6 +95,73 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll);
   land();
+
+  /* ---- Fragmentation: scattered tools travel to the centre --------------
+     Each chip is measured once against the field's centre, then driven by a
+     single scroll progress. Reduced motion gets the static arrangement: the
+     fragments and the layer shown together, nothing travelling. */
+  var field = document.querySelector('[data-converge]');
+  if (field) {
+    var chips = [].slice.call(field.querySelectorAll('[data-frag]'));
+
+    if (reduce) {
+      field.classList.add('is-static');
+    } else {
+      var vectors = [];
+
+      var measure = function () {
+        var core = field.querySelector('.frag-core');
+        var f = field.getBoundingClientRect();
+        var cx = f.width / 2;
+        var cy = f.height / 2;
+        vectors = chips.map(function (el) {
+          /* Neutralise any transform already applied so the rest position is
+             measured, not the current animated one. */
+          el.style.setProperty('--dx', '0px');
+          el.style.setProperty('--dy', '0px');
+          var r = el.getBoundingClientRect();
+          return {
+            el: el,
+            dx: cx - ((r.left - f.left) + r.width / 2),
+            dy: cy - ((r.top - f.top) + r.height / 2)
+          };
+        });
+        vectors.forEach(function (v) {
+          v.el.style.setProperty('--dx', v.dx.toFixed(1) + 'px');
+          v.el.style.setProperty('--dy', v.dy.toFixed(1) + 'px');
+        });
+        if (core) { core.style.opacity = ''; }
+      };
+
+      var qTick = false;
+      var qPaint = function () {
+        qTick = false;
+        var r = field.getBoundingClientRect();
+        var vh = window.innerHeight;
+        /* Measured on the field's own centre, not its top, so the travel does
+           not depend on how tall the field happens to be. The scattered state
+           is held until the field is properly on screen, then the pieces
+           converge over the next half viewport of scrolling. */
+        var centre = r.top + r.height / 2;
+        var from = vh * 0.78;
+        var to = vh * 0.30;
+        var q = (from - centre) / (from - to);
+        q = q < 0 ? 0 : q > 1 ? 1 : q;
+        field.style.setProperty('--q', q.toFixed(4));
+      };
+
+      var onQ = function () {
+        if (qTick) return;
+        qTick = true;
+        requestAnimationFrame(qPaint);
+      };
+
+      measure();
+      qPaint();
+      window.addEventListener('scroll', onQ, { passive: true });
+      window.addEventListener('resize', function () { measure(); qPaint(); });
+    }
+  }
 
   /* Hero scrub: hero copy recedes, workspace scales up. Scroll-driven, one direction. */
   var scrub = document.querySelector('[data-scrub]');
