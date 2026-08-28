@@ -162,7 +162,7 @@
            one full fall earlier, which puts the scattered pieces at that same
            spot when it begins. Everything then happens around the centre of
            the viewport rather than at its edges. */
-        var to = vh * 0.46;
+        var to = vh * 0.40;
         var from = to + span;
         var q = (from - centre) / span;
         q = q < 0 ? 0 : q > 1 ? 1 : q;

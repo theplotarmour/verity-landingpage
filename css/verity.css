@@ -1124,10 +1124,11 @@ img { max-width: 100%; display: block; }
   font-size: 12.5px;
   white-space: nowrap;
   box-shadow: var(--elev-low);
-  --collapse: clamp(0, calc((var(--q) - 0.52) / 0.18), 1);
+  --move: clamp(0, calc(var(--q) / 0.72), 1);
+  --collapse: clamp(0, calc((var(--q) - 0.58) / 0.14), 1);
   transform:
-    translate3d(calc(var(--dx, 0px) * var(--q)), calc(var(--dy, 0px) * var(--q)), 0)
-    rotate(calc(var(--rot, 0deg) * (1 - var(--q))))
+    translate3d(calc(var(--dx, 0px) * var(--move)), calc(var(--dy, 0px) * var(--move)), 0)
+    rotate(calc(var(--rot, 0deg) * (1 - var(--move))))
     scale(calc(1 - 0.97 * var(--collapse)));
   opacity: calc(1 - var(--collapse));
 }
@@ -1182,11 +1183,11 @@ img { max-width: 100%; display: block; }
    derives from where the plate actually sits on screen, so every beat happens
    somewhere the reader can see it.
 
-     0.00 - 0.70  the pieces travel
-     0.52 - 0.70  they collapse to nothing
-     0.68 - 0.86  the layer expands from that point
-     0.86 - 0.95  it says its name
-     0.90 - 1.00  its parts unfold                                          */
+     0.00 - 0.72  the pieces travel, arriving exactly on the plate
+     0.58 - 0.72  they collapse to nothing on that spot
+     0.72 - 0.88  the layer expands out of the same point
+     0.88 - 0.95  it says its name
+     0.93 - 1.00  its parts unfold                                          */
 :root { --q: 0; }
 
 .plat-plate {
@@ -1198,7 +1199,7 @@ img { max-width: 100%; display: block; }
   box-shadow: var(--elev-mid);
   transform-origin: 50% 50%;
 
-  --expand: clamp(0, calc((var(--q) - 0.68) / 0.18), 1);
+  --expand: clamp(0, calc((var(--q) - 0.72) / 0.16), 1);
   /* Starts as a speck rather than at zero, so the border and fill are already
      drawn when it begins to grow. */
   transform: rotateX(9deg) scale(calc(0.03 + 0.97 * var(--expand)));
@@ -1207,12 +1208,12 @@ img { max-width: 100%; display: block; }
 
 /* The name arrives once the box has somewhere to put it. */
 .plat-plate-text {
-  --say: clamp(0, calc((var(--q) - 0.86) / 0.09), 1);
+  --say: clamp(0, calc((var(--q) - 0.88) / 0.07), 1);
   opacity: var(--say);
 }
 
 .plat-parts {
-  --unfold: clamp(0, calc((var(--q) - 0.90) / 0.10), 1);
+  --unfold: clamp(0, calc((var(--q) - 0.93) / 0.07), 1);
   opacity: var(--unfold);
   transform: translateY(calc(14px * (1 - var(--unfold))));
 }
