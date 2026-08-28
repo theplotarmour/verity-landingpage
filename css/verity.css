@@ -1107,7 +1107,6 @@ img { max-width: 100%; display: block; }
 .frag-field {
   position: relative;
   min-height: clamp(360px, 34vw, 440px);
-  --q: 0;
 }
 /* The pieces cross out of this section on their way to the plate in the next
    one, so this section paints above its successor for the length of the trip. */
@@ -1150,6 +1149,13 @@ img { max-width: 100%; display: block; }
   stroke-width: 1;
   stroke-dasharray: 2 5;
 }
+/* No motion: the fragments stay where they sit at full strength and the layer
+   is simply present. Nothing travels, but both halves of the argument are
+   still on screen. */
+.frag-field.is-static .frag-chip {
+  transform: rotate(var(--rot, 0deg));
+  opacity: 1;
+}
 .frag-field.is-static .frag-links { opacity: 1; }
 
 /* Narrow screens: the scatter stops being absolutely positioned and becomes a
@@ -1167,3 +1173,43 @@ img { max-width: 100%; display: block; }
   }
   .frag-chip { position: static; }
 }
+
+
+/* --------------------------------------------------- The layer is born --- */
+/* Verity does not sit waiting in the next section. It comes into being as the
+   fragments arrive on it: nothing at all until the pieces are most of the way
+   there, then it resolves in the last third of their journey. --q is set on
+   the root by js/motion.js so both sections read one progress. */
+:root { --q: 0; }
+
+.plat-plate {
+  width: 100%;
+  border: 1px solid var(--accent-a40);
+  border-radius: var(--r-panel);
+  padding: 20px;
+  background: var(--accent-a08);
+  box-shadow: var(--elev-mid);
+  transform-origin: 50% 60%;
+  /* Held at nothing until 0.62, then eased up to full by 1. */
+  --birth: clamp(0, calc((var(--q) - 0.62) / 0.38), 1);
+  opacity: var(--birth);
+  transform:
+    rotateX(9deg)
+    scale(calc(0.86 + 0.14 * var(--birth)));
+}
+
+/* The parts unfold just behind the layer they belong to. */
+.plat-parts {
+  --unfold: clamp(0, calc((var(--q) - 0.78) / 0.22), 1);
+  opacity: var(--unfold);
+  transform: translateY(calc(14px * (1 - var(--unfold))));
+}
+
+/* No motion, or the section reached without the trip: everything is simply
+   present. js/motion.js pins --q to 1 in that case. */
+:root.no-converge .plat-plate,
+:root.no-converge .plat-parts {
+  opacity: 1;
+  transform: rotateX(9deg);
+}
+:root.no-converge .plat-parts { transform: none; }

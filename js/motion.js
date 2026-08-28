@@ -50,8 +50,14 @@
 
   if (reduce) {
     targets.forEach(function (el) { el.classList.add('is-in'); });
+    /* This branch returns out of the module, so everything the converge block
+       would have set has to be set here too. Without it the layer the pieces
+       are meant to become never appears at all: the section renders with an
+       empty space where Verity should be. */
     var staticField = document.querySelector('[data-converge]');
     if (staticField) { staticField.classList.add('is-static'); }
+    document.documentElement.classList.add('no-converge');
+    document.documentElement.style.setProperty('--q', '1');
     return;
   }
 
@@ -109,6 +115,8 @@
 
     if (reduce) {
       field.classList.add('is-static');
+      document.documentElement.classList.add('no-converge');
+      document.documentElement.style.setProperty('--q', '1');
     } else {
       var startY = 0, endY = 1;
 
@@ -147,7 +155,10 @@
         qTick = false;
         var q = (window.scrollY - startY) / (endY - startY);
         q = q < 0 ? 0 : q > 1 ? 1 : q;
-        field.style.setProperty('--q', q.toFixed(4));
+        /* Smoothstep. Linear progress starts and stops abruptly, which reads as
+           the pieces being dragged; eased, they gather speed and settle. */
+        q = q * q * (3 - 2 * q);
+        document.documentElement.style.setProperty('--q', q.toFixed(4));
       };
 
       var onQ = function () {
