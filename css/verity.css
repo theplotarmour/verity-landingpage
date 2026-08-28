@@ -1109,6 +1109,10 @@ img { max-width: 100%; display: block; }
   min-height: clamp(360px, 34vw, 440px);
   --q: 0;
 }
+/* The pieces cross out of this section on their way to the plate in the next
+   one, so this section paints above its successor for the length of the trip. */
+#how-it-works { position: relative; z-index: 2; }
+#platform { position: relative; z-index: 1; }
 .frag-scatter { position: absolute; inset: 0; }
 
 .frag-chip {
@@ -1124,52 +1128,12 @@ img { max-width: 100%; display: block; }
   transform:
     translate3d(calc(var(--dx, 0px) * var(--q)), calc(var(--dy, 0px) * var(--q)), 0)
     rotate(calc(var(--rot, 0deg) * (1 - var(--q))))
-    scale(calc(1 - 0.32 * var(--q)));
-  opacity: calc(1 - var(--q) * 0.92);
-}
-
-/* The layer the pieces become. Sized to its own content, centred on the field. */
-.frag-core {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 20px;
-  border: 1px solid var(--accent-a40);
-  border-radius: var(--r-panel);
-  background: var(--accent-a08);
-  box-shadow: var(--elev-mid);
-  white-space: nowrap;
-  transform: translate(-50%, -50%) scale(calc(0.9 + 0.1 * var(--q)));
-  opacity: var(--q);
-}
-.frag-core-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px; height: 34px;
-  border-radius: var(--r-control);
-  background: var(--surface);
-  color: var(--accent);
-  flex: none;
-}
-.frag-core-name { font-size: 20px; font-weight: 300; letter-spacing: -0.02em; }
-.frag-core-note { color: var(--ink-muted); }
-
-/* No motion: show the fragments and the layer together, nothing travels. */
-.frag-field.is-static .frag-chip { transform: rotate(var(--rot, 0deg)); opacity: 1; }
-.frag-field.is-static .frag-core {
-  top: auto; bottom: -12px;
-  transform: translate(-50%, 0);
-  opacity: 1;
+    scale(calc(1 - 0.45 * var(--q)));
+  opacity: clamp(0, calc((1 - var(--q)) * 4), 1);
 }
 
 @media (max-width: 640px) {
   .frag-chip { font-size: 11.5px; padding: 8px 11px; }
-  .frag-core { padding: 12px 16px; gap: 10px; }
-  .frag-core-name { font-size: 17px; }
 }
 
 /* Connectors that never join anything, fading out as the layer forms. */
@@ -1192,7 +1156,7 @@ img { max-width: 100%; display: block; }
    loose wrapped row, so a long label can never run off the edge. The chips
    still converge, because their vectors are measured from wherever they sit. */
 @media (max-width: 720px) {
-  .frag-field { min-height: 0; padding-bottom: 96px; }
+  .frag-field { min-height: 0; }
   .frag-links { display: none; }
   .frag-scatter {
     position: static;
@@ -1202,6 +1166,4 @@ img { max-width: 100%; display: block; }
     gap: 10px;
   }
   .frag-chip { position: static; }
-  .frag-core { left: 50%; top: auto; bottom: 8px; transform: translate(-50%, 0) scale(calc(0.9 + 0.1 * var(--q))); }
-  .frag-field.is-static .frag-core { bottom: 8px; }
 }

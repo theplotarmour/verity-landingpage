@@ -96,56 +96,56 @@
   window.addEventListener('resize', onScroll);
   land();
 
-  /* ---- Fragmentation: scattered tools travel to the centre --------------
-     Each chip is measured once against the field's centre, then driven by a
-     single scroll progress. Reduced motion gets the static arrangement: the
-     fragments and the layer shown together, nothing travelling. */
+  /* ---- Fragmentation: the tools travel into the plate in the next section --
+     The pieces scattered in "your systems are fragmented" fly down the page and
+     land on the "Verity / the operational layer" plate that already exists in
+     the following section. Both elements sit in the same document flow, so each
+     chip's vector to the plate is constant and is measured once. */
   var field = document.querySelector('[data-converge]');
-  if (field) {
+  var landing = document.querySelector('[data-converge-target]');
+
+  if (field && landing) {
     var chips = [].slice.call(field.querySelectorAll('[data-frag]'));
 
     if (reduce) {
       field.classList.add('is-static');
     } else {
-      var vectors = [];
+      var startY = 0, endY = 1;
+
+      var docBox = function (el) {
+        var r = el.getBoundingClientRect();
+        return {
+          cx: r.left + window.scrollX + r.width / 2,
+          cy: r.top + window.scrollY + r.height / 2
+        };
+      };
 
       var measure = function () {
-        var core = field.querySelector('.frag-core');
-        var f = field.getBoundingClientRect();
-        var cx = f.width / 2;
-        var cy = f.height / 2;
-        vectors = chips.map(function (el) {
-          /* Neutralise any transform already applied so the rest position is
-             measured, not the current animated one. */
+        chips.forEach(function (el) {
           el.style.setProperty('--dx', '0px');
           el.style.setProperty('--dy', '0px');
-          var r = el.getBoundingClientRect();
-          return {
-            el: el,
-            dx: cx - ((r.left - f.left) + r.width / 2),
-            dy: cy - ((r.top - f.top) + r.height / 2)
-          };
         });
-        vectors.forEach(function (v) {
-          v.el.style.setProperty('--dx', v.dx.toFixed(1) + 'px');
-          v.el.style.setProperty('--dy', v.dy.toFixed(1) + 'px');
+
+        var target = docBox(landing);
+        chips.forEach(function (el) {
+          var c = docBox(el);
+          el.style.setProperty('--dx', (target.cx - c.cx).toFixed(1) + 'px');
+          el.style.setProperty('--dy', (target.cy - c.cy).toFixed(1) + 'px');
         });
-        if (core) { core.style.opacity = ''; }
+
+        /* The trip begins once the scatter is properly on screen and ends when
+           the plate settles near the middle of the viewport. */
+        var vh = window.innerHeight;
+        var f = docBox(field);
+        startY = f.cy - vh * 0.72;
+        endY = target.cy - vh * 0.52;
+        if (endY - startY < 200) { endY = startY + 200; }
       };
 
       var qTick = false;
       var qPaint = function () {
         qTick = false;
-        var r = field.getBoundingClientRect();
-        var vh = window.innerHeight;
-        /* Measured on the field's own centre, not its top, so the travel does
-           not depend on how tall the field happens to be. The scattered state
-           is held until the field is properly on screen, then the pieces
-           converge over the next half viewport of scrolling. */
-        var centre = r.top + r.height / 2;
-        var from = vh * 0.78;
-        var to = vh * 0.30;
-        var q = (from - centre) / (from - to);
+        var q = (window.scrollY - startY) / (endY - startY);
         q = q < 0 ? 0 : q > 1 ? 1 : q;
         field.style.setProperty('--q', q.toFixed(4));
       };
@@ -160,6 +160,10 @@
       qPaint();
       window.addEventListener('scroll', onQ, { passive: true });
       window.addEventListener('resize', function () { measure(); qPaint(); });
+      /* Late webfont swaps move both elements; re-measure once they settle. */
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () { measure(); qPaint(); });
+      }
     }
   }
 
